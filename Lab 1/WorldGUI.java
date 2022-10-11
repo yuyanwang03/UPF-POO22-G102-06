@@ -78,9 +78,4 @@ public class WorldGUI extends JPanel {
 			}	
 		}
 	}
-
-	public void addAgent(Agent agent) {
-		
-	}
-
 }
