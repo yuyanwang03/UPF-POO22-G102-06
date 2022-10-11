@@ -20,7 +20,7 @@ public class Vec2D {
 	public double length() {
 		return Math.sqrt(x * x + y * y);
 	}
-	
+
 	// normalize to unit length
 	public void normalize() {
 		double len = length();

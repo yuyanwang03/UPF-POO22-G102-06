@@ -8,8 +8,8 @@ public class Agent {
     // do we have to define agents and worlds followinhg the given structure or the structure we designed in the seminar
 
     //defining methods
-    public Agent(double posx, double posy, double r){
-        position = new Vec2D(posx, posy);
+    public Agent(Vec2D pos, double r){
+        position = pos;
         radius = r;
     }
 
@@ -50,5 +50,5 @@ public class Agent {
         if (distance.length() < (radius + anotherAgent.getRadius())) {return true;}
         else {return false;}
     }
-    
+
 }
