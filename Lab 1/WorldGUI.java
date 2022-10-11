@@ -1,5 +1,7 @@
 
 import java.awt.*;
+import java.lang.annotation.Target;
+
 import javax.swing.*;
 
 public class WorldGUI extends JPanel {
@@ -8,17 +10,23 @@ public class WorldGUI extends JPanel {
 	private int width;
 	private int height;
 	private Agent[] agents;
-	private int capacity;
-	
+	private static int capacity;
+	private int margin;
+
 	public WorldGUI(int initWidth, int initHeight, int capacity) {
 		// initialize the world here
 		width = initWidth;
 		height = initHeight;
-		numAgents = initNumAgents;
-		for (int i=0; i<margin; i++) {
-			Agent agents[i] = new agent;
+		margin = 30;
+		capacity = 10;
+		agents = new Agent[capacity];
 
+		for (int i=0; i<capacity; i++) {
+			agents[i] = new Agent(randomPos(), randomRadius());
+			agents[i].setTarget(randomPos());
+			agents[i].setSpeed(1);
 		}
+		
 
 		// Place the GUI inside a window and show it on the screen
 		JFrame frame = new JFrame("World");
@@ -32,6 +40,17 @@ public class WorldGUI extends JPanel {
 		try { simulate(1000); }
 		catch (Exception e) {}
 	}
+
+	private Vec2D randomPos() {
+		double x = margin + Math.random()*(width - 2 * margin);
+		double y = margin + Math.random()*(height - 2 * margin);
+		return new Vec2D( x , y );
+	}
+
+	private double randomRadius() {
+		return 5 + Math.random() * (margin - 5) ;
+	}
+		
 	
 	public void simulate(int steps) throws Exception {
 		for (int i = 0; i < steps; ++i) {
@@ -48,6 +67,16 @@ public class WorldGUI extends JPanel {
 		super.paint(g);
 		
 		// paint the world
+	}
+
+	public void simulationStep() {
+		for (int i=0; i<capacity; i++) {
+			if (agents[i].reachedTarget() == true) {
+				agents[i].setTarget(randomPos());
+			} else {
+				agents[i].updatePosition();
+			}	
+		}
 	}
 
 	public void addAgent(Agent agent) {
