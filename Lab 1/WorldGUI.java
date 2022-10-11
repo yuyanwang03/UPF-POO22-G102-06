@@ -4,10 +4,13 @@ import javax.swing.*;
 
 public class WorldGUI extends JPanel {
 
+	int max_num_agents = 30;
+	int margin = 10;
+
 	// define a world attribute here
 	private int width;
 	private int height;
-	private String[] Agent;
+	private Agent[max_num_agents] agents;
 	private int numAgents;
 	
 	public WorldGUI(int initWidth, int initHeight, int initNumAgents) {
@@ -15,6 +18,10 @@ public class WorldGUI extends JPanel {
 		width = initWidth;
 		height = initHeight;
 		numAgents = initNumAgents;
+		for (int i=0; i<margin; i++) {
+			Agent agents[i] = new agent;
+			
+		}
 
 		// Place the GUI inside a window and show it on the screen
 		JFrame frame = new JFrame("World");
@@ -47,7 +54,7 @@ public class WorldGUI extends JPanel {
 	}
 
 	public void addAgent(Agent agent) {
-		Agent.push(agent);
+		agents.push(agent);
 	}
 
 }
