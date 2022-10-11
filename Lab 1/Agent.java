@@ -13,8 +13,11 @@ public class Agent {
         radius = r;
     }
 
-    public void setTarget(Vec2D newTarget){
-        target = newTarget;
+    public void setTarget(Vec2D initTarget){
+        target = initTarget;
+        direction = new Vec2D(initTarget);
+        direction.subtract(position);
+        direction.normalize();
     }
 
     public void setSpeed(double newSpeed){
@@ -22,6 +25,30 @@ public class Agent {
     }
 
     public void updatePosition(){
-        position = position.add(direction);
+        Vec2D dir = new Vec2D(speed*direction.getX(), speed*direction.getY());
+        position.add(dir);
     }
+    
+    public boolean reachedTarget(){
+        Vec2D distance = new Vec2D(target);
+        distance.subtract(position);
+        if (distance.length()<radius) {return true;}
+        else {return false;}
+    }
+
+    public Vec2D getPosition(){
+        return position;
+    }
+
+    public double getRadius(){
+        return radius;
+    }
+
+    public boolean isColliding(Agent anotherAgent){
+        Vec2D distance = new Vec2D(position);
+        distance.subtract(anotherAgent.getPosition());
+        if (distance.length() < (radius + anotherAgent.getRadius())) {return true;}
+        else {return false;}
+    }
+    
 }
