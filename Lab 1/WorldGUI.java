@@ -33,6 +33,7 @@ public class WorldGUI extends JPanel {
 			
 			// perform a simulation step of the world
 			world.simulationStep();
+			world.manageCollisions();
 			repaint();
 		}
 	}
