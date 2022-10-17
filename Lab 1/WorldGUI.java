@@ -13,6 +13,7 @@ public class WorldGUI extends JPanel {
 	private static int capacity;
 	private int margin;
 
+
 	public WorldGUI(int initWidth, int initHeight, int capacity) {
 		// initialize the world here
 		width = initWidth;
@@ -58,7 +59,7 @@ public class WorldGUI extends JPanel {
 			Thread.sleep(10);
 			
 			// perform a simulation step of the world
-			
+			simulationStep();
 			repaint();
 		}
 	}
@@ -67,15 +68,17 @@ public class WorldGUI extends JPanel {
 		super.paint(g);
 		
 		// paint the world
+		for (int i=0; i<capacity; i++) {
+			agents[i].paint(g);
+		}
 	}
 
 	public void simulationStep() {
 		for (int i=0; i<capacity; i++) {
+			agents[i].updatePosition();
 			if (agents[i].reachedTarget() == true) {
 				agents[i].setTarget(randomPos());
-			} else {
-				agents[i].updatePosition();
-			}	
+			}
 		}
 	}
 }

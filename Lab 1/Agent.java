@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Agent {
     // defining attributes
     private Vec2D position;
@@ -51,4 +53,11 @@ public class Agent {
         else {return false;}
     }
 
+    public void paint(Graphics g) {
+        int x = (int) (position.getX() - radius);
+        int y = (int) (position.getY() - radius);
+        int d = (int) (2*radius);
+        g.setColor(Color.RED);
+        g.fillOval( x, y, d, d);
+    }
 }
