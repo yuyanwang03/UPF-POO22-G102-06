@@ -10,7 +10,7 @@ public class World {
 	private static int capacity;
 	private int margin;
 
-    World(int initWidth, int initHeight){
+    public World(int initWidth, int initHeight){
         width = initWidth;
 		height = initHeight;
 		margin = 30;
