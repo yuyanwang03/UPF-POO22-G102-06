@@ -8,7 +8,7 @@ public class Agent {
     private Vec2D direction;
     private Vec2D target;
     private double speed;
-    // do we have to define agents and worlds followinhg the given structure or the structure we designed in the seminar
+    // do we have to define agents and worlds following the given structure or the structure we designed in the seminar
 
     //defining methods
     public Agent(Vec2D pos, double r){
