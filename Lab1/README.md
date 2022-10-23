@@ -86,10 +86,10 @@ Now, let’s continue with World class. First thing we do is also to create attr
 
 ```java
     private int width;
-	private int height;
-	private Agent[] agents;
-	private static int capacity;
-	private int margin;
+    private int height;
+    private Agent[] agents;
+    private static int capacity;
+    private int margin;
 ```
 
 For the constructor method, we set the initial values for width and height, then create 10 agents (value of attribute capacity) with random targets, random radius and random speeds by calling methods from Agent class. We want each of the agents to have a random position and radius. Now, in order for our agents to move, we need to implement the method simulationStep. In this method, we first update each agents’ positions, then to check if they have reached their current targets by calling method reachedTarget from class Agent. If they have, we need to set a new random target and new random speed. If they have not, we just need to update their positions again.
