@@ -129,4 +129,7 @@ However, the collitions between agents might not be handled in the best way: sin
 
 The solution we have tried for this problem was to use Physics formula to make these to be 2D elastic collisions. The formula is defined as follows:
 
-![alt text](elastic collision formula.png)
+![Image](elastic%20collision%20formula.png "2D elastic collision")
+
+But because of the way class *Vec2D* has been defined, it was hard to implememt vector operations to get the final correct result. Apart from that, in order to make the whole thing make sense, we would need to also define methods to control situations when agents arrive to the margins and make them bounce off. All these previously mentioned work were too additional so we gave up applying complicated changes to the code.
+
