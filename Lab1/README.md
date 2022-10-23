@@ -1,18 +1,19 @@
-´´´
-1. An introduction where the problem is described. For example, what
+
+<!--
+>1. An introduction where the problem is described. For example, what
 should the program do? Which classes do you have to define? Which
 methods do you have to implement for these classes?
-2. A description of possible alternative solutions that were discussed, and a
+>2. A description of possible alternative solutions that were discussed, and a
 description of the chosen solution and the reason for choosing this solution
 rather than others. It is also a good idea to mention the related theoretical
 concepts of object-oriented programming that were applied as part of the
 solution.
-3. A conclusion that describes how well the solution worked in practice,
+>3. A conclusion that describes how well the solution worked in practice,
 i.e. did the tests show that the classes were correctly implemented? You
 can also mention any difficulties during the implementation as well as any
 doubts you might have had.
+--->
 
-´´´
 
 # Lab 1 report
 
@@ -121,3 +122,11 @@ public void manageCollisions(){
 ```
 
 ## 3. Conclusion
+
+After execution, it can be seen that there is not compilation error and the code works the same way as it has been defined. 
+
+However, the collitions between agents might not be handled in the best way: since the code is setting a random target position when two agents collide, there is a high chance that the new target position is similar to the old one so the agents will still be colliding; this can be observed because of the struggling between the agents that are in the same spot.
+
+The solution we have tried for this problem was to use Physics formula to make these to be 2D elastic collisions. The formula is defined as follows:
+
+![alt text](elastic collision formula.png)
