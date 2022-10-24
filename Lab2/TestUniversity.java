@@ -1,7 +1,6 @@
 public class TestUniversity {
-    private University university;
-
-    public TestUniversity(){
-        
+    public static void main(String[] args){
+        University university = new University();
+        System.out.println("Sucess");
     }
 }
