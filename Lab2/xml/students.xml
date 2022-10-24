@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+	<student>
+		<name>Harry Potter</name>
+                <nia>987654</nia>
+	</student>
+	<student>
+		<name>Hermione Granger</name>
+                <nia>987655</nia>
+	</student>
+	<student>
+		<name>Ron Weasley</name>
+                <nia>987656</nia>
+	</student>
+	<student>
+		<name>Ginny Weasley</name>
+                <nia>987657</nia>
+	</student>
+	<student>
+		<name>Lee Jordan</name>
+                <nia>987658</nia>
+	</student>
+	<student>
+		<name>Nymphadora Tonks</name>
+                <nia>987659</nia>
+	</student>
+	<student>
+		<name>Cedric Diggory</name>
+                <nia>987660</nia>
+	</student>
+	<student>
+		<name>Hannah Abbott</name>
+                <nia>987661</nia>
+	</student>
+	<student>
+		<name>Susan Bones</name>
+                <nia>987662</nia>
+	</student>
+	<student>
+		<name>Owen Cauldwell</name>
+                <nia>987663</nia>
+	</student>
+	<student>
+		<name>Luna Lovegood</name>
+                <nia>987664</nia>
+	</student>
+	<student>
+		<name>Penelope Clearwater</name>
+                <nia>987665</nia>
+	</student>
+	<student>
+		<name>Cho Chang</name>
+                <nia>987666</nia>
+	</student>
+	<student>
+		<name>Padma Patil</name>
+                <nia>987667</nia>
+	</student>
+	<student>
+		<name>Marietta Edgecombe</name>
+                <nia>987668</nia>
+	</student>
+	<student>
+		<name>Draco Malfoy</name>
+                <nia>987669</nia>
+	</student>
+	<student>
+		<name>Pancy Parkinson</name>
+                <nia>987670</nia>
+	</student>
+	<student>
+		<name>Vincent Crabbe</name>
+                <nia>987671</nia>
+	</student>
+	<student>
+		<name>Gregory Goyle</name>
+                <nia>987672</nia>
+	</student>
+	<student>
+		<name>Blaise Zabini</name>
+                <nia>987673</nia>
+	</student>
+</students>
+

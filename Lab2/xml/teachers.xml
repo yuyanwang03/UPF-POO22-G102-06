@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teachers>
+	<teacher>
+		<name>Albus Dumbledore</name>
+	</teacher>
+	<teacher>
+		<name>Severus Snape</name>
+	</teacher>
+	<teacher>
+		<name>Minerva McGonagall</name>
+	</teacher>
+	<teacher>
+		<name>Gilderoy Lockhart</name>
+	</teacher>
+	<teacher>
+		<name>Filius Flitwick</name>
+	</teacher>
+	<teacher>
+		<name>Horace Slughorn</name>
+	</teacher>
+	<teacher>
+		<name>Remus Lupin</name>
+	</teacher>
+	<teacher>
+		<name>Dolores Jane Umbridge</name>
+	</teacher>
+	<teacher>
+		<name>Amycus Carrow</name>
+	</teacher>
+	<teacher>
+		<name>Aurora Sinistra</name>
+	</teacher>
+	<teacher>
+		<name>Cuthbert Binns</name>
+	</teacher>
+	<teacher>
+		<name>Neville Longbottom</name>
+	</teacher>
+	<teacher>
+		<name>Sybill Trelawney</name>
+	</teacher>
+	<teacher>
+		<name>Herbert Beery Pomona Sprout</name>
+	</teacher>
+	<teacher>
+		<name>Rubeus Hagrid</name>
+	</teacher>
+	<teacher>
+		<name>Madame Rolanda Hooch</name>
+	</teacher>
+	<teacher>
+		<name>Charity Burbage</name>
+	</teacher>
+</teachers>
+

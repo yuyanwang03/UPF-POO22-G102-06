@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignments>
+	<assignment>
+                <teacher>Albus Dumbledore</teacher>
+		<course>Transformations</course>
+                <group>1</group>
+                <group>11</group>
+                <group>12</group>
+                <group>111</group>
+                <group>121</group>
+	</assignment>
+	<assignment>
+                <teacher>Minerva McGonagall</teacher>
+		<course>Transformations</course>
+                <group>2</group>
+                <group>21</group>
+                <group>22</group>
+                <group>211</group>
+                <group>221</group>
+	</assignment>
+	<assignment>
+                <teacher>Severus Snape</teacher>
+		<course>Transformations</course>
+                <group>112</group>
+                <group>122</group>
+	</assignment>
+	<assignment>
+                <teacher>Gilderoy Lockhart</teacher>
+		<course>Transformations</course>
+                <group>212</group>
+                <group>222</group>
+	</assignment>
+	<assignment>
+                <teacher>Gilderoy Lockhart</teacher>
+		<course>Black Magic Defense</course>
+                <group>1</group>
+                <group>11</group>
+                <group>12</group>
+                <group>111</group>
+                <group>121</group>
+	</assignment>
+	<assignment>
+                <teacher>Remus Lupin</teacher>
+		<course>Black Magic Defense</course>
+                <group>2</group>
+                <group>21</group>
+                <group>22</group>
+                <group>211</group>
+                <group>221</group>
+	</assignment>
+	<assignment>
+                <teacher>Dolores Jane Umbridge</teacher>
+		<course>Black Magic Defense</course>
+                <group>112</group>
+                <group>122</group>
+	</assignment>
+	<assignment>
+                <teacher>Severus Snape</teacher>
+		<course>Black Magic Defense</course>
+                <group>212</group>
+                <group>222</group>
+	</assignment>
+	<assignment>
+                <teacher>Filius Flitwick</teacher>
+		<course>Enchantments</course>
+                <group>1</group>
+                <group>11</group>
+                <group>12</group>
+                <group>111</group>
+                <group>121</group>
+	</assignment>
+	<assignment>
+                <teacher>Horace Slughorn</teacher>
+		<course>Enchantments</course>
+                <group>2</group>
+                <group>21</group>
+                <group>22</group>
+                <group>211</group>
+                <group>221</group>
+	</assignment>
+	<assignment>
+                <teacher>Amycus Carrow</teacher>
+		<course>Enchantments</course>
+                <group>112</group>
+                <group>122</group>
+	</assignment>
+	<assignment>
+                <teacher>Aurora Sinistra</teacher>
+		<course>Enchantments</course>
+                <group>212</group>
+                <group>222</group>
+	</assignment>
+	<assignment>
+                <teacher>Horace Slughorn</teacher>
+		<course>Potions</course>
+                <group>1</group>
+                <group>11</group>
+                <group>12</group>
+                <group>111</group>
+                <group>121</group>
+	</assignment>
+	<assignment>
+                <teacher>Severus Snape</teacher>
+		<course>Potions</course>
+                <group>2</group>
+                <group>21</group>
+                <group>22</group>
+                <group>211</group>
+                <group>221</group>
+	</assignment>
+	<assignment>
+                <teacher>Sybill Trelawney</teacher>
+		<course>Potions</course>
+                <group>112</group>
+                <group>122</group>
+	</assignment>
+	<assignment>
+                <teacher>Rubeus Hagrid</teacher>
+		<course>Potions</course>
+                <group>212</group>
+                <group>222</group>
+	</assignment>
+	<assignment>
+                <teacher>Aurora Sinistra</teacher>
+		<course>Astronomy</course>
+                <group>1</group>
+                <group>11</group>
+                <group>12</group>
+                <group>111</group>
+                <group>121</group>
+	</assignment>
+	<assignment>
+                <teacher>Charity Burbage</teacher>
+		<course>Astronomy</course>
+                <group>2</group>
+                <group>21</group>
+                <group>22</group>
+                <group>211</group>
+                <group>221</group>
+	</assignment>
+	<assignment>
+                <teacher>Madame Rolanda Hooch</teacher>
+		<course>Astronomy</course>
+                <group>112</group>
+                <group>122</group>
+	</assignment>
+	<assignment>
+                <teacher>Neville Longbottom</teacher>
+		<course>Astronomy</course>
+                <group>212</group>
+                <group>222</group>
+	</assignment>
+	<assignment>
+                <teacher>Madame Rolanda Hooch</teacher>
+		<course>Flight</course>
+                <group>1</group>
+                <group>11</group>
+                <group>12</group>
+                <group>111</group>
+                <group>121</group>
+	</assignment>
+	<assignment>
+                <teacher>Herbert Beery Pomona Sprout</teacher>
+		<course>Flight</course>
+                <group>2</group>
+                <group>21</group>
+                <group>22</group>
+                <group>211</group>
+                <group>221</group>
+	</assignment>
+	<assignment>
+                <teacher>Cuthbert Binns</teacher>
+		<course>Flight</course>
+                <group>112</group>
+                <group>122</group>
+	</assignment>
+	<assignment>
+                <teacher>Amycus Carrow</teacher>
+		<course>Flight</course>
+                <group>212</group>
+                <group>222</group>
+	</assignment>
+</assignments>

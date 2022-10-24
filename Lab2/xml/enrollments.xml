@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enrollments>
+	<enrollment>
+                <student>Harry Potter</student>
+		<course>Transformations</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Hermione Granger</student>
+		<course>Transformations</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Ron Weasley</student>
+		<course>Transformations</course>
+                <group>112</group>
+	</enrollment>
+	<enrollment>
+                <student>Nymphadora Tonks</student>
+		<course>Transformations</course>
+                <group>121</group>
+	</enrollment>
+	<enrollment>
+                <student>Cedric Diggory</student>
+		<course>Transformations</course>
+                <group>122</group>
+	</enrollment>
+	<enrollment>
+                <student>Luna Lovegood</student>
+		<course>Transformations</course>
+                <group>211</group>
+	</enrollment>
+	<enrollment>
+                <student>Penelope Clearwater</student>
+		<course>Transformations</course>
+                <group>212</group>
+	</enrollment>
+	<enrollment>
+                <student>Draco Malfoy</student>
+		<course>Transformations</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Pancy Parkinson</student>
+		<course>Transformations</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Vincent Crabbe</student>
+		<course>Transformations</course>
+                <group>222</group>
+	</enrollment>
+	<enrollment>
+                <student>Harry Potter</student>
+		<course>Black Magic Defense</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Ginny Weasley</student>
+		<course>Black Magic Defense</course>
+                <group>112</group>
+	</enrollment>
+	<enrollment>
+                <student>Lee Jordan</student>
+		<course>Black Magic Defense</course>
+                <group>112</group>
+	</enrollment>
+	<enrollment>
+                <student>Hannah Abbott</student>
+		<course>Black Magic Defense</course>
+                <group>121</group>
+	</enrollment>
+	<enrollment>
+                <student>Susan Bones</student>
+		<course>Black Magic Defense</course>
+                <group>122</group>
+	</enrollment>
+	<enrollment>
+                <student>Cho Chang</student>
+		<course>Black Magic Defense</course>
+                <group>211</group>
+	</enrollment>
+	<enrollment>
+                <student>Padma Patil</student>
+		<course>Black Magic Defense</course>
+                <group>212</group>
+	</enrollment>
+	<enrollment>
+                <student>Draco Malfoy</student>
+		<course>Black Magic Defense</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Gregory Goyle</student>
+		<course>Black Magic Defense</course>
+                <group>222</group>
+	</enrollment>
+	<enrollment>
+                <student>Blaise Zabini</student>
+		<course>Black Magic Defense</course>
+                <group>222</group>
+	</enrollment>
+	<enrollment>
+                <student>Ginny Weasley</student>
+		<course>Enchantments</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Hermione Granger</student>
+		<course>Enchantments</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Ron Weasley</student>
+		<course>Enchantments</course>
+                <group>112</group>
+	</enrollment>
+	<enrollment>
+                <student>Nymphadora Tonks</student>
+		<course>Enchantments</course>
+                <group>121</group>
+	</enrollment>
+	<enrollment>
+                <student>Owen Cauldwell</student>
+		<course>Enchantments</course>
+                <group>122</group>
+	</enrollment>
+	<enrollment>
+                <student>Luna Lovegood</student>
+		<course>Enchantments</course>
+                <group>211</group>
+	</enrollment>
+	<enrollment>
+                <student>Marietta Edgecombe</student>
+		<course>Enchantments</course>
+                <group>212</group>
+	</enrollment>
+	<enrollment>
+                <student>Gregory Goyle</student>
+		<course>Enchantments</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Pancy Parkinson</student>
+		<course>Enchantments</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Vincent Crabbe</student>
+		<course>Enchantments</course>
+                <group>222</group>
+	</enrollment>
+	<enrollment>
+                <student>Harry Potter</student>
+		<course>Potions</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Hermione Granger</student>
+		<course>Potions</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Lee Jordan</student>
+		<course>Potions</course>
+                <group>112</group>
+	</enrollment>
+	<enrollment>
+                <student>Hannah Abbott</student>
+		<course>Potions</course>
+                <group>121</group>
+	</enrollment>
+	<enrollment>
+                <student>Cedric Diggory</student>
+		<course>Potions</course>
+                <group>122</group>
+	</enrollment>
+	<enrollment>
+                <student>Cho Chang</student>
+		<course>Potions</course>
+                <group>211</group>
+	</enrollment>
+	<enrollment>
+                <student>Penelope Clearwater</student>
+		<course>Potions</course>
+                <group>212</group>
+	</enrollment>
+	<enrollment>
+                <student>Draco Malfoy</student>
+		<course>Potions</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Pancy Parkinson</student>
+		<course>Potions</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Blaise Zabini</student>
+		<course>Potions</course>
+                <group>222</group>
+	</enrollment>
+	<enrollment>
+                <student>Ginny Weasley</student>
+		<course>Astronomy</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Lee Jordan</student>
+		<course>Astronomy</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Ron Weasley</student>
+		<course>Astronomy</course>
+                <group>112</group>
+	</enrollment>
+	<enrollment>
+                <student>Susan Bones</student>
+		<course>Astronomy</course>
+                <group>121</group>
+	</enrollment>
+	<enrollment>
+                <student>Owen Cauldwell</student>
+		<course>Astronomy</course>
+                <group>122</group>
+	</enrollment>
+	<enrollment>
+                <student>Padma Patil</student>
+		<course>Astronomy</course>
+                <group>211</group>
+	</enrollment>
+	<enrollment>
+                <student>Marietta Edgecombe</student>
+		<course>Astronomy</course>
+                <group>212</group>
+	</enrollment>
+	<enrollment>
+                <student>Gregory Goyle</student>
+		<course>Astronomy</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Blaise Zabini</student>
+		<course>Astronomy</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Vincent Crabbe</student>
+		<course>Astronomy</course>
+                <group>222</group>
+	</enrollment>
+	<enrollment>
+                <student>Harry Potter</student>
+		<course>Flight</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Hermione Granger</student>
+		<course>Flight</course>
+                <group>111</group>
+	</enrollment>
+	<enrollment>
+                <student>Ron Weasley</student>
+		<course>Flight</course>
+                <group>112</group>
+	</enrollment>
+	<enrollment>
+                <student>Nymphadora Tonks</student>
+		<course>Flight</course>
+                <group>121</group>
+	</enrollment>
+	<enrollment>
+                <student>Cedric Diggory</student>
+		<course>Flight</course>
+                <group>122</group>
+	</enrollment>
+	<enrollment>
+                <student>Luna Lovegood</student>
+		<course>Flight</course>
+                <group>211</group>
+	</enrollment>
+	<enrollment>
+                <student>Penelope Clearwater</student>
+		<course>Flight</course>
+                <group>212</group>
+	</enrollment>
+	<enrollment>
+                <student>Draco Malfoy</student>
+		<course>Flight</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Pancy Parkinson</student>
+		<course>Flight</course>
+                <group>221</group>
+	</enrollment>
+	<enrollment>
+                <student>Vincent Crabbe</student>
+		<course>Flight</course>
+                <group>222</group>
+	</enrollment>
+</enrollments>
+

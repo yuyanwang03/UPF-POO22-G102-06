@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classrooms>
+	<classroom>
+		<code>10.100</code>
+	</classroom>
+	<classroom>
+		<code>10.101</code>
+	</classroom>
+	<classroom>
+		<code>11.100</code>
+	</classroom>
+	<classroom>
+		<code>11.101</code>
+	</classroom>
+	<classroom>
+		<code>12.100</code>
+	</classroom>
+	<classroom>
+		<code>12.101</code>
+	</classroom>
+	<classroom>
+		<code>13.100</code>
+	</classroom>
+	<classroom>
+		<code>13.101</code>
+	</classroom>
+</classrooms>
+

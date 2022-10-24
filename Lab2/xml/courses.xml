@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<courses>
+	<course>
+		<name>Transformations</name>
+	</course>
+	<course>
+		<name>Black Magic Defense</name>
+	</course>
+	<course>
+		<name>Enchantments</name>
+	</course>
+	<course>
+		<name>Potions</name>
+	</course>
+	<course>
+		<name>Astronomy</name>
+	</course>
+	<course>
+		<name>Flight</name>
+	</course>
+</courses>
+
