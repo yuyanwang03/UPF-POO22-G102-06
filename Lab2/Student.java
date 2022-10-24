@@ -10,5 +10,10 @@ public class Student {
         this.nia = nia;
         enrollments = new LinkedList<Enrollment>();
     }
+    
+    public void addEnrollment(Enrollment e){
+        enrollments.add(e);
+        // e.addStudent(this);
+    }
 
 }

@@ -8,5 +8,9 @@ public class Classroom {
         this.code = c;
         this.lectures = new LinkedList<Lecture>();
     }
+
+    public void addLecture(Lecture l){
+        this.lectures.add(l);
+    }
     
 }

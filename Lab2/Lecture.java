@@ -12,5 +12,12 @@ public class Lecture {
         this.timeSlot = s;
         this.type = t;
     }
-    
+
+    public void addClassroom(Classroom c){
+        this.classroom = c;
+    }
+
+    public void addCourse(Course c){
+        this.course = c;
+    }
 }

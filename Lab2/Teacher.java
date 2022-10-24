@@ -8,5 +8,9 @@ public class Teacher {
         this.name = n;
         this.assignments = new LinkedList<Assignment>();
     }
+
+    public void addAssignment(Assignment a){
+        this.assignments.add(a);
+    }
     
 }

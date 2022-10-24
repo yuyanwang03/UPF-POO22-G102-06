@@ -8,4 +8,12 @@ public class Enrollment {
     public Enrollment(String sg){
         this.seminarGroup = sg;
     }
+
+    public void addStudent(Student s){
+        this.student = s;
+    }
+
+    public void addCourse(Course c){
+        this.course = c;
+    }
 }

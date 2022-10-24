@@ -12,5 +12,17 @@ public class Course {
         this.assignments = new LinkedList<Assignment>();
         this.lectures = new LinkedList<Lecture>();
     }
+
+    public void addEnrollment(Enrollment e){
+        this.enrollments.add(e);
+    }
+
+    public void addAssignment(Assignment a){
+        this.assignments.add(a);
+    }
+
+    public void addLecture(Lecture l){
+        this.lectures.add(l);
+    }
     
 }
