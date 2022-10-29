@@ -1,0 +1,6 @@
+1. Introduction
+
+The aim of this report is to describe how we have done lab 2, including all the problems we encountered and our solutions. First of all, our goal for this lab is to implement the design of Seminar 2, create an university management application
+
+2. Implementation
+
