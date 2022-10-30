@@ -80,6 +80,38 @@ public class University {
             teacher.addAssignment(assignment);
             course.addAssignment(assignment);
         }
-
     }
+
+    public LinkedList<String> getStudents(){
+        LinkedList<String> out = new LinkedList<String>();
+        for (Student stu: this.students){
+            out.add(stu.toString());
+        }
+        return out;
+    }
+
+    public LinkedList<String> getTeachers(){
+        LinkedList<String> out = new LinkedList<String>();
+        for (Teacher tea: this.teachers){
+            out.add(tea.toString());
+        }
+        return out;
+    }
+
+    public LinkedList<String> getClassrooms(){
+        LinkedList<String> out = new LinkedList<String>();
+        for (Classroom clas: this.classrooms){
+            out.add(clas.toString());
+        }
+        return out;
+    }
+
+    public LinkedList<String> getCourses(){
+        LinkedList<String> out = new LinkedList<String>();
+        for (Course cou: this.courses){
+            out.add(cou.toString());
+        }
+        return out;
+    }
+    
 }
