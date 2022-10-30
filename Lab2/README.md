@@ -2,117 +2,92 @@
 
 ## 1. Introduction
 
-The aim of this report is to describe how we have done lab 1, including all the problems we encountered and our solutions. First of all, our goal for this lab is to implement the design of Seminar 1, create a simulation environment containing moving agents. Beside the given classes *TestWorld*, *Vec2D* and *WorldGUI*, we need to implement 2 more classes, which are *World* and *Agent*.
+The aim of this report is to describe how we have done lab 2, including all the problems we encountered and our solutions. First of all, our goal for this lab is to implement the design of Seminar 2, create a university management application. In this lab, we are given a class Utility and some XML files. The class Utility contains a static method readXML for parsing XML files, and a generic static method getObject. We then need to create classes corresponding to the design diagram, which are Enrollment, Assignment, Lecture, Student, Teacher, Course, Classroom and University. Finally is a class called TestUniversity that includes a main method to check if everything compiles and runs.
 
 
 ## 2. Implementation
 
-### ***Agent Class***
+The first step is to implement the classes with their attributes and methods corresponding to the design diagram. To access the LinkedList, we need to import java.util.* at the beginning of each class. Since all the relations in the diagram are association and aggregation, we make sure to include the needed attributes that correspond to the relations. We then implement the constructor methods to fill the content of those attributes. 
 
-First, let’s start with Agent class. We follow the attributes stated in the diagram design, however, instead of defining some attributes separately, we substituted by 2-dimensional vectors, which we can do by calling the class Vec2D, such as position, direction and target. 
+There are 4 classes: *Student, Teacher, Classroom, Course* that we need to include the “add” method to add the element to the corresponding link list.
 
 ```java
-    private Vec2D position;
-    private double radius;
-    private Vec2D direction;
-    private Vec2D target;
-    private double speed;
+    public void addEnrollment(Enrollment e){
+        this.enrollments.add(e);
+    }
+
+    public void addAssignment(Assignment a){
+        this.assignments.add(a);
+    }
+
+    public void addLecture(Lecture l){
+        this.lectures.add(l);
+    }
 ```
-
-Then, we continue with implementing methods. The constructor method is used to give the initialization for position and radius of an agent. Beside the getter and setter methods which are used to set value for an attribute or return the value of an attribute, we need to add some more methods. 
-
-The method setTarget performs two operations: set the position of the target and set the current position of the agent. We can do this by first initialize a new target and get its direction by calling methods subtract and normalize from class Vec2D. 
+And for each of these class we added a method called *toString()* in order to return a string value that represents these classes.
 
 ```java
-public void setTarget(Vec2D initTarget){
-        target = initTarget;
-        direction = new Vec2D(initTarget);
-        direction.subtract(position);
-        direction.normalize();
+    public String toString(){
+        return this.attribute; // Attibute is according to what identifies each class 
     }
 ```
 
-For method updatePosition, we use the method add of class Vec2D to sum the position of with its speed multiplied by the direction (pos + speed * dir). 
+### ***University Class***
+
+The attributes of this class are the linked lists from classes Student, Teacher, Classroom and Course:
 
 ```java
-public void updatePosition(){
-        Vec2D dir = new Vec2D(speed*direction.getX(), speed*direction.getY());
-        position.add(dir);
-    }
+    private LinkedList<Student> students;
+    private LinkedList<Teacher> teachers;
+    private LinkedList<Classroom> classrooms;
+    private LinkedList<Course> courses;
 ```
 
-To check if an agent has reached its target, we create a method targetReached which returns a boolean. Similar to the method updatePosition, however this time we do not need to normalize the vector, but to compare if the length of the vector is less than the agent’s radius, if it is, the function returns true. 
+For the constructor of this class, we need to parse the XML files using the method readXML from the class Utility. For the 4 classes Student, Teacher, Classroom and Course, we only need to create an instance of the entity and add it to the corresponding attribute list. An example of *Student* is as follows: (other classes does not differ a lot from this example)
 
 ```java
-public boolean reachedTarget(){
-        Vec2D distance = new Vec2D(target);
-        distance.subtract(position);
-        if (distance.length()<radius) {return true;}
-        else {return false;}
-    }
-```
-
-We also have a method very similar to check if an agent has reached its target, but this time is to check if it is colliding with another agent. To do so, we also have a boolean that returns true if the distance between two agents is less than the sum of the two agents’ radius. 
-
-```java
-public boolean isColliding(Agent anotherAgent){
-        Vec2D distance = new Vec2D(position);
-        distance.subtract(anotherAgent.getPosition());
-        if (distance.length() < (radius + anotherAgent.getRadius())) {return true;}
-        else {return false;}
-    }
-```
-
-### ***World Class***
-
-Now, let’s continue with World class. First thing we do is also to create attributes from the diagram and add one more which is magrin with value 30 to ensure that the agents do not exit the environment. Another thing to highlight is that the attribute capacity has been set to be static because as the exercice stated, the value of this attribute will not change during the implemetation of the code.
-
-```java
-    private int width;
-    private int height;
-    private Agent[] agents;
-    private static int capacity;
-    private int margin;
-```
-
-For the constructor method, we set the initial values for width and height, then create 10 agents (value of attribute capacity) with random targets, random radius and random speeds by calling methods from Agent class. We want each of the agents to have a random position and radius. Now, in order for our agents to move, we need to implement the method simulationStep. In this method, we first update each agents’ positions, then to check if they have reached their current targets by calling method reachedTarget from class Agent. If they have, we need to set a new random target and new random speed. If they have not, we just need to update their positions again.
-
-```java
-public void simulationStep() {
-    for (int i=0; i<capacity; i++) {
-        agents[i].updatePosition();
-        if (agents[i].reachedTarget() == true) {
-            agents[i].setTarget(randomPos());
-            agents[i].setSpeed(randomIntXtoY(1,4));
+    LinkedList<String[]> xmlStudents = Utility.readXML("student");
+        for (String[] stu: xmlStudents){ 
+            this.students.add(new Student(stu[0], Integer.parseInt(stu[1])));
         }
-    }
-}
 ```
 
-In addition to all that, there is another method to control the possible collisions between the agents of the world. The method iterates through all pairs of agents to check if they are colliding; if so, then it will change the target of the agent to a random new one.
+For *Enrollment, Assignment and Lecture*, since they are associative classes the instantiation of them will be different; method *getObject()* defined in *Utility* class would be used. The trickiest one of them is the instantiation of *Assignment*, because it will take a LinkedList of Strings as an argument. The way we implemented is to create a copy of the input as a list and remove the first 2 elements since they are not part of the information given about the groups. 
 
 ```java
-public void manageCollisions(){
-    for (int i=0; i<capacity; i++){
-        for (int j=0; j<capacity; j++){
-            if (i==j) { continue; }
-            if (agents[i].isColliding(agents[j])){
-                agents[i].setTarget(randomPos());
-            }
-        }
+    LinkedList<String[]> xmlAssignment = Utility.readXML("assignment");
+    for (String[] assg:xmlAssignment){
+        LinkedList<String> assgGroups = new LinkedList<String>(Arrays.asList(assg));
+        // Remove first 2 elements of the linked list since we know they are not groups
+        assgGroups.remove(0);
+        assgGroups.remove(0);
+        Assignment assignment = new Assignment(assgGroups);
+        Teacher teacher = Utility.getObject(assg[0], this.teachers);
+        Course course = Utility.getObject(assg[1], this.courses);
+        assignment.addTeacher(teacher);
+        assignment.addCourse(course);
+        teacher.addAssignment(assignment);
+        course.addAssignment(assignment);
     }
-}
 ```
+
+The getter methods' return values of this class are LinkedList of String as it is demanded. Again, they are quite similar when it comes about the structure so following will be just an example.
+
+```java
+    public LinkedList<String> getTeachers(){
+        LinkedList<String> out = new LinkedList<String>();
+        for (Teacher tea: this.teachers){
+            out.add(tea.toString());
+        }
+        return out;
+    }
+```
+
+
 
 ## 3. Conclusion
 
 After execution, it can be seen that there is not compilation error and the code works the same way as it has been defined. 
 
-However, the collitions between agents might not be handled in the best way: since the code is setting a random target position when two agents collide, there is a high chance that the new target position is similar to the old one so the agents will still be colliding; this can be observed because of the struggling between the agents that are in the same spot.
-
-The solution we have tried for this problem was to use Physics formula to make these to be 2D elastic collisions. The formula is defined as follows:
-
-![Image](elastic%20collision%20formula.png "2D elastic collision")
-
-But because of the way class *Vec2D* has been defined, it was hard to implememt vector operations to get the final correct result. Apart from that, in order to make the whole thing make sense, we would need to also define methods to control situations when agents arrive to the margins and make them bounce off. All these previously mentioned work were too additional so we gave up applying complicated changes to the code.
+However, we need to remark that the code is written in a way that it supposes that all input given to test the methods are correct (and so, exist); we cannot ensure that it will not raise any problem if a wrong input is given. Also, a little modification we have done to this Lab is that the attibute "code" in the *Classroom* class is changed to be a String instead of being an Int (because in such way it is more easy to handle). So keep that in mind if you are testing our program with another written program.
 
