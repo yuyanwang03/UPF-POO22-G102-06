@@ -71,6 +71,7 @@ public class University {
         LinkedList<String[]> xmlAssignment = Utility.readXML("assignment");
         for (String[] assg:xmlAssignment){
             LinkedList<String> assgGroups = new LinkedList<String>(Arrays.asList(assg));
+            // Remove first 2 elements of the linked list since we know they are not groups
             assgGroups.remove(0);
             assgGroups.remove(0);
             Assignment assignment = new Assignment(assgGroups);
@@ -152,14 +153,18 @@ public class University {
         Course cour = Utility.getObject(courseName, this.courses);
         int type = Integer.parseInt(ty);
 
+        // Find the group the student has been assigned (it will always be the seminar group with three digits) to and all groups that are of type tpye
         String stuGroup = stu.getGroupInCourse(cour);
         LinkedList<String> groups = cour.getGroupsWithType(type);
-        
+
         while(stuGroup.length()>0){
             if (groups.contains(stuGroup)){
+                // Find the teacher that has been assigned to that specific group
                 teachrs.addAll(cour.getTeacherWithGroup(stuGroup));
                 break;
             }
+            // First iteration : if "groups" does not contain the group the student belongs to, it means that the lecture is not of seminar type (3 digits),
+            // So we should reduce the number of digits of the student group to get the practice group ang then the theory group
             stuGroup = stuGroup.substring(0, stuGroup.length()-1);
         }
 

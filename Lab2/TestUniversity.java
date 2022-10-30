@@ -1,13 +1,14 @@
 public class TestUniversity {
     public static void main(String[] args){
         University university = new University();
-        System.out.println("\nRead xml file sucess\n");
+        System.out.println("\nProgram successfully read xml files\n");
 
-        System.out.println(university.getStudents());
-        System.out.println(university.getTeachers());
-        System.out.println(university.getClassrooms());
-        System.out.println(university.getCourses());
+        System.out.println("Students: " + university.getStudents() + "\n");
+        System.out.println("Teachers: " + university.getTeachers()+ "\n");
+        System.out.println("Classrooms: "+ university.getClassrooms() + "\n");
+        System.out.println("Courses: " + university.getCourses() + "\n");
 
+        // Test the queries supposing that all input is correct
         System.out.println(university.coursesOfStudent("Harry Potter"));
         System.out.println(university.teachersOfCourse("Enchantments"));
         System.out.println(university.coursesOfClassroom("13.101"));
