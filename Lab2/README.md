@@ -7,9 +7,13 @@ The aim of this report is to describe how we have done lab 2, including all the 
 
 ## 2. Implementation
 
+In the explanation of the implementation of this Lab2, we will not go through all the existing classes because some of them are just to simple and are not worth-mentioning. We will just mention some of the essential aspects of the code.
+
+The classes defined in this lab are mainly: *Assignment, Classroom, Course, Enrollment, Lecture, Student, Teacher, University and Utility*.
+
 The first step is to implement the classes with their attributes and methods corresponding to the design diagram. To access the LinkedList, we need to import java.util.* at the beginning of each class. Since all the relations in the diagram are association and aggregation, we make sure to include the needed attributes that correspond to the relations. We then implement the constructor methods to fill the content of those attributes. 
 
-There are 4 classes: *Student, Teacher, Classroom, Course* that we need to include the “add” method to add the element to the corresponding link list.
+Classes *Student, Teacher, Classroom, Course* are the ones that we need to include the “add” method to add the element to the corresponding link list.
 
 ```java
     public void addEnrollment(Enrollment e){
@@ -24,7 +28,7 @@ There are 4 classes: *Student, Teacher, Classroom, Course* that we need to inclu
         this.lectures.add(l);
     }
 ```
-And for each of these class we added a method called *toString()* in order to return a string value that represents these classes.
+And for each of these classes we added a method called *toString()* in order to return a string value that represents these classes.
 
 ```java
     public String toString(){
@@ -108,3 +112,4 @@ Another thing to say about the given source code is that there were brackets mis
         return null;
     }
 ```
+
