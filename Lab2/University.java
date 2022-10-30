@@ -1,3 +1,4 @@
+import java.rmi.StubNotFoundException;
 import java.util.*;
 
 public class University {
@@ -71,7 +72,7 @@ public class University {
         for (String[] assg:xmlAssignment){
             LinkedList<String> assgGroups = new LinkedList<String>(Arrays.asList(assg));
             assgGroups.remove(0);
-            assgGroups.remove(1);
+            assgGroups.remove(0);
             Assignment assignment = new Assignment(assgGroups);
             Teacher teacher = Utility.getObject(assg[0], this.teachers);
             Course course = Utility.getObject(assg[1], this.courses);
@@ -143,5 +144,25 @@ public class University {
             else {clasr.addAll(cour.getClassroomsWithTimeS(t));}
         }
         return Utility.toString(clasr);
+    }
+
+    public LinkedList<String> teacherOfStudent(String studentName, String courseName, String ty){
+        LinkedList<Teacher> teachrs = new LinkedList<Teacher>();
+        Student stu = Utility.getObject(studentName, this.students);
+        Course cour = Utility.getObject(courseName, this.courses);
+        int type = Integer.parseInt(ty);
+
+        String stuGroup = stu.getGroupInCourse(cour);
+        LinkedList<String> groups = cour.getGroupsWithType(type);
+        
+        while(stuGroup.length()>0){
+            if (groups.contains(stuGroup)){
+                teachrs.addAll(cour.getTeacherWithGroup(stuGroup));
+                break;
+            }
+            stuGroup = stuGroup.substring(0, stuGroup.length()-1);
+        }
+
+        return Utility.toString(teachrs);
     }
 }

@@ -48,5 +48,23 @@ public class Course {
         }
         return classrooms;
     }
-     
+
+    public LinkedList<Teacher> getTeacherWithGroup(String g){
+        LinkedList<Teacher> teachrs = new LinkedList<Teacher>();
+        for(Assignment assg: this.assignments){
+            if (assg.getGroups().contains(g)){
+                teachrs.add(assg.getTeacher());
+            }
+        }
+        return teachrs;
+    }
+
+    public LinkedList<String> getGroupsWithType(int type){
+        LinkedList<String> groups = new LinkedList<String>();
+        for (Lecture lec: this.lectures){
+            if (lec.getType()==type) {groups.add(lec.getGroup());}
+        }
+        return groups;
+    }
+    
 }

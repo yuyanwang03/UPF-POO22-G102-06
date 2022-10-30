@@ -21,4 +21,7 @@ public class Enrollment {
         return this.course;
     }
     
+    public String getSeminarGroup(){
+        return this.seminarGroup;
+    }
 }

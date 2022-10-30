@@ -16,6 +16,10 @@ public class Student {
         // e.addStudent(this);
     }
 
+    public String toString(){
+        return this.name;
+    }
+
     public LinkedList<Course> getEnrollmentsCourses(){
         LinkedList<Course> courses = new LinkedList<Course>();
         for (Enrollment enroll: this.enrollments){
@@ -24,8 +28,15 @@ public class Student {
         return courses;
     }
 
-    public String toString(){
-        return this.name;
+    public String getGroupInCourse(Course cor){
+        for (Enrollment enr: this.enrollments){
+            if (enr.getCourse()==cor){
+                return enr.getSeminarGroup();
+            }
+        }
+        // if not found, student is not enrolled in the corresponding course
+        System.out.println("Student " + this.name + " is not enrolled in the course called " + cor.toString());
+        return "";
     }
 
 }

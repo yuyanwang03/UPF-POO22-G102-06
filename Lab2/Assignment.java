@@ -24,4 +24,8 @@ public class Assignment {
     public Course getCourse(){
         return this.course;
     }
+
+    public LinkedList<String> getGroups(){
+        return this.groups;
+    }
 }

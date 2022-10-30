@@ -32,4 +32,12 @@ public class Lecture {
     public int getTimeSlot(){
         return this.timeSlot;
     }
+
+    public int getType(){
+        return this.type;
+    }
+
+    public String getGroup(){
+        return this.group;
+    }
 }
