@@ -47,7 +47,7 @@ public class Utility {
 	public static LinkedList< String[] > readXML( String type, LinkedList< String > tokens ) {
 		LinkedList< String[] > outputs = new LinkedList< String[] >();
 		try {
-			File input = new File("src/" + type + "s.xml");
+			File input = new File("Lab2/src/" + type + "s.xml"); // Modified manually
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse( input );
@@ -74,9 +74,10 @@ public class Utility {
 	}
 
     public static <T> T getObject( String desc, LinkedList< T > objectList ) {
-        for ( T object : objectList )
+        for ( T object : objectList ){
             if ( desc.equals( object.toString() ) )
                 return object;
+		}
         return null;
     }
 

@@ -17,22 +17,31 @@ public class University {
             this.students.add(new Student(stu[0], Integer.parseInt(stu[1])));
         }
 
+        // System.out.println("students read\n");
+
         LinkedList<String[]> xmlTeachers = Utility.readXML("teacher");
         for (String[] tea:xmlTeachers){
             this.teachers.add(new Teacher(tea[0]));
         }
 
+        // System.out.println("teachers read\n");
+
         LinkedList<String[]> xmlClassrooms = Utility.readXML("classroom");
         for (String[] clas:xmlClassrooms){
-            this.classrooms.add(new Classroom(Integer.parseInt(clas[0])));
+            this.classrooms.add(new Classroom(clas[0]));
         }
+
+        // System.out.println("classroom read\n"); 
 
         LinkedList<String[]> xmlCourses = Utility.readXML("course");
         for (String[] cour:xmlCourses){
             this.courses.add(new Course(cour[0]));
         }
 
+        // System.out.println("courses read\n");
+
         LinkedList<String[]> xmlLectures = Utility.readXML("lecture");
+
         for (String[] lec:xmlLectures){
             Lecture lecture = new Lecture(lec[4], Integer.parseInt(lec[2]), Integer.parseInt(lec[3]));
             Classroom clas = Utility.getObject(lec[0], this.classrooms);
@@ -42,6 +51,8 @@ public class University {
             clas.addLecture(lecture);
             cour.addLecture(lecture);
         }
+
+        // System.out.println("lectures read\n");
 
         LinkedList<String[]> xmlEnrollments = Utility.readXML("enrollment");
         for (String[] enr:xmlEnrollments){
@@ -54,9 +65,14 @@ public class University {
             course.addEnrollment(enrollment);
         }
 
+        // System.out.println("enrolls read\n");
+
         LinkedList<String[]> xmlAssignment = Utility.readXML("assignment");
         for (String[] assg:xmlAssignment){
-            Assignment assignment = new Assignment(assg.subList(2, 4));
+            LinkedList<String> assgGroups = new LinkedList<String>(Arrays.asList(assg));
+            assgGroups.remove(0);
+            assgGroups.remove(1);
+            Assignment assignment = new Assignment(assgGroups);
             Teacher teacher = Utility.getObject(assg[0], this.teachers);
             Course course = Utility.getObject(assg[1], this.courses);
             assignment.addTeacher(teacher);

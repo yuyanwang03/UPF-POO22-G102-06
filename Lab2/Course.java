@@ -25,4 +25,7 @@ public class Course {
         this.lectures.add(l);
     }
     
+    public String toString(){
+        return this.name;
+    }
 }

@@ -16,4 +16,8 @@ public class Student {
         // e.addStudent(this);
     }
 
+    public String toString(){
+        return this.name;
+    }
+
 }

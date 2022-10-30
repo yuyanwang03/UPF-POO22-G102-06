@@ -1,10 +1,10 @@
 import java.util.*;
 
 public class Classroom {
-    private int code;
+    public String code;
     private LinkedList<Lecture> lectures;
 
-    public Classroom(int c){
+    public Classroom(String c){
         this.code = c;
         this.lectures = new LinkedList<Lecture>();
     }
@@ -13,4 +13,8 @@ public class Classroom {
         this.lectures.add(l);
     }
     
+    public String toString(){
+        return this.code;
+    }
+
 }

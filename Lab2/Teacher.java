@@ -13,4 +13,7 @@ public class Teacher {
         this.assignments.add(a);
     }
     
+    public String toString(){
+        return this.name;
+    }
 }
