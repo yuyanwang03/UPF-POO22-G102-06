@@ -28,6 +28,14 @@ public class Student {
         return courses;
     }
 
+    public LinkedList<String> getEnrollmentsGroup(){
+        LinkedList<String> groups = new LinkedList<String>();
+        for (Enrollment enroll: this.enrollments){
+            groups.add(enroll.getSeminarGroup());
+        }
+        return groups;
+    }
+
     public String getGroupInCourse(Course cor){
         for (Enrollment enr: this.enrollments){
             if (enr.getCourse()==cor){

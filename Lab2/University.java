@@ -131,18 +131,29 @@ public class University {
         return Utility.toString(clas.getLecturesCourses());
     }
     
-    // public LinkedList<String> studentsOfTeacher(Teacher tea, Classroom clas){
+    // public LinkedList<String> studentsOfTeacher(String teacherName, String classroomCode){
+    //     LinkedList<Student> studs = new LinkedList<Student>();
 
+    //     Teacher tea = Utility.getObject(teacherName, this.teachers);
+    //     Classroom clas = Utility.getObject(classroomCode, this.classrooms);
+
+    //     return Utility.toString(studs);
     // }
 
     public LinkedList<String> classroomOfTeacher(String teacherName, String time){
+        LinkedList<Classroom> clasr = new LinkedList<Classroom>();
         Teacher tea = Utility.getObject(teacherName, this.teachers);
         int t = Integer.parseInt(time);
-        LinkedList<Classroom> clasr = new LinkedList<Classroom>();
-        LinkedList<Course> cours = tea.getAssigmentsCourses();
-        for (Course cour: cours){
-            if (cour.getClassroomsWithTimeS(t).isEmpty()){continue;}
-            else {clasr.addAll(cour.getClassroomsWithTimeS(t));}
+
+        LinkedList<Course> teaCourses = tea.getAssigmentsCourses();
+        LinkedList<LinkedList<String> > teaGroups = tea.getAssigmentsGroups();
+
+        for (int i = 0; i<teaCourses.size(); i++){
+            for (int j = 0; j<teaGroups.size(); j++){
+                LinkedList<Classroom> temp = teaCourses.get(i).getClassroomsWithTimeSAndGroup(t, teaGroups.get(i).get(j));
+                if (temp!=null) {clasr.addAll(temp);}
+            }
+            
         }
         return Utility.toString(clasr);
     }
@@ -153,7 +164,7 @@ public class University {
         Course cour = Utility.getObject(courseName, this.courses);
         int type = Integer.parseInt(ty);
 
-        // Find the group the student has been assigned (it will always be the seminar group with three digits) to and all groups that are of type tpye
+        // Find the group the student has been assigned (it will always be the seminar group with three digits) to and all groups that are of type "tpye"
         String stuGroup = stu.getGroupInCourse(cour);
         LinkedList<String> groups = cour.getGroupsWithType(type);
 
@@ -170,4 +181,27 @@ public class University {
 
         return Utility.toString(teachrs);
     }
+
+    public LinkedList<String> classroomOfStudent(String studentName, String time){
+        LinkedList<Classroom> cls = new LinkedList<Classroom>();
+        Student stu = Utility.getObject(studentName, this.students);
+        int t = Integer.parseInt(time);
+
+        LinkedList<Course> stuCourses = stu.getEnrollmentsCourses();
+        LinkedList<String> stuGroups = stu.getEnrollmentsGroup();
+        for (int i=0; i<stuCourses.size(); i++){
+            // Need to ensure that the lecture held in the classroom of that time slot is of the group that the student belongs
+            LinkedList<Classroom> temp = stuCourses.get(i).getClassroomsWithTimeSAndGroup(t, stuGroups.get(i));
+            if (temp!=null) {cls.addAll(temp);}
+        }
+
+        // Remove possible duplicates
+        Set<Classroom> tempSet = new HashSet<Classroom>(cls);
+        cls.clear();
+        cls.addAll(tempSet);
+
+        return Utility.toString(cls);
+    }
+
+
 }

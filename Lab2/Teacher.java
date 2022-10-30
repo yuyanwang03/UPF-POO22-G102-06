@@ -26,4 +26,12 @@ public class Teacher {
         }
         return courses;
     }
+
+    public LinkedList<LinkedList<String> > getAssigmentsGroups(){
+        LinkedList< LinkedList<String> > gps = new LinkedList<LinkedList<String> >();
+        for (Assignment assg: this.assignments){
+            gps.add(assg.getGroups());
+        }
+        return gps;
+    }
 }

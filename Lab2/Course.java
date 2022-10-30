@@ -32,6 +32,8 @@ public class Course {
     public LinkedList<Teacher> getAssignmentsTeachers(){
         LinkedList<Teacher> teachers = new LinkedList<Teacher>();
         for (Assignment assg: this.assignments){
+            // avoid duplication
+            if (teachers.contains(assg.getTeacher())){continue;}
             teachers.add(assg.getTeacher());
         }
         return teachers;
@@ -44,7 +46,27 @@ public class Course {
     public LinkedList<Classroom> getClassroomsWithTimeS(int t){
         LinkedList<Classroom> classrooms = new LinkedList<Classroom>();
         for (Lecture lec: this.lectures){
-            if (lec.getTimeSlot()==t) { classrooms.add(lec.getClassroom()); }
+            if (lec.getTimeSlot()==t){ 
+                // avoid duplication
+                if (classrooms.contains(lec.getClassroom())){continue;}
+                classrooms.add(lec.getClassroom());
+            }
+        }
+        return classrooms;
+    }
+
+    public LinkedList<Classroom> getClassroomsWithTimeSAndGroup(int t, String g){
+        LinkedList<Classroom> classrooms = new LinkedList<Classroom>();
+        for (Lecture lec: this.lectures){
+            boolean sameGroup = false;
+            if (lec.getTimeSlot()!=t) {continue;}
+            while (g.length()>0){
+                if (g.equals(lec.getGroup())) {sameGroup = true;}
+                g = g.substring(0, g.length() - 1);
+            }
+            if (sameGroup==false) {continue;}
+            if (classrooms.contains(lec.getClassroom())) {continue;}
+            classrooms.add(lec.getClassroom());
         }
         return classrooms;
     }

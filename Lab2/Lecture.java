@@ -40,4 +40,5 @@ public class Lecture {
     public String getGroup(){
         return this.group;
     }
+    
 }
