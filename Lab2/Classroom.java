@@ -17,6 +17,7 @@ public class Classroom {
         return this.code;
     }
 
+    // Get all courses that are held in the classroom
     public LinkedList<Course> getLecturesCourses(){
         LinkedList<Course> courses = new LinkedList<Course>();
         for (Lecture lec: this.lectures){

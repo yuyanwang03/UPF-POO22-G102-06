@@ -29,6 +29,7 @@ public class Course {
         return this.name;
     }
 
+    // Get all teachers of this course
     public LinkedList<Teacher> getAssignmentsTeachers(){
         LinkedList<Teacher> teachers = new LinkedList<Teacher>();
         for (Assignment assg: this.assignments){
@@ -39,10 +40,18 @@ public class Course {
         return teachers;
     }
     
-    // public LinkedList<Lecture> getLectures(){
-    //     return this.lectures;
-    // }
+    // Get groups that belong to this course that have classes in a given the classroom
+    public LinkedList<String> getGroupsWithClassroom(Classroom clas){
+        LinkedList<String> groups = new LinkedList<String>();
+        for(Lecture lec: this.lectures){
+            if(lec.getClassroom().equals(clas)){
+                groups.add(lec.getGroup());
+            }
+        }
+        return groups;
+    }
 
+    // Get classrooms where this course will have lectures in a given timeslot
     public LinkedList<Classroom> getClassroomsWithTimeS(int t){
         LinkedList<Classroom> classrooms = new LinkedList<Classroom>();
         for (Lecture lec: this.lectures){

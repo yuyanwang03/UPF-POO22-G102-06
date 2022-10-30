@@ -17,6 +17,7 @@ public class Teacher {
         return this.name;
     }
 
+    // Get all courses that this teacher have classes of
     public LinkedList<Course> getAssigmentsCourses(){
         LinkedList<Course> courses = new LinkedList<Course>();
         for (Assignment assg: this.assignments){
@@ -27,6 +28,7 @@ public class Teacher {
         return courses;
     }
 
+    // Get all grouos that this teacher gives classes to
     public LinkedList<LinkedList<String> > getAssigmentsGroups(){
         LinkedList< LinkedList<String> > gps = new LinkedList<LinkedList<String> >();
         for (Assignment assg: this.assignments){

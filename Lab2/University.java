@@ -131,14 +131,41 @@ public class University {
         return Utility.toString(clas.getLecturesCourses());
     }
     
-    // public LinkedList<String> studentsOfTeacher(String teacherName, String classroomCode){
-    //     LinkedList<Student> studs = new LinkedList<Student>();
+    public LinkedList<String> studentsOfTeacher(String teacherName, String classroomCode){
+        LinkedList<Student> studs = new LinkedList<Student>();
+        Teacher tea = Utility.getObject(teacherName, this.teachers);
+        Classroom clas = Utility.getObject(classroomCode, this.classrooms);
 
-    //     Teacher tea = Utility.getObject(teacherName, this.teachers);
-    //     Classroom clas = Utility.getObject(classroomCode, this.classrooms);
+        // Cretate 2 lists, one for storing the courses the teacher gives and the other one to store the groups that the teacher is responsible of (of the course)
+        LinkedList<Course> teaCourses = tea.getAssigmentsCourses();
+        LinkedList<LinkedList<String> > teaGroups = new LinkedList<LinkedList<String> >();
+        for (Course tc: teaCourses){
+            teaGroups.add(tc.getGroupsWithClassroom(clas));
+        }
 
-    //     return Utility.toString(studs);
-    // }
+        // Check for every student in the university
+        for (Student stu: this.students){
+            LinkedList<Course> stuCourses = stu.getEnrollmentsCourses();
+            for (Course stuCourse: stuCourses){
+                // Check if the student is enrolled a course that the teacher gives classes to
+                if (teaCourses.contains(stuCourse)){
+                    // Get student seminar group (3 digits) in this very course
+                    String stuGroup = stu.getGroupInCourse(stuCourse);
+                    while(stuGroup.length()>0){
+                        int indxTeaCourse = teaCourses.indexOf(stuCourse);
+                        // Check if the teacher gives classes to this specific group and this spefic course
+                        if (teaGroups.get(indxTeaCourse).contains(stuGroup)){
+                            studs.add(stu);
+                            break;
+                        }
+                        stuGroup = stuGroup.substring(0, stuGroup.length() - 1);
+                    }
+                }
+            }
+        }
+
+        return Utility.toString(studs);
+    }
 
     public LinkedList<String> classroomOfTeacher(String teacherName, String time){
         LinkedList<Classroom> clasr = new LinkedList<Classroom>();
@@ -206,14 +233,22 @@ public class University {
     public LinkedList<String> teacherOfClassroom(String classroomCode, String time){
         LinkedList<Teacher> teas = new LinkedList<Teacher>();
         Classroom clas = Utility.getObject(classroomCode, this.classrooms);
+
         for (Teacher tea: this.teachers){
-            if (classroomOfTeacher(tea.toString(), time).contains((clas.toString()))){
-                System.out.println(Utility.toString(classroomOfTeacher(tea.toString(), time)));
-                teas.add(tea);
-            }
+            if (classroomOfTeacher(tea.toString(), time).contains((clas.toString()))) {teas.add(tea);}
         }
 
         return Utility.toString(teas);
     }
 
+    public LinkedList<String> studentsOfClassroom(String classroomCode, String time){
+        LinkedList<Student> studs = new LinkedList<Student>();
+        Classroom clas = Utility.getObject(classroomCode, this.classrooms);
+
+        for (Student stu: this.students){
+            if (classroomOfStudent(stu.toString(), time).contains((clas.toString()))) {studs.add(stu);}
+        }
+
+        return Utility.toString(studs);
+    }
 }

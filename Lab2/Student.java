@@ -20,6 +20,7 @@ public class Student {
         return this.name;
     }
 
+    // Get all courses this student has been enrolled in
     public LinkedList<Course> getEnrollmentsCourses(){
         LinkedList<Course> courses = new LinkedList<Course>();
         for (Enrollment enroll: this.enrollments){
@@ -28,6 +29,7 @@ public class Student {
         return courses;
     }
 
+    // Get all groups this student has been enrolled in
     public LinkedList<String> getEnrollmentsGroup(){
         LinkedList<String> groups = new LinkedList<String>();
         for (Enrollment enroll: this.enrollments){
@@ -36,6 +38,7 @@ public class Student {
         return groups;
     }
 
+    // Get the group of a given course that the student belongs to
     public String getGroupInCourse(Course cor){
         for (Enrollment enr: this.enrollments){
             if (enr.getCourse()==cor){

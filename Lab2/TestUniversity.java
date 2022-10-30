@@ -12,9 +12,13 @@ public class TestUniversity {
         System.out.println(university.coursesOfStudent("Harry Potter"));
         System.out.println(university.teachersOfCourse("Enchantments"));
         System.out.println(university.coursesOfClassroom("13.101"));
+        System.out.println(university.studentsOfTeacher("Horace Slughorn", "12.100"));
         System.out.println(university.classroomOfTeacher("Albus Dumbledore", "0"));
         System.out.println(university.teacherOfStudent("Ginny Weasley", "Black Magic Defense", "3"));
         System.out.println(university.classroomOfStudent("Lee Jordan", "2"));
         System.out.println(university.teacherOfClassroom("10.100", "0"));
+        System.out.println(university.studentsOfClassroom("10.100", "2"));
+
     }
+
 }
