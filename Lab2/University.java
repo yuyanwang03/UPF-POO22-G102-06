@@ -113,5 +113,35 @@ public class University {
         }
         return out;
     }
+
+    public LinkedList<String> coursesOfStudent(String studentName){
+        Student stu = Utility.getObject(studentName, this.students);
+        return Utility.toString(stu.getEnrollmentsCourses());
+    }
+
+    public LinkedList<String> teachersOfCourse(String courseName){
+        Course cour = Utility.getObject(courseName, this.courses);
+        return Utility.toString(cour.getAssignmentsTeachers());
+    }
+
+    public LinkedList<String> coursesOfClassroom(String classroomCode){
+        Classroom clas = Utility.getObject(classroomCode, this.classrooms);
+        return Utility.toString(clas.getLecturesCourses());
+    }
     
+    // public LinkedList<String> studentsOfTeacher(Teacher tea, Classroom clas){
+
+    // }
+
+    public LinkedList<String> classroomOfTeacher(String teacherName, String time){
+        Teacher tea = Utility.getObject(teacherName, this.teachers);
+        int t = Integer.parseInt(time);
+        LinkedList<Classroom> clasr = new LinkedList<Classroom>();
+        LinkedList<Course> cours = tea.getAssigmentsCourses();
+        for (Course cour: cours){
+            if (cour.getClassroomsWithTimeS(t).isEmpty()){continue;}
+            else {clasr.addAll(cour.getClassroomsWithTimeS(t));}
+        }
+        return Utility.toString(clasr);
+    }
 }

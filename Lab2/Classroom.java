@@ -17,4 +17,13 @@ public class Classroom {
         return this.code;
     }
 
+    public LinkedList<Course> getLecturesCourses(){
+        LinkedList<Course> courses = new LinkedList<Course>();
+        for (Lecture lec: this.lectures){
+            // avoid duplication
+            if (courses.contains(lec.getCourse())){continue;}
+            courses.add(lec.getCourse());
+        }
+        return courses;
+    }
 }

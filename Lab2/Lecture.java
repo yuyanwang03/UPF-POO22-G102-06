@@ -20,4 +20,16 @@ public class Lecture {
     public void addCourse(Course c){
         this.course = c;
     }
+
+    public Course getCourse(){
+        return this.course;
+    }
+
+    public Classroom getClassroom(){
+        return this.classroom;
+    }
+
+    public int getTimeSlot(){
+        return this.timeSlot;
+    }
 }

@@ -16,6 +16,14 @@ public class Student {
         // e.addStudent(this);
     }
 
+    public LinkedList<Course> getEnrollmentsCourses(){
+        LinkedList<Course> courses = new LinkedList<Course>();
+        for (Enrollment enroll: this.enrollments){
+            courses.add(enroll.getCourse());
+        }
+        return courses;
+    }
+
     public String toString(){
         return this.name;
     }

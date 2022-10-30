@@ -6,5 +6,9 @@ public class TestUniversity {
         System.out.println(university.getTeachers());
         System.out.println(university.getClassrooms());
         System.out.println(university.getCourses());
+        System.out.println(university.coursesOfStudent("Harry Potter"));
+        System.out.println(university.teachersOfCourse("Enchantments"));
+        System.out.println(university.coursesOfClassroom("13.101"));
+        System.out.println(university.classroomOfTeacher("Albus Dumbledore", "29"));
     }
 }

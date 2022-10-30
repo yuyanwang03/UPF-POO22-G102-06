@@ -17,4 +17,11 @@ public class Assignment {
         this.course = c;
     }
     
+    public Teacher getTeacher(){
+        return this.teacher;
+    }
+
+    public Course getCourse(){
+        return this.course;
+    }
 }

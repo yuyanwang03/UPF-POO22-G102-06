@@ -28,4 +28,25 @@ public class Course {
     public String toString(){
         return this.name;
     }
+
+    public LinkedList<Teacher> getAssignmentsTeachers(){
+        LinkedList<Teacher> teachers = new LinkedList<Teacher>();
+        for (Assignment assg: this.assignments){
+            teachers.add(assg.getTeacher());
+        }
+        return teachers;
+    }
+    
+    // public LinkedList<Lecture> getLectures(){
+    //     return this.lectures;
+    // }
+
+    public LinkedList<Classroom> getClassroomsWithTimeS(int t){
+        LinkedList<Classroom> classrooms = new LinkedList<Classroom>();
+        for (Lecture lec: this.lectures){
+            if (lec.getTimeSlot()==t) { classrooms.add(lec.getClassroom()); }
+        }
+        return classrooms;
+    }
+     
 }

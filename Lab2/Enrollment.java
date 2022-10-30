@@ -16,4 +16,9 @@ public class Enrollment {
     public void addCourse(Course c){
         this.course = c;
     }
+
+    public Course getCourse(){
+        return this.course;
+    }
+    
 }

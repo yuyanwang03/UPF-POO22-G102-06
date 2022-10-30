@@ -16,4 +16,14 @@ public class Teacher {
     public String toString(){
         return this.name;
     }
+
+    public LinkedList<Course> getAssigmentsCourses(){
+        LinkedList<Course> courses = new LinkedList<Course>();
+        for (Assignment assg: this.assignments){
+            // avoid duplication
+            if (courses.contains(assg.getCourse())){continue;}
+            courses.add(assg.getCourse());
+        }
+        return courses;
+    }
 }
