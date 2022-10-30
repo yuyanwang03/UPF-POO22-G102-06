@@ -55,14 +55,18 @@ public class Course {
         return classrooms;
     }
 
-    public LinkedList<Classroom> getClassroomsWithTimeSAndGroup(int t, String g){
+    public LinkedList<Classroom> getClassroomsWithTimeSAndGroup(int t, String g, boolean rangeSem){
         LinkedList<Classroom> classrooms = new LinkedList<Classroom>();
         for (Lecture lec: this.lectures){
             boolean sameGroup = false;
             if (lec.getTimeSlot()!=t) {continue;}
-            while (g.length()>0){
+            if (rangeSem){
+                while (g.length()>0){
+                    if (g.equals(lec.getGroup())) {sameGroup = true;}
+                    g = g.substring(0, g.length() - 1);
+                }
+            } else{
                 if (g.equals(lec.getGroup())) {sameGroup = true;}
-                g = g.substring(0, g.length() - 1);
             }
             if (sameGroup==false) {continue;}
             if (classrooms.contains(lec.getClassroom())) {continue;}

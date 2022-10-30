@@ -15,5 +15,6 @@ public class TestUniversity {
         System.out.println(university.classroomOfTeacher("Albus Dumbledore", "0"));
         System.out.println(university.teacherOfStudent("Ginny Weasley", "Black Magic Defense", "3"));
         System.out.println(university.classroomOfStudent("Lee Jordan", "2"));
+        System.out.println(university.teacherOfClassroom("10.100", "0"));
     }
 }

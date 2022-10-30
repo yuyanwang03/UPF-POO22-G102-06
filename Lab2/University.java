@@ -149,8 +149,8 @@ public class University {
         LinkedList<LinkedList<String> > teaGroups = tea.getAssigmentsGroups();
 
         for (int i = 0; i<teaCourses.size(); i++){
-            for (int j = 0; j<teaGroups.size(); j++){
-                LinkedList<Classroom> temp = teaCourses.get(i).getClassroomsWithTimeSAndGroup(t, teaGroups.get(i).get(j));
+            for (int j = 0; j<teaGroups.get(i).size(); j++){
+                LinkedList<Classroom> temp = (teaCourses.get(i)).getClassroomsWithTimeSAndGroup(t, (teaGroups.get(i)).get(j), false);
                 if (temp!=null) {clasr.addAll(temp);}
             }
             
@@ -191,7 +191,7 @@ public class University {
         LinkedList<String> stuGroups = stu.getEnrollmentsGroup();
         for (int i=0; i<stuCourses.size(); i++){
             // Need to ensure that the lecture held in the classroom of that time slot is of the group that the student belongs
-            LinkedList<Classroom> temp = stuCourses.get(i).getClassroomsWithTimeSAndGroup(t, stuGroups.get(i));
+            LinkedList<Classroom> temp = stuCourses.get(i).getClassroomsWithTimeSAndGroup(t, stuGroups.get(i), true);
             if (temp!=null) {cls.addAll(temp);}
         }
 
@@ -203,5 +203,17 @@ public class University {
         return Utility.toString(cls);
     }
 
+    public LinkedList<String> teacherOfClassroom(String classroomCode, String time){
+        LinkedList<Teacher> teas = new LinkedList<Teacher>();
+        Classroom clas = Utility.getObject(classroomCode, this.classrooms);
+        for (Teacher tea: this.teachers){
+            if (classroomOfTeacher(tea.toString(), time).contains((clas.toString()))){
+                System.out.println(Utility.toString(classroomOfTeacher(tea.toString(), time)));
+                teas.add(tea);
+            }
+        }
+
+        return Utility.toString(teas);
+    }
 
 }
