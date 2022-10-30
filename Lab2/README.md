@@ -89,5 +89,22 @@ The getter methods' return values of this class are LinkedList of String as it i
 
 After execution, it can be seen that there is not compilation error and the code works the same way as it has been defined. 
 
-However, we need to remark that the code is written in a way that it supposes that all input given to test the methods are correct (and so, exist); we cannot ensure that it will not raise any problem if a wrong input is given. Also, a little modification we have done to this Lab is that the attibute "code" in the *Classroom* class is changed to be a String instead of being an Int (because in such way it is more easy to handle). So keep that in mind if you are testing our program with another written program.
+However, we need to remark that the code is written in a way that it supposes that all input given to test the methods are correct (and so, exist); we cannot ensure that it will not raise any problem if a wrong input is given. Also, a little modification we have done to this Lab is that the attibute "code" in the *Classroom* class is changed to be a String instead of being an Int (because in such way it is more easy to handle). So keep that in mind if you are testing our program with another written program. 
 
+Regarding the given source code (*Utility.java*), we have changed the file directory, if it does not work on your computer, please change the path according to your precise situation. Following is the line of code we have modified.
+
+```java
+File input = new File("Lab2/src/" + type + "s.xml"); // Modified manually
+```
+
+Another thing to say about the given source code is that there were brackets missing inside the method *getObject()* so we added them in order to make it work.
+
+```java
+    public static <T> T getObject( String desc, LinkedList< T > objectList ) {
+        for ( T object : objectList ){
+            if ( desc.equals( object.toString() ) )
+                return object;
+		}
+        return null;
+    }
+```
