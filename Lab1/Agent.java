@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.zip.CRC32;
 
 public class Agent {
     // defining attributes

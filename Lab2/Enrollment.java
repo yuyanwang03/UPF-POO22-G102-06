@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Enrollment {
     private String seminarGroup;
     private Student student;
