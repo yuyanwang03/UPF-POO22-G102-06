@@ -13,7 +13,7 @@ public class Organization {
         this.action.add(a);
     }
 
-    public LinkedList<Action> getAction(LocalDateTime d) {
+    public LinkedList<Action> getAction(Date d) {
         
     }
 }

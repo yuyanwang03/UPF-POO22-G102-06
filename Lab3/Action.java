@@ -6,7 +6,7 @@ public class Action {
     private int duration;
     private LinkedList<InfoAction> developedAction;
 
-    public Action(String p, LocalDateTime s, int d) {
+    public Action(String p, Date s, int d) {
         this.purpose = p;
         //
         this.duration = d;
