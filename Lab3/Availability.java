@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-package Lab3;
 
 public class Availability {
     private String days;
@@ -9,10 +7,3 @@ public class Availability {
         
     }
 }
-=======
-
-
-public class Availability {
-    
-}
->>>>>>> 097aaabc7c098c49f06a7e0adec6c37ecd4ce42b
