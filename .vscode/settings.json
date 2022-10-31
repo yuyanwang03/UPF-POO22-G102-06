@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "Lab3",
+        "Lab3/src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Lab3/jar/core-3.4.0.jar",
+        "Lab3/jar/javase-3.4.0.jar"
+    ]
+}

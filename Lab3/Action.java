@@ -1,4 +1,4 @@
-package Lab3;
+
 
 public class Action {
     private String purpose;
