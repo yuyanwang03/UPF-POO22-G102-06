@@ -2,18 +2,18 @@ import java.util.*;
 
 public class Organization {
     private String name;
-    private LinkedList<Headquarter> headquarter;
-    private LinkedList<Action> action;
+    private LinkedList<Headquarter> places;
+    private LinkedList<Action> actions;
     
     public Organization(String n) {
         this.name = n;
     }
 
     public void addAction(Action a) {
-        this.action.add(a);
+        this.actions.add(a);
     }
 
-    public LinkedList<Action> getAction(Date d) {
+    public Action getAction(Date d) {
         
     }
 }

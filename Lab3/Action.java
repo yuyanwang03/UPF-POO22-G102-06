@@ -8,11 +8,12 @@ public class Action {
 
     public Action(String p, Date s, int d) {
         this.purpose = p;
-        //
+        this.start = s;
         this.duration = d;
     }
 
     public void addHeadquarter(Headquarter h) {
         this.headquarter.add(h);
+        //
     }
 }

@@ -1,10 +1,11 @@
 import java.util.*;
 
 public class Availability {
-    private String days;
-    private int hours;
+    private LinkedList<String> days;
+    private LinkedList<Integer> hours;
 
-    public Availability(String d, int hours) {
-        
+    public Availability(LinkedList<String> d, LinkedList<Integer> h){
+        this.days = d;
+        this.hours = h;
     }
 }
