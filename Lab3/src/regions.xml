@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<regions>
+	<region>
+		<name>Alt Empordà</name>
+		<city_name>Figueres</city_name>
+		<city_population>46381</city_population>
+	</region>
+	<region>
+		<name>Alt Penedès</name>
+		<city_name>Vilafranca del Penedès</city_name>
+		<city_population>40055</city_population>
+	</region>
+	<region>
+		<name>Anoia</name>
+		<city_name>Igualada</city_name>
+		<city_population>39540</city_population>
+	</region>
+	<region>
+		<name>Bages</name>
+		<city_name>Manresa</city_name>
+		<city_population>76250</city_population>
+	</region>
+	<region>
+		<name>Baix Camp</name>
+		<city_name>Reus</city_name>
+		<city_population>103477</city_population>
+	</region>
+	<region>
+		<name>Baix Llobregat</name>
+		<city_name>Cornellà de Llobregat</city_name>
+		<city_population>87173</city_population>
+		<city_name>Sant Boi de Llobregat</city_name>
+		<city_population>82904</city_population>
+		<city_name>Castelldefels</city_name>
+		<city_population>66375</city_population>
+		<city_name>Viladecans</city_name>
+		<city_population>66168</city_population>
+		<city_name>El Prat de Llobregat</city_name>
+		<city_population>64132</city_population>
+		<city_name>Gavà</city_name>
+		<city_population>46705</city_population>
+		<city_name>Esplugues de Llobregat</city_name>
+		<city_population>46355</city_population>
+		<city_name>Sant Feliu de Llobregat</city_name>
+		<city_population>44474</city_population>
+	</region>
+	<region>
+		<name>Barcelonès</name>
+		<city_name>Barcelona</city_name>
+		<city_population>1620343</city_population>
+		<city_name>L'Hospitalet de Llobregat</city_name>
+		<city_population>261068</city_population>
+		<city_name>Badalona</city_name>
+		<city_population>217741</city_population>
+		<city_name>Santa Coloma de Gramenet</city_name>
+		<city_population>118821</city_population>
+	</region>
+	<region>
+		<name>Garraf</name>
+		<city_name>Vilanova i la Geltrú</city_name>
+		<city_population>66274</city_population>
+	</region>
+	<region>
+		<name>Gironès</name>
+		<city_name>Girona</city_name>
+		<city_population>100266</city_population>
+	</region>
+	<region>
+		<name>Maresme</name>
+		<city_name>Mataró</city_name>
+		<city_population>126988</city_population>
+	</region>
+	<region>
+		<name>Osona</name>
+		<city_name>Vic</city_name>
+		<city_population>45040</city_population>
+	</region>
+	<region>
+		<name>Segrià</name>
+		<city_name>Lleida</city_name>
+		<city_population>137856</city_population>
+	</region>
+	<region>
+		<name>Tarragonès</name>
+		<city_name>Tarragona</city_name>
+		<city_population>132299</city_population>
+	</region>
+	<region>
+		<name>Vallès Occidental</name>
+		<city_name>Terrassa</city_name>
+		<city_population>218535</city_population>
+		<city_name>Sabadell</city_name>
+		<city_population>211734</city_population>
+		<city_name>Sant Cugat del Vallès</city_name>
+		<city_population>90664</city_population>
+		<city_name>Rubí</city_name>
+		<city_population>76423</city_population>
+		<city_name>Cerdanyola del Vallès</city_name>
+		<city_population>57740</city_population>
+	</region>
+	<region>
+		<name>Vallès Oriental</name>
+		<city_name>Granollers</city_name>
+		<city_population>60981</city_population>
+		<city_name>Mollet del Vallès</city_name>
+		<city_population>51133</city_population>
+	</region>
+</regions>
+
+

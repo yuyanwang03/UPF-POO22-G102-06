@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<association>
+	<headquarter>
+		<name>Santsenc</name>
+		<email>sants@association.com</email>
+		<city>Barcelona</city>
+	</headquarter>
+	<headquarter>
+		<name>Gracienc</name>
+		<email>gracia@association.com</email>
+		<city>Barcelona</city>
+	</headquarter>
+	<headquarter>
+		<name>Barceloní</name>
+		<email>bcn@association.com</email>
+		<city>L'Hospitalet de Llobregat</city>
+		<city>Badalona</city>
+		<city>Santa Coloma de Gramenet</city>
+	</headquarter>
+	<headquarter>
+		<name>Nord</name>
+		<email>nord@association.com</email>
+		<city>Figueres</city>
+	</headquarter>
+	<headquarter>
+		<name>Sud</name>
+		<email>sud@association.com</email>	
+		<city>Tarragona</city>
+		<city>Reus</city>
+		<city>Vilafranca del Penedès</city>
+	</headquarter>
+	<headquarter>
+		<name>Costaner</name>
+		<email>costa@association.com</email>
+		<city>Vilanova i la Geltrú</city>
+		<city>Mataró</city>
+	</headquarter>
+	<headquarter>
+		<name>Central</name>
+		<email>central@association.com</email>
+		<city>Vic</city>
+		<city>Manresa</city>
+		<city>Igualada</city>
+	</headquarter>
+	<headquarter>
+		<name>Llobregat</name>
+		<email>llobregat@association.com</email>
+		<city>Cornellà de Llobregat</city>
+		<city>Sant Boi de Llobregat</city>
+		<city>Castelldefels</city>
+		<city>Viladecans</city>
+		<city>El Prat de Llobregat</city>
+		<city>Gavà</city>
+		<city>Esplugues de Llobregat</city>
+		<city>Sant Feliu de Llobregat</city>
+	</headquarter>
+	<headquarter>
+		<name>Ponent</name>
+		<email>ponent</email>
+		<city>Lleida</city>
+	</headquarter>
+	<headquarter>
+		<name>VallOriental</name>
+		<email>valloriental@association.com</email>
+		<city>Granollers</city>
+		<city>Mollet del Vallès</city>
+	</headquarter>
+	<headquarter>
+		<name>VallOccidental</name>
+		<email>valloccidental@association.com</email>
+		<city>Terrassa</city>
+		<city>Sabadell</city>
+		<city>Sant Cugat del Vallès</city>
+		<city>Rubí</city>
+		<city>Cerdanyola del Vallès</city>
+	</headquarter>
+</association>
+

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<heads>
+	<head>
+		<name>Clara Domènech</name>
+		<phone>652383848</phone>
+		<email>cdomenech@association.com</email>
+                <headOf>Santsenc</headOf>
+		<days>dilluns.dimarts.dijous</days>
+		<hours>9.10.11.15.16.17.18</hours>
+	</head>
+	<head>
+		<name>Joan Oliver</name>
+		<phone>683954023</phone>
+		<email>joliver@association.com</email>
+                <headOf>Gracienc</headOf>
+		<days>dimecres</days>
+		<hours>9.10.11.12.13.14.15.16.17.18.19</hours>
+	</head>
+	<head>
+		<name>Júlia Peiró</name>
+		<phone>639827488</phone>
+		<email>jpeiro@association.com</email>
+                <headOf>Barceloní</headOf>
+		<days>divendres.dissabte.diumenge</days>
+		<hours>17.18.19.20.21</hours>
+	</head>
+	<head>
+		<name>Llúcia Puig</name>
+		<phone>633457683</phone>
+		<email>lpuig@association.com</email>
+                <headOf>Nord</headOf>
+		<days>dilluns.dimecres.dijous</days>
+		<hours>9.10.11.12</hours>
+	</head>
+	<head>
+		<name>Pau Muñoz</name>
+		<phone>698124325</phone>
+		<email>pmunoz@association.com</email>
+                <headOf>Sud</headOf>
+		<days>dimarts.dijous.divendres</days>
+		<hours>18.19.20.21</hours>
+	</head>
+	<head>
+		<name>Dolors Gil</name>
+		<phone>654887766</phone>
+		<email>dgil@association.com</email>
+                <headOf>Costaner</headOf>
+		<days>dilluns.divendres.dissabte.diumenge</days>
+		<hours>16.17.18.19</hours>
+	</head>
+	<head>
+		<name>Oriol Fernandez</name>
+		<phone>698009876</phone>
+		<email>ofernandez@association.com</email>
+                <headOf>Central</headOf>
+		<days>dimarts.dijous.dissabte</days>
+		<hours>21.22.23.24</hours>
+	</head>
+	<head>
+		<name>Sara Venturòs</name>
+		<phone>666123987</phone>
+		<email>sventuros@association.com</email>
+                <headOf>Llobregat</headOf>
+		<days>dissabte.diumenge</days>
+		<hours>9.10.11.12.13.14</hours>
+	</head>
+	<head>
+		<name>Tomàs Peris</name>
+		<phone>665236488</phone>
+		<email>tperis@association.com</email>
+                <headOf>Ponent</headOf>
+		<days>divendres.dissabte.diumenge</days>
+		<hours>17.18.19.20.21.22</hours>
+	</head>
+	<head>
+		<name>Ariadna Sabadí</name>
+		<phone>609235788</phone>
+		<email>asabadi@association.com</email>
+                <headOf>VallOriental</headOf>
+		<days>dimarts.dijous</days>
+		<hours>10.15.16.17.18</hours>
+	</head>
+	<head>
+		<name>Lluís Clarà</name>
+		<phone>632435423</phone>
+		<email>lclara@association.com</email>
+                <headOf>VallOccidental</headOf>
+		<days>dilluns.divendres</days>
+		<hours>9.10.11.12.15.16.17.18</hours>
+	</head>
+</heads>
+
