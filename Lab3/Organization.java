@@ -1,5 +1,4 @@
-
-import java.util.LinkedList;
+import java.util.*;
 
 public class Organization {
     private String name;
