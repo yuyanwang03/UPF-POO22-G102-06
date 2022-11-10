@@ -8,6 +8,7 @@ public class Delegate extends Member {
 
     public Delegate(String n, int p, String e, Headquarter h){
         super(n, p, e, h);
+        this.dependents = new LinkedList<Regular>();
     }
 
     public void setHeadOf(Headquarter h){

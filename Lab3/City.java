@@ -8,6 +8,7 @@ public class City {
     public City(String n, int p){
         this.name = n;
         this.population = p;
+        this.hqs = new LinkedList<Headquarter>();
     }
 
     public void addHQ(Headquarter h){

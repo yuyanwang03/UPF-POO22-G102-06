@@ -6,6 +6,7 @@ public class Region {
 
     public Region(String n){
         this.name = n;
+        this.cities = new LinkedList<City>();
     }
 
     public void setCities(LinkedList<City> c){

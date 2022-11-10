@@ -13,6 +13,9 @@ public class Headquarter {
         this.name = n;
         this.email = e;
         this.organization = o;
+        this.members = new LinkedList<Member>();
+        this.actionsParticipated = new LinkedList<InfoAction>();
+        this.cities = new LinkedList<City>();
     }
 
     public void addMember(Member m){
