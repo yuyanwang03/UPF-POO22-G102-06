@@ -88,6 +88,22 @@ public class TestDelegate {
         // // It can be observed that a delegate has been substituted by a new delegate, which is exactly what the program has to do
         // System.out.println(Utility.toString(organization.getDelegates()));
 
-        System.out.println("Exited the program without errors");
+        // System.out.println(Utility.toString(organization.getActions()));
+        // System.out.println(Utility.toString(organization.getAllInfoActions()));
+        
+        // Date d1 = new Date(2022, 11, 15);
+        // Date d2 = new Date(2022, 11, 14);
+        // Action a1 = new Action("Action1 name", d1, 1);
+        // delegates.get(3).proposeAction(a1);
+
+        // delegates.get(4).signUpAction(d1);
+        // delegates.get(5).signUpAction(d2);
+        // delegates.get(6).signUpAction(d1);
+
+        // // Only one instance of action was created and 2 headquarters have been signed up to that specific action
+        // System.out.println(Utility.toString(organization.getActions()));
+        // System.out.println(Utility.toString(organization.getAllInfoActions()));
+
+        System.out.println("\nExited the program without errors :)\n");
     }
 }

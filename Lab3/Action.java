@@ -25,4 +25,12 @@ public class Action {
     public Date getDate(){
         return this.start;
     }
+
+    public LinkedList<InfoAction> getDevelopedAction(){
+        return this.developedAction;
+    }
+
+    public String toString(){
+        return this.purpose;
+    }
 }

@@ -47,6 +47,19 @@ public class Organization {
         return out;
     }
 
+    public LinkedList<Action> getActions(){
+        return this.actions;
+    }
+
+    public LinkedList<InfoAction> getAllInfoActions(){
+        LinkedList<InfoAction> out = new LinkedList<InfoAction>();
+        for (Action a : this.actions){
+            out.addAll(a.getDevelopedAction());
+        }
+        // Print it with System.out.println(Utility.toString(out));
+        return out;
+    }
+    
     public LinkedList<Headquarter> getPlaces(){
         return this.places;
     }

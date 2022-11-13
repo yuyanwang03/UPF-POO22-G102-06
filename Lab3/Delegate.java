@@ -84,6 +84,10 @@ public class Delegate extends Member {
     }
 
     public void signUpAction(Date d){
-        this.headOf.getOrganization().getAction(d).addHeadquarter(headOf);
+        if (this.headOf.getOrganization().getAction(d)!=null){
+            this.headOf.getOrganization().getAction(d).addHeadquarter(headOf);
+        } else {
+            System.out.println("There does not exist any action with date " + d.toString());
+        }
     }
 }

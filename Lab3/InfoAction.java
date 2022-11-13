@@ -22,4 +22,8 @@ public class InfoAction {
     public Headquarter getHeadquarter(){
         return this.headquarter;
     }
+
+    public String toString(){
+        return action.toString() + " - " + headquarter.toString();
+    }
 }
