@@ -14,8 +14,12 @@ public class Regular extends Member{
         this.vehicles.add(v);
     }
 
-    // public boolean participate(Action a){
-
-    // }
+    public boolean participate(Action a){
+        // Checks if a regular member's associated headquarter participates in a given action
+        Headquarter h = this.getHeadquarter();
+        Date tempDate = a.getDate();
+        if (h.getAction(tempDate)!=null){return true;}
+        return false;
+    }
     
 }

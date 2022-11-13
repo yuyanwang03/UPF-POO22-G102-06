@@ -21,7 +21,7 @@ public class Delegate extends Member {
 
     public Image genDelegateQR(QRLib q){
         Image out = new Image("Lab3/genDelegateQR.png", 200, 200);
-        String text = "This is a QR for a Delegate Member. You don’t have to care about rising sea levels, if you live on a mega yatch.";
+        String text = "This is a QR for a Delegate Member. You don't have to care about rising sea levels, if you live on a mega yatch.";
         BitMatrix b = QRLib.generateQRCodeImage(text, 200, 200);
         out.setBitMatrix(b);
         out.save();
@@ -30,7 +30,7 @@ public class Delegate extends Member {
 
     public Image genRegularQR(QRLib q){
         Image out = new Image("Lab3/genRegularQR.png", 200, 200);
-        String text = "This is a QR for a Delegate Member. Climate change doesn’t matter, if you stay indoors.";
+        String text = "This is a QR for a Delegate Member. Climate change doesn't matter, if you stay indoors.";
         BitMatrix b = QRLib.generateQRCodeImage(text, 200, 200);
         out.setBitMatrix(b);
         out.save();

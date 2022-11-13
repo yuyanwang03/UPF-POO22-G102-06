@@ -22,22 +22,31 @@ public class Headquarter {
         this.members.add(m);
     }
 
-    //
     public void setCities(LinkedList<City> c){
         this.cities.addAll(c);
     }
 
     public void signUpAction(Action a, int members, int nonMembers, boolean press){
-
+        InfoAction tempInfoAction = new InfoAction(a, this, members, nonMembers, press);
+        a.addInfoAction(tempInfoAction);
     }
 
     public Organization getOrganization(){
         return this.organization;
     }
 
-    // public Action getAction(Date d){
+    public LinkedList<Member> getMembers(){
+        return this.members;
+    }
 
-    // }
+    public Action getAction(Date d){
+        for (int i = 0; i<this.actionsParticipated.size(); i++){
+            if (actionsParticipated.get(i).getAction().getDate().equals(d)){
+                return actionsParticipated.get(i).getAction();
+            }
+        }
+        return null;
+    }
 
     public void setHead(Delegate d){
         this.head = d;

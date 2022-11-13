@@ -14,6 +14,20 @@ public class Action {
     }
 
     public void addHeadquarter(Headquarter h) {
-        //this.headquarter.add(h);
+        // We have understood that this method should add a headquarter to the organization
+        try{
+            Organization o = developedAction.get(0).getHeadquarter().getOrganization();
+            o.addHeadquarter(h);
+        } catch(Exception e){
+            System.out.println("Exception thrown when adding a headquarter from an action");
+        }
+    }
+
+    public void addInfoAction(InfoAction i){
+        this.developedAction.add(i);
+    }
+
+    public Date getDate(){
+        return this.start;
     }
 }

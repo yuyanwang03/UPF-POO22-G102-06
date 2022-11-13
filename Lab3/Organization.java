@@ -15,14 +15,19 @@ public class Organization {
         this.actions.add(a);
     }
 
-    //
+    
     public void addHeadquarter(Headquarter h){
         this.places.add(h);
     }
 
-    // public Action getAction(Date d) {
-        
-    // }
+    public Action getAction(Date d) {
+        for (int i = 0; i<this.actions.size(); i++){
+            if (actions.get(i).getDate().equals(d)){
+                return actions.get(i);
+            }
+        }
+        return null;
+    }
 
     public LinkedList<Delegate> getDelegates(){
         LinkedList<Delegate> out = new LinkedList<Delegate>();

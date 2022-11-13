@@ -14,4 +14,12 @@ public class InfoAction {
         this.numNonMembers = nn;
         this.pressCoverage = pc;
     }
+
+    public Action getAction(){
+        return this.action;
+    }
+
+    public Headquarter getHeadquarter(){
+        return this.headquarter;
+    }
 }
