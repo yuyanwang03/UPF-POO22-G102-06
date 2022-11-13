@@ -46,11 +46,10 @@ public class Delegate extends Member {
     // }
 
     public void proposeAction(Action a){
-
+        this.headOf.getOrganization().addAction(a);
     }
 
     public void signUpAction(Date d){
-
+        this.headOf.getOrganization().getAction(d).addHeadquarter(headOf);
     }
-    
 }
