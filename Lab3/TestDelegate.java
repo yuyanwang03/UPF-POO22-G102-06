@@ -44,7 +44,7 @@ public class TestDelegate {
 
         LinkedList<String[]> xmlDelelegate = Utility.readXML("head");
         for (String[] del: xmlDelelegate){ 
-            // 记，用ulitities 的getobject时，得写tostring 
+            // 记，用utilities 的getobject时，得写tostring 
             Headquarter tempHeadquarter = Utility.getObject(del[3], headquarters);
             Delegate tempDelegate = new Delegate(del[0], Integer.parseInt(del[1]), del[2], tempHeadquarter);
             LinkedList<String> tempDays = new LinkedList<String>();
@@ -69,6 +69,8 @@ public class TestDelegate {
             delegates.add(tempDelegate);
         }
 
+        Image qr = delegates.get(0).genDelegateQR(new QRLib());
+        Image qr2 = delegates.get(0).genRegularQR(new QRLib());
         
     }
 }
