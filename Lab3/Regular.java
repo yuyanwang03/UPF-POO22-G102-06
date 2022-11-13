@@ -14,8 +14,8 @@ public class Regular extends Member{
         this.vehicles.add(v);
     }
 
-    public boolean participate(Action a){
+    // public boolean participate(Action a){
 
-    }
+    // }
     
 }

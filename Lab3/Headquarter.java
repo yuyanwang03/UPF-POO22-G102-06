@@ -30,9 +30,9 @@ public class Headquarter {
         return this.organization;
     }
 
-    public Action getAction(Date d){
+    // public Action getAction(Date d){
 
-    }
+    // }
 
     public void setHead(Delegate d){
         this.head = d;

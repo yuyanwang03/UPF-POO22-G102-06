@@ -7,13 +7,15 @@ public class Organization {
     
     public Organization(String n) {
         this.name = n;
+        this.places = new LinkedList<Headquarter>();
+        this.actions = new LinkedList<Action>();
     }
 
     public void addAction(Action a) {
         this.actions.add(a);
     }
 
-    public Action getAction(Date d) {
+    // public Action getAction(Date d) {
         
-    }
+    // }
 }

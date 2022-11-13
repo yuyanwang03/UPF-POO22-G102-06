@@ -10,10 +10,10 @@ public class Action {
         this.purpose = p;
         this.start = s;
         this.duration = d;
+        developedAction = new LinkedList<InfoAction>();
     }
 
     public void addHeadquarter(Headquarter h) {
-        this.headquarter.add(h);
-        //
+        //this.headquarter.add(h);
     }
 }

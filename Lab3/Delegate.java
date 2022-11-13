@@ -19,21 +19,21 @@ public class Delegate extends Member {
         this.dependents.add(r);
     }
 
-    public Image genDelegateQR(QRLib q){
+    // public Image genDelegateQR(QRLib q){
 
-    }
+    // }
 
-    public Image genRegularQR(QRlib q){
+    // public Image genRegularQR(QRlib q){
 
-    }
+    // }
 
-    public boolean signUpDelegate(Delegate d, QRLib q, Image i){
+    // public boolean signUpDelegate(Delegate d, QRLib q, Image i){
 
-    }
+    // }
 
-    public boolean signUpRegular(Regular r, QRLib q, Image i){
+    // public boolean signUpRegular(Regular r, QRLib q, Image i){
 
-    }
+    // }
 
     public void proposeAction(Action a){
 
