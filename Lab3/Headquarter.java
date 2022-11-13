@@ -43,6 +43,10 @@ public class Headquarter {
         this.head = d;
     }
 
+    public Delegate getHead(){
+        return this.head;
+    }
+
     public String toString(){
         return this.name;
     }

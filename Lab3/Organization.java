@@ -23,4 +23,12 @@ public class Organization {
     // public Action getAction(Date d) {
         
     // }
+
+    public LinkedList<Delegate> getDelegates(){
+        LinkedList<Delegate> out = new LinkedList<Delegate>();
+        for (Headquarter h : this.places){
+            out.add(h.getHead());
+        }
+        return out;
+    }
 }

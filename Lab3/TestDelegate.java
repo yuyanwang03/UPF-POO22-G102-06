@@ -44,6 +44,7 @@ public class TestDelegate {
 
         LinkedList<String[]> xmlDelelegate = Utility.readXML("head");
         for (String[] del: xmlDelelegate){ 
+            // 记，用ulitities 的getobject时，得写tostring 
             Headquarter tempHeadquarter = Utility.getObject(del[3], headquarters);
             Delegate tempDelegate = new Delegate(del[0], Integer.parseInt(del[1]), del[2], tempHeadquarter);
             LinkedList<String> tempDays = new LinkedList<String>();
@@ -65,6 +66,9 @@ public class TestDelegate {
             // 会在memory做改变吗? 还只是temporal的
             tempDelegate.setHeadOf(tempHeadquarter);
             tempHeadquarter.setHead(tempDelegate);
+            delegates.add(tempDelegate);
         }
+
+        
     }
 }

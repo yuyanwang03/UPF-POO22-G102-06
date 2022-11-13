@@ -21,5 +21,9 @@ public class Member {
     public Headquarter getHeadquarter(){
         return this.headquarter;
     }
+
+    public String toString(){
+        return this.name;
+    }
     
 }
