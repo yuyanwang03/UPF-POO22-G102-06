@@ -48,24 +48,23 @@ public class TestDelegate {
             Delegate tempDelegate = new Delegate(del[0], Integer.parseInt(del[1]), del[2], tempHeadquarter);
             LinkedList<String> tempDays = new LinkedList<String>();
             LinkedList<Integer> tempHours = new LinkedList<Integer>();
-            String[] da = del[4].split("[.]");
-            String[] ho = del[5].split(".");
-            for (String d : da) {
-                System.out.println(d);
+            // String[] da = del[4].split("[.]");
+            // String[] ho = del[5].split(".");
+            for (String d : del[4].split("[.]")){
+                // System.out.println(d);
                 tempDays.add(d);
             }
-            for (String h : del[5].split(".")){
+            for (String h : del[5].split("[.]")){
+                // System.out.println(h);
                 tempHours.add(Integer.parseInt(h));
             }
 
-            // System.out.println(tempDays.get(0));
-            //Availability tempAvailability = new Availability(tempDays, tempHours);
+            Availability tempAvailability = new Availability(tempDays, tempHours);
+            tempDelegate.setAvailability(tempAvailability);
 
             // 会在memory做改变吗? 还只是temporal的
             tempDelegate.setHeadOf(tempHeadquarter);
-            
-
+            tempHeadquarter.setHead(tempDelegate);
         }
-
     }
 }

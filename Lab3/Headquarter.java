@@ -21,7 +21,7 @@ public class Headquarter {
     public void addMember(Member m){
         this.members.add(m);
     }
-    
+
     //
     public void setCities(LinkedList<City> c){
         this.cities.addAll(c);
@@ -41,5 +41,9 @@ public class Headquarter {
 
     public void setHead(Delegate d){
         this.head = d;
+    }
+
+    public String toString(){
+        return this.name;
     }
 }
