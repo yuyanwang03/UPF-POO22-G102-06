@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javax.swing.JSpinner.DefaultEditor;
+
 public class Regular extends Member{
     private Delegate responsible;
     private LinkedList<Vehicle> vehicles;
@@ -12,6 +14,10 @@ public class Regular extends Member{
 
     public void addVehicle(Vehicle v){
         this.vehicles.add(v);
+    }
+
+    public Delegate getResponsible(){
+        return this.responsible;
     }
 
     public boolean participate(Action a){
