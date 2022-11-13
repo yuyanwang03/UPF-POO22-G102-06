@@ -34,6 +34,20 @@ public class Organization {
         for (Headquarter h : this.places){
             out.add(h.getHead());
         }
+        // Print it with System.out.println(Utility.toString(out));
         return out;
+    }
+
+    public LinkedList<Member> getAllMembers(){
+        LinkedList<Member> out = new LinkedList<Member>();
+        for (Headquarter h : this.places){
+            out.addAll(h.getMembers());
+        }
+        // Print it with System.out.println(Utility.toString(out));
+        return out;
+    }
+
+    public LinkedList<Headquarter> getPlaces(){
+        return this.places;
     }
 }

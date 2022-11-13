@@ -50,6 +50,8 @@ public class Headquarter {
 
     public void setHead(Delegate d){
         this.head = d;
+        // Delegate is also a member of the headquarter
+        this.members.add(d);
     }
 
     public Delegate getHead(){

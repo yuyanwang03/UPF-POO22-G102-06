@@ -2,6 +2,7 @@ import java.util.*;
 
 public class TestDelegate {
     public static void main(String[] args){
+        // Read xml files
         LinkedList<Region> regions = new LinkedList<Region>();
         LinkedList<City> cities = new LinkedList<City>();
         Organization organization = new Organization("Lab3 Organization");
@@ -14,8 +15,6 @@ public class TestDelegate {
             Region tempReg = new Region(reg[0]);
             String[] tempCities = Arrays.copyOfRange(reg, 1, reg.length/2+1);
             String[] tempPopulation = Arrays.copyOfRange(reg, reg.length/2+1, reg.length);
-            // System.out.println(tempCities[tempCities.length-1]);
-            // System.out.println(tempPopulation[tempPopulation.length-1]);
             for (int i =0; i<tempCities.length; i++){
                 City tempCity = new City(tempCities[i], Integer.parseInt(tempPopulation[i]));
                 cities.add(tempCity);
@@ -44,21 +43,13 @@ public class TestDelegate {
 
         LinkedList<String[]> xmlDelelegate = Utility.readXML("head");
         for (String[] del: xmlDelelegate){ 
-            // 记，用utilities 的getobject时，得写tostring 
             Headquarter tempHeadquarter = Utility.getObject(del[3], headquarters);
             Delegate tempDelegate = new Delegate(del[0], Integer.parseInt(del[1]), del[2], tempHeadquarter);
             LinkedList<String> tempDays = new LinkedList<String>();
             LinkedList<Integer> tempHours = new LinkedList<Integer>();
-            // String[] da = del[4].split("[.]");
-            // String[] ho = del[5].split(".");
-            for (String d : del[4].split("[.]")){
-                // System.out.println(d);
-                tempDays.add(d);
-            }
-            for (String h : del[5].split("[.]")){
-                // System.out.println(h);
-                tempHours.add(Integer.parseInt(h));
-            }
+
+            for (String d : del[4].split("[.]")){tempDays.add(d);}
+            for (String h : del[5].split("[.]")){tempHours.add(Integer.parseInt(h));}
 
             Availability tempAvailability = new Availability(tempDays, tempHours);
             tempDelegate.setAvailability(tempAvailability);
@@ -69,8 +60,9 @@ public class TestDelegate {
             delegates.add(tempDelegate);
         }
 
-        Image qr = delegates.get(0).genDelegateQR(new QRLib());
-        Image qr2 = delegates.get(0).genRegularQR(new QRLib());
-        
+        // Code testing
+        Image del = delegates.get(0).genDelegateQR(new QRLib());
+        Image reg = delegates.get(6).genRegularQR(new QRLib());
+
     }
 }
