@@ -88,5 +88,6 @@ public class TestDelegate {
         // // It can be observed that a delegate has been substituted by a new delegate, which is exactly what the program has to do
         // System.out.println(Utility.toString(organization.getDelegates()));
 
+        System.out.println("Exited the program without errors");
     }
 }
