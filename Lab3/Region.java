@@ -13,4 +13,8 @@ public class Region {
         this.cities.addAll(c);
     }
     
+    //
+    public LinkedList<City> getCities(){
+        return this.cities;
+    }
 }

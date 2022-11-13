@@ -15,6 +15,11 @@ public class Organization {
         this.actions.add(a);
     }
 
+    //
+    public void addHeadquarter(Headquarter h){
+        this.places.add(h);
+    }
+
     // public Action getAction(Date d) {
         
     // }

@@ -21,6 +21,11 @@ public class Headquarter {
     public void addMember(Member m){
         this.members.add(m);
     }
+    
+    //
+    public void setCities(LinkedList<City> c){
+        this.cities.addAll(c);
+    }
 
     public void signUpAction(Action a, int members, int nonMembers, boolean press){
 
