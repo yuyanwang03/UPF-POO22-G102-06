@@ -1,5 +1,3 @@
-import java.util.Vector;
-
 public class Matrix {
     private Vector[] values;
     private int nRows;
