@@ -28,6 +28,7 @@ public class Headquarter {
 
     public void signUpAction(Action a, int members, int nonMembers, boolean press){
         InfoAction tempInfoAction = new InfoAction(a, this, members, nonMembers, press);
+        this.actionsParticipated.add(tempInfoAction);
         a.addInfoAction(tempInfoAction);
     }
 

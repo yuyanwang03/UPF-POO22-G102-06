@@ -60,7 +60,7 @@ public class TestDelegate {
             delegates.add(tempDelegate);
         }
 
-        // // // Code testing. Uncomment all to see
+        // // Code testing. Uncomment all to see
         // System.out.println(Utility.toString(organization.getDelegates()));
         // System.out.println(Utility.toString(organization.getAllMembers()));
 

@@ -104,325 +104,144 @@ public LinkedList<InfoAction> getAllInfoActions(){
 }
 ```
 
+### ***Delegate Class***
 
-
-
-
-
-
-
-
-
-In the explanation of the implementation of this Lab2, we will not go through all the existing classes because some of them are just to simple and are not worth-mentioning. We will just mention some of the essential aspects of the code.
-
-The classes defined in this lab are mainly: *Assignment, Classroom, Course, Enrollment, Lecture, Student, Teacher, University and Utility*.
-
-The first step is to implement the classes with their attributes and methods corresponding to the design diagram. To access the LinkedList, we need to import java.util.* at the beginning of each class. Since all the relations in the diagram are association and aggregation, we make sure to include the needed attributes that correspond to the relations. We then implement the constructor methods to fill the content of those attributes. 
-
-Classes *Student, Teacher, Classroom, Course* are the ones that we need to include the “add” method to add the element to the corresponding link list.
+Both actions genDelegateQR and genRegularQR are almost identical. They start by creating an instance of the Image with a specified output path (where the image will be stored). After that, they create a QRcode with a text that includes the name of the delegate that generates the QR code and a specific message (this message is the one that differs DelegateQRs and RegularQRs). Finally, the created BitMatrix (mainly the QR code) is saved in the image and this is returned.
 
 ```java
-    public void addEnrollment(Enrollment e){
-        this.enrollments.add(e);
-    }
+public Image genDelegateQR(QRLib q){
+    Image out = new Image("Lab3/genDelegateQR"+headOf+".png", 200, 200);
+    String text = this.toString();
+    text = text + ". This is a QR for a Delegate Member. You don't have to care about rising sea levels, if you live on a mega yatch.";
+    BitMatrix b = QRLib.generateQRCodeImage(text, 200, 200);
+    out.setBitMatrix(b);
+    out.save();
+    return out;
+}
 
-    public void addAssignment(Assignment a){
-        this.assignments.add(a);
-    }
-
-    public void addLecture(Lecture l){
-        this.lectures.add(l);
-    }
-```
-And for each of these classes we added a method called *toString()* in order to return a string value that represents these classes.
-
-```java
-    public String toString(){
-        return this.attribute; // Attibute is according to what identifies each class 
-    }
+public Image genRegularQR(QRLib q){
+    Image out = new Image("Lab3/genRegularQR"+headOf+".png", 200, 200);
+    // We will include the name of the delegate at the begginning of the text (followed by a dot), so it will be easier for further methods to be done
+    String text = this.toString();
+    text = text + ". This is a QR for a Delegate Member. Climate change doesn't matter, if you stay indoors.";
+    BitMatrix b = QRLib.generateQRCodeImage(text, 200, 200);
+    out.setBitMatrix(b);
+    out.save();
+    return out;
+}
 ```
 
-### ***Classroom Class***
-
-The method *getLectureCourses()* is used to get a list of courses that will be teached in a Classroom. This funcion's objective is accomplished by going through all the lectures that are being held in the classroom and accessing the course of each lecture and saving it into the LinkedList if it has not been included yet.
+The two next methods are signUpDelegate and signUpRegular allowing to sign up delegate or regular members to the organization. When a member is added, we need to check for the text of the given QRcode ; if there is no text, the given QRcode would be considered invalid and hence no member would be added. In addition to that, the method also has to check that the sign up message corresponds to its puspose; that is, a regular member QRcode can not be used to sign up a delegate member and viceversa.
+Also, the given member's headquarter's head must be the same name than the one displayed in the image; this will ensure that the one who created the QRcode is precisely the head (Delegate) of the headquarter where the member wants to sign up.
 
 ```java
-    public LinkedList<Course> getLecturesCourses(){
-        LinkedList<Course> courses = new LinkedList<Course>();
-        for (Lecture lec: this.lectures){
-            // avoid duplication
-            if (courses.contains(lec.getCourse())){continue;}
-            courses.add(lec.getCourse());
+public boolean signUpDelegate(Delegate d, QRLib q, Image i){
+    String text = QRLib.decodeQRCodeImage(i.getBitmap());
+    String delText = " You don't have to care about rising sea levels, if you live on a mega yatch";
+    if (text!=null){
+        // Get the delegate name that is in the image text
+        String iDelegate = text.split("[.]")[0];
+        // If the second part of the text is not the same text required for signing up a delegate member, return false
+        if (text.split("[.]")[2].equals(delText) == false) {return false;}
+        // Check if the name is essentially the name of the head of the headquarter where the member wants to sign up
+        if (d.getHeadquarter().getHead().toString().equals(iDelegate)){
+            d.getHeadquarter().setHead(d);
+            return true;
         }
-        return courses;
+        // If not, return false -> the program does not add the member
+        return false;
     }
+    return false;
+}
+
+public boolean signUpRegular(Regular r, QRLib q, Image i){
+    String text = QRLib.decodeQRCodeImage(i.getBitmap());
+    String regText = " Climate change doesn't matter, if you stay indoors";
+    if (text!=null){
+        // Get the delegate name that is in the image text
+        String iDelegate = text.split("[.]")[0];
+        // If the second part of the text is not the same text required for signing up a regular member, return false
+        if (text.split("[.]")[2].equals(regText) == false) { 
+            return false;}
+        // Check if the name is essentially the name of the head of the headquarter where the member wants to sign up
+        if (r.getResponsible().toString().equals(iDelegate)){
+            r.getResponsible().getHeadquarter().addMember(r);
+            return true;
+        }
+        // If not, return false -> the program does not add the member
+        return false;
+    }
+    return false;
+}
 ```
 
-### ***Course Class***
-
-There are several additional methods defined in this class:
-
-* *getAssignmentsTeachers()* will return a list of teachers that will give classes for the course.
-
-    ```java
-    public LinkedList<Teacher> getAssignmentsTeachers(){
-        LinkedList<Teacher> teachers = new LinkedList<Teacher>();
-        for (Assignment assg: this.assignments){
-            // avoid duplication
-            if (teachers.contains(assg.getTeacher())){continue;}
-            teachers.add(assg.getTeacher());
-        }
-        return teachers;
-    }
-    ```
-
-* *getGroupsWithClassroom(Classroom clas)* will return a list of groups (String) that belong to the course and have classes in a given classroom.
-
-    ```java
-    public LinkedList<String> getGroupsWithClassroom(Classroom clas){
-        LinkedList<String> groups = new LinkedList<String>();
-        for(Lecture lec: this.lectures){
-            if(lec.getClassroom().equals(clas)){
-                groups.add(lec.getGroup());
-            }
-        }
-        return groups;
-    }
-    ```
-
-* *getClassroomsWithTimeS(int t)* will return a list of classrooms where the course will have lectures in a given timeslot.
-
-    ```java
-    public LinkedList<Classroom> getClassroomsWithTimeS(int t){
-        LinkedList<Classroom> classrooms = new LinkedList<Classroom>();
-        for (Lecture lec: this.lectures){
-            if (lec.getTimeSlot()==t){ 
-                // avoid duplication
-                if (classrooms.contains(lec.getClassroom())){continue;}
-                classrooms.add(lec.getClassroom());
-            }
-        }
-        return classrooms;
-    }
-    ```
-
-* *getClassroomsWithTimeSAndGroup(int t, String g, boolean rangeSem)* will return a list of classrooms where this course will have lectures in a given timeslot and to a given group. The boolan parameter of this function is to specify the range of search. If it is set to be false, it will mean that the group that we are looking for is merely the given sequnce of group digits; if it is set to be true, the method will look not only for the given sequence of group but also for its superclass groups.
-For instance, if the group parameter is "121" (seminar group), the program will also look if group "12" (Lab group) and "1" (Theory group) satisfy the given condition.
-
-    ```java
-    public LinkedList<Classroom> getClassroomsWithTimeSAndGroup(int t, String g, boolean rangeSem){
-        LinkedList<Classroom> classrooms = new LinkedList<Classroom>();
-        for (Lecture lec: this.lectures){
-            boolean sameGroup = false;
-            if (lec.getTimeSlot()!=t) {continue;}
-            if (rangeSem){
-                while (g.length()>0){
-                    if (g.equals(lec.getGroup())) {sameGroup = true;}
-                    g = g.substring(0, g.length() - 1);
-                }
-            } else{
-                if (g.equals(lec.getGroup())) {sameGroup = true;}
-            }
-            if (sameGroup==false) {continue;}
-            if (classrooms.contains(lec.getClassroom())) {continue;}
-            classrooms.add(lec.getClassroom());
-        }
-        return classrooms;
-    }
-    ```
-
-* *getTeacherWithGroup(String g)* will return a list of teachers that teach this course and to a specific group.
-
-    ```java
-    public LinkedList<Teacher> getTeacherWithGroup(String g){
-        LinkedList<Teacher> teachrs = new LinkedList<Teacher>();
-        for(Assignment assg: this.assignments){
-            if (assg.getGroups().contains(g)){
-                teachrs.add(assg.getTeacher());
-            }
-        }
-        return teachrs;
-    }
-    ```
-
-* *getGroupsWithType(int type)* will return a list of groups that belong to this course and that have classes of type "type".
-
-    ```java
-    public LinkedList<String> getGroupsWithType(int type){
-        LinkedList<String> groups = new LinkedList<String>();
-        for (Lecture lec: this.lectures){
-            if (lec.getType()==type) {groups.add(lec.getGroup());}
-        }
-        return groups;
-    }
-    ```
-
-### ***Student Class***
-
-* *getEnrollmentsCourses()* will return a list of courses that the student has been enrolled in.
-
-    ```java
-    // Get all courses this student has been enrolled in
-    public LinkedList<Course> getEnrollmentsCourses(){
-        LinkedList<Course> courses = new LinkedList<Course>();
-        for (Enrollment enroll: this.enrollments){
-            courses.add(enroll.getCourse());
-        }
-        return courses;
-    }
-    ```
-
-* *getEnrollmentsGroup()* will return a list of all seminar groups that the student belongs.
-
-    ```java
-    public LinkedList<String> getEnrollmentsGroup(){
-        LinkedList<String> groups = new LinkedList<String>();
-        for (Enrollment enroll: this.enrollments){
-            groups.add(enroll.getSeminarGroup());
-        }
-        return groups;
-    }
-    ```
-
-* *getGroupInCourse(Course cor)* will return the seminar group that the student belongs to of a given course. If the student is not enrolled in the given course, the method will warn the user about it in the console
-    
-    ```java
-    public String getGroupInCourse(Course cor){
-        for (Enrollment enr: this.enrollments){
-            if (enr.getCourse()==cor){
-                return enr.getSeminarGroup();
-            }
-        }
-        // if not found, student is not enrolled in the corresponding course
-        System.out.println("Student " + this.name + " is not enrolled in the course called " + cor.toString());
-        return "";
-    }
-    ```
-
-### ***Teacher class***
-
-* *getAssigmentsCourses()* will retur a list of courses that the teacher will give class about.
-    
-    ```java
-    public LinkedList<Course> getAssigmentsCourses(){
-        LinkedList<Course> courses = new LinkedList<Course>();
-        for (Assignment assg: this.assignments){
-            // avoid duplication
-            if (courses.contains(assg.getCourse())){continue;}
-            courses.add(assg.getCourse());
-        }
-        return courses;
-    }
-    ```
-
-* *getAssigmentsGroups()* will return a list of lists of groups that the teacher will give classes to. The order of these lists corresponds to the order of the list of courses obtained with the previous method.
-    
-    ```java
-    public LinkedList<LinkedList<String> > getAssigmentsGroups(){
-        LinkedList< LinkedList<String> > gps = new LinkedList<LinkedList<String> >();
-        for (Assignment assg: this.assignments){
-            gps.add(assg.getGroups());
-        }
-        return gps;
-    }
-    ```
-
-### ***University Class***
-
-The attributes of this class are the linked lists from classes Student, Teacher, Classroom and Course:
+The method proposeAction will add a new action to the list of actions of the organization.
 
 ```java
-    private LinkedList<Student> students;
-    private LinkedList<Teacher> teachers;
-    private LinkedList<Classroom> classrooms;
-    private LinkedList<Course> courses;
+public void proposeAction(Action a){
+    this.headOf.getOrganization().addAction(a);
+}
 ```
 
-For the constructor of this class, we need to parse the XML files using the method readXML from the class Utility. For the 4 classes Student, Teacher, Classroom and Course, we only need to create an instance of the entity and add it to the corresponding attribute list. An example of *Student* is as follows: (other classes does not differ a lot from this example)
+The method signUpAction will check first if there exists an action with a given date, if there is not, it will not do anything besides printing a message in the output. If there exists an action in the given date, this method will make use of another existing method (Action.addHeadquarter()) in order to sign up.
 
 ```java
-    LinkedList<String[]> xmlStudents = Utility.readXML("student");
-        for (String[] stu: xmlStudents){ 
-            this.students.add(new Student(stu[0], Integer.parseInt(stu[1])));
-        }
-```
-
-For *Enrollment, Assignment and Lecture*, since they are associative classes the instantiation of them will be different; method *getObject()* defined in *Utility* class would be used. The trickiest one of them is the instantiation of *Assignment*, because it will take a LinkedList of Strings as an argument. The way we implemented is to create a copy of the input as a list and remove the first 2 elements since they are not part of the information given about the groups. 
-
-```java
-    LinkedList<String[]> xmlAssignment = Utility.readXML("assignment");
-    for (String[] assg:xmlAssignment){
-        LinkedList<String> assgGroups = new LinkedList<String>(Arrays.asList(assg));
-        // Remove first 2 elements of the linked list since we know they are not groups
-        assgGroups.remove(0);
-        assgGroups.remove(0);
-        Assignment assignment = new Assignment(assgGroups);
-        Teacher teacher = Utility.getObject(assg[0], this.teachers);
-        Course course = Utility.getObject(assg[1], this.courses);
-        assignment.addTeacher(teacher);
-        assignment.addCourse(course);
-        teacher.addAssignment(assignment);
-        course.addAssignment(assignment);
+public void signUpAction(Date d){
+    if (this.headOf.getOrganization().getAction(d)!=null){
+        this.headOf.getOrganization().getAction(d).addHeadquarter(headOf);
+    } else {
+        System.out.println("There does not exist any action with date " + d.toString());
+    }
     }
 ```
 
-The getter methods' return values of this class are LinkedList of String as it is demanded. Again, they are quite similar when it comes about the structure so following will be just an example.
+### ***Headquarter Class***
+
+Method signUpAction() will create an instance of InfoAction and will add this to the LinkedList in the Action class and the Headquarter class itself.
 
 ```java
-    public LinkedList<String> getTeachers(){
-        LinkedList<String> out = new LinkedList<String>();
-        for (Teacher tea: this.teachers){
-            out.add(tea.toString());
-        }
-        return out;
-    }
+public void signUpAction(Action a, int members, int nonMembers, boolean press){
+    InfoAction tempInfoAction = new InfoAction(a, this, members, nonMembers, press);
+    this.actionsParticipated.add(tempInfoAction);
+    a.addInfoAction(tempInfoAction);
+}
 ```
 
-All following methods are used to implement the queries defined for this lab; they will indeed use methods that are defined in previous classes. It is straight-forward to see what each method does.
+The getAction method will try to return an action that will happen at a given date, if the method does not find any action, it will return null.
 
+```java
+public Action getAction(Date d){
+    for (int i = 0; i<this.actionsParticipated.size(); i++){
+        if (actionsParticipated.get(i).getAction().getDate().equals(d)){
+            return actionsParticipated.get(i).getAction();
+        }
+    }
+    return null;
+}
+```
 
+### ***Regular Class***
+
+Method participate will return a boolean indicating if the headquarter that the member belongs does or does not participate in a given action.
+
+```java
+public boolean participate(Action a){
+    // Checks if a regular member's associated headquarter participates in a given action
+    Headquarter h = this.getHeadquarter();
+    Date tempDate = a.getDate();
+    if (h.getAction(tempDate)!=null){return true;}
+    return false;
+}
+```
 
 ## 3. Conclusion
 
 After the execution, there are no compilation errors. We were able to implement the structure of the organization and the territory, including the functionalities that allow to sign up new members and actions.
+
+There is a section named "Code Tesing" in the *TestDelegate* file. Just uncomment these lines to verify that the methods described can be implemented correctly.
 
 Regarding the given source code (*Utility.java*), we have changed the file directory, if it does not work on your computer, please change the path according to your precise situation. Following is the line of code we have modified.
 
 ```java
 File input = new File("Lab3/src/" + type + "s.xml"); // Modified manually
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-We have implemented all queries defined in the lab. After execution, it can be seen that there is not compilation error and the code works the same way as it has been defined. Nevertheless, we must include here that maybe the way we have implemented each query is not the most effective method; but at least, we are achieving our main purpose.
-
-Apart from that, we need to remark that the code is written in a way that it supposes that all input given to test the methods are correct (and so, exist); we cannot ensure that it will not raise any problem if a wrong input is given. Also, a little modification we have done to this Lab is that the attibute "code" in the *Classroom* class is changed to be a String instead of being an Int (because in such way it is more easy to handle). So keep that in mind if you are testing our program with another written program. 
-
-
-
-Another thing to say about the given source code is that there were brackets missing inside the method *getObject()* so we added them in order to make it work.
-
-```java
-    public static <T> T getObject( String desc, LinkedList< T > objectList ) {
-        for ( T object : objectList ){
-            if ( desc.equals( object.toString() ) )
-                return object;
-		}
-        return null;
-    }
-```
-

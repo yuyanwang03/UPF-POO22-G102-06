@@ -7,7 +7,5 @@ public class Availability {
     public Availability(LinkedList<String> d, LinkedList<Integer> h){
         this.days = new LinkedList<String>(d);
         this.hours = new LinkedList<Integer>(h);
-        // this.days = d;
-        // this.hours = h;
     }
 }

@@ -15,7 +15,6 @@ public class City {
         this.hqs.add(h);
     }
     
-    //
     public String toString(){
         return this.name;
     }
