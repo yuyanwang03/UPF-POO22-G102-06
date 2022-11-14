@@ -41,4 +41,12 @@ public class Vector {
         values[1] = j;
         values[2] = k;
     }
+
+    public void multiplyMat(Matrix m) {
+        for (int i=0; i<3; i++){
+            for (int j=0; j<3; j++){
+                
+            }
+        }
+    }
 }
