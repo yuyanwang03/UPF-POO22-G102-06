@@ -60,7 +60,7 @@ public class TestDelegate {
             delegates.add(tempDelegate);
         }
 
-        // // Code testing. Uncomment all to see
+        // // // Code testing. Uncomment all to see
         // System.out.println(Utility.toString(organization.getDelegates()));
         // System.out.println(Utility.toString(organization.getAllMembers()));
 
@@ -91,14 +91,14 @@ public class TestDelegate {
         // System.out.println(Utility.toString(organization.getActions()));
         // System.out.println(Utility.toString(organization.getAllInfoActions()));
         
-        // Date d1 = new Date(2022, 11, 15);
-        // Date d2 = new Date(2022, 11, 14);
-        // Action a1 = new Action("Action1 name", d1, 1);
+        // Date date1 = new Date(2022, 11, 15);
+        // Date date2 = new Date(2022, 11, 14);
+        // Action a1 = new Action("Action1 name", date1, 1);
         // delegates.get(3).proposeAction(a1);
 
-        // delegates.get(4).signUpAction(d1);
-        // delegates.get(5).signUpAction(d2);
-        // delegates.get(6).signUpAction(d1);
+        // delegates.get(4).signUpAction(date1);
+        // delegates.get(5).signUpAction(date2);
+        // delegates.get(6).signUpAction(date1);
 
         // // Only one instance of action was created and 2 headquarters have been signed up to that specific action
         // System.out.println(Utility.toString(organization.getActions()));
