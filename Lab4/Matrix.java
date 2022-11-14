@@ -12,6 +12,9 @@ public class Matrix {
         }
     }
 
+    public int getNCols(){return this.nCols;}
+    public int getNRows(){return this.nRows;}
+
     public void set(int i, int j, double val){
         values[i].set(j, val);
     }
@@ -45,5 +48,5 @@ public class Matrix {
         values[1].set3D(Math.sin(alpha), Math.cos(alpha), 0);
         values[2].set3D(0, 0, 1);
     }
-    
+
 }
