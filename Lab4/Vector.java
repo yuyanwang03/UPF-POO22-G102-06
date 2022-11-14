@@ -43,10 +43,10 @@ public class Vector {
     }
 
     public void multiplyMat(Matrix m) {
-        for (int i=0; i<3; i++){
-            for (int j=0; j<3; j++){
-                
-            }
+        double[] temp = new double[3];
+        for (int i=0; i < m.getNRows(); i++){
+            temp[i] = m.get(i,0) * values[0] + m.get(i,1) * values[1] + m.get(i,2) * values[2]; 
         }
+        this.set3D(temp[0], temp[1], temp[2]);
     }
 }

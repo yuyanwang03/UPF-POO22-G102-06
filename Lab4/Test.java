@@ -1,5 +1,6 @@
 public class Test {
     public static void main(String[] args) {
+        /*
         Vector v = new Vector(3);
         v.set(0,1);
         v.set(1,2);
@@ -20,6 +21,17 @@ public class Test {
         m.print();
         m.zero();
         m.print();
+        */
+
+        Vector v = new Vector(3);
+        v.set3D(1,0,0);
+
+        Matrix m = new Matrix(3,3);
+        m.create3DRotationMat(Math.PI / 2);
+
+        v.print();
+        v.multiplyMat(m);
+        v.print();
     }
 }
 
