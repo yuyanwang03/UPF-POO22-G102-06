@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Vector {
     private double[] values;
     private int dim;
@@ -32,8 +30,15 @@ public class Vector {
 
     public void print() {
         for (int i=0; i<dim; i++){
-            System.out.print(values[i]);
+            System.out.print(values[i]+" ");
         }
     }
 
+    public void set3D(double i, double j, double k) {
+        this.dim = 3;
+        values = new double[dim];
+        values[0] = i;
+        values[1] = j;
+        values[2] = k;
+    }
 }
