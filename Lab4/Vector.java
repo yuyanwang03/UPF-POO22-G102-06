@@ -32,7 +32,7 @@ public class Vector {
 
     public void print() {
         for (int i=0; i<dim; i++){
-            System.out.print(values[i]);
+            System.out.print(values[i]+" ");
         }
     }
 
