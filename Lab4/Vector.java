@@ -32,6 +32,7 @@ public class Vector {
         for (int i=0; i<dim; i++){
             System.out.print(values[i]+" ");
         }
+        System.out.print("\n");
     }
 
     public void set3D(double i, double j, double k) {
