@@ -44,6 +44,9 @@ public class Matrix {
 
     public void create3DRotationMat(double alpha){
         this.values = new Vector[3];
+        for (int i = 0; i<3; i++){
+            values[i] = new Vector(3);
+        }
         values[0].set3D(Math.cos(alpha), -Math.sin(alpha), 0);
         values[1].set3D(Math.sin(alpha), Math.cos(alpha), 0);
         values[2].set3D(0, 0, 1);
