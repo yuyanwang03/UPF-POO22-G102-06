@@ -1,7 +1,8 @@
 {
     "java.project.sourcePaths": [
+        "Lab3/src",
         "Lab3",
-        "Lab3/src"
+        "Lab4"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
