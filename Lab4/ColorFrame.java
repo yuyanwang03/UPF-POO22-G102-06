@@ -28,6 +28,8 @@ public class ColorFrame extends Frame{
     }
 
     public void changeBrightness(double delta){
+        // delta has to be a positive number because RGB values range from 0-255
+        if (delta<0) {return;}
         for (int i = 0; i < this.getNRows(); i++) {
             for (int j = 0; j < this.getNCols(); j++) {
                 // Get RGB of each value in the matrix
@@ -45,15 +47,17 @@ public class ColorFrame extends Frame{
     }
 
     public void changeRGB(int dR, int dG, int dB){
-        // Avoid that the values of RGB are greater than 255, as the exercise states
-        if (dR > 255 || dG > 255 || dB > 255) {
-            System.out.println("Each value of RGB cannot be higher than 255, the changeRGB method is skipped");
-            return;
-        }
         // Iterate through all values and change their RGB
         for (int i = 0; i < this.getNRows(); i++) {
             for (int j = 0; j < this.getNCols(); j++) {
-                this.set(i, j, RGBToVal(dR, dG, dB));
+                // Get RGB of each value in the matrix
+                int[] rgb = valToRGB(get(i, j));
+                // Make sure that the result does not surpass the value of 255 and that they are positive
+                rgb[0] = Math.abs((rgb[0]+dR)%256);
+                rgb[1] = Math.abs((rgb[1]+dG)%256);
+                rgb[2] = Math.abs((rgb[2]+dB)%256);
+                // Set the modified RGB
+                this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));
             }
         }
     }
