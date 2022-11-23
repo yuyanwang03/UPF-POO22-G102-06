@@ -31,4 +31,21 @@ public class ImagePanel extends JPanel {
         g.drawImage(image, 150, 30, this);
     }
 
+    public ColorFrame toColorFrame(){
+        ColorFrame out = new ColorFrame(100, 100);
+        return out;
+    }
+
+    public void fromColorFrame(ColorFrame cf){
+
+    }
+
+    public BWFrame toBWFrame(){
+        BWFrame out = new BWFrame(100, 100);
+        return out;
+    }
+
+    public void fromBWFrame(BWFrame bwf){
+        
+    }
 }
