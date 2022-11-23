@@ -1,4 +1,22 @@
-public class Test {
+import javax.swing.JPanel;
+
+import java.awt.*;
+import java.lang.annotation.Target;
+import java.awt.image.*;
+import java.io.*;
+import javax.swing.*;
+import javax.imageio.ImageIO;
+
+public class Test extends JFrame{
+    public Test(){
+        JFrame frame = new JFrame("Lab 4");
+		frame.setPreferredSize(new Dimension(800, 600));
+        frame.getContentPane().add(new ImagePanel("Lab4/torreAgbar.jpg"));
+        frame.pack();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+    }
+
     public static void main(String[] args) {
         /*
         Vector v = new Vector(3);
@@ -37,9 +55,11 @@ public class Test {
         System.out.print("multiplication:\n");
         v.print();
 
-        Vector v2 = new Vector(2);
-        v2.multiplyMat(m);
+        // Vector v2 = new Vector(2);
+        // v2.multiplyMat(m);
 
+        Test t = new Test();
+        
     }
 }
 
