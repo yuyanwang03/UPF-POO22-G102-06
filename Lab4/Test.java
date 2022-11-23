@@ -28,9 +28,13 @@ public class Test {
 
         Matrix m = new Matrix(3,3);
         m.create3DRotationMat(Math.PI / 2);
+        System.out.print("rotated matrix:\n");
+        m.print();
 
+        System.out.print("vector:\n");
         v.print();
         v.multiplyMat(m);
+        System.out.print("multiplication:\n");
         v.print();
 
         Vector v2 = new Vector(2);
