@@ -32,6 +32,10 @@ public class Test {
         v.print();
         v.multiplyMat(m);
         v.print();
+
+        Vector v2 = new Vector(2);
+        v2.multiplyMat(m);
+
     }
 }
 

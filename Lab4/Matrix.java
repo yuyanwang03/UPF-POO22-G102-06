@@ -39,7 +39,15 @@ public class Matrix {
         for (int i = 0; i<nRows; i++){
             values[i].print();
         }
-        // System.out.print("\n");
+    }
+
+    private void roundSmallValues(){
+        for (int i = 0; i<this.nRows; i++){
+            for (int j = 0; j<this.nCols; j++){
+                if (Math.abs(this.get(i, j)) > 0.000001){continue;}
+                this.set(i, j, 0);
+            }
+        }
     }
 
     public void create3DRotationMat(double alpha){
@@ -49,13 +57,9 @@ public class Matrix {
         for (int i = 0; i<3; i++){
             values[i] = new Vector(3);
         }
-        System.out.println("cos "+ Math.cos(alpha));
-        System.out.println("sin "+Math.sin(alpha));
         values[0].set3D(Math.cos(alpha), -Math.sin(alpha), 0);
         values[1].set3D(Math.sin(alpha), Math.cos(alpha), 0);
         values[2].set3D(0, 0, 1);
-
-        this.print();
     }
 
 }
