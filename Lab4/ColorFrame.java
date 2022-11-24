@@ -36,9 +36,8 @@ public class ColorFrame extends Frame{
                 int[] rgb = valToRGB(get(i, j));
                 // Check that the multiplication does not surpass the value of 255
                 for (int k = 0; k<rgb.length; k++){
-                    // If the value of the mult surpasses 255, skip that procedure and leave the value as it was
-                    if (rgb[k]*delta>255){continue;}
-                    rgb[k] *= delta;
+                    // If the value of the mult surpasses 255, do the modulo
+                    rgb[k] = ((int)delta*rgb[k])%256;
                 }
                 // Set the modified RGB
                 this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));

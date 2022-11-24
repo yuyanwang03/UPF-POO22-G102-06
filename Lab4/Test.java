@@ -1,21 +1,54 @@
-import javax.swing.JPanel;
-
 import java.awt.*;
-import java.lang.annotation.Target;
-import java.awt.image.*;
-import java.io.*;
 import javax.swing.*;
-import javax.imageio.ImageIO;
 
-public class Test extends JFrame{
-    public Test(){
-        JFrame frame = new JFrame("Lab 4");
-		frame.setPreferredSize(new Dimension(800, 600));
-        frame.getContentPane().add(new ImagePanel("Lab4/test.jpg", true));
+public class Test{
+    private int defaultWidth;
+    private int defaultHeight;
+    private JFrame frame;
+    private ImagePanel imagePanel;
+
+    public Test(String name){
+        this.defaultWidth = 800;
+        this.defaultHeight = 600;
+        imagePanel = null;
+        this.frame = new JFrame(name);
+		frame.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
         frame.pack();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setVisible(true);
     }
+
+    public void deleteImage(){
+        if (imagePanel!=null) {
+            System.out.println("Deleting previous image...\n");
+            this.frame.remove(this.imagePanel);
+        }
+        frame.pack();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+    }
+
+    public void addImageToWindow(String path){
+        deleteImage();
+        this.imagePanel = new ImagePanel(path, true);
+        // ColorFrame f1 = imagePanel.toColorFrame();
+        // f1.print();
+        this.frame.getContentPane().add(imagePanel);
+        frame.pack();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+    }
+
+    public void addImageToWindow(ColorFrame cf){
+        deleteImage();
+        this.imagePanel = new ImagePanel(cf);
+        this.frame.getContentPane().add(imagePanel);
+        frame.pack();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+    }
+
+    public ImagePanel getImagePanel(){ return this.imagePanel;}
 
     public static void main(String[] args) {
         /*
@@ -58,7 +91,14 @@ public class Test extends JFrame{
         // Vector v2 = new Vector(2);
         // v2.multiplyMat(m);
 
-        Test t = new Test();
+        Test windows = new Test("windows 1");
+        // windows.addImageToWindow("Lab4/test.jpg");
+        
+        windows.addImageToWindow("Lab4/pic1.jpg");
+        ColorFrame cf1 = windows.getImagePanel().toColorFrame();
+        windows.deleteImage();
+        Test windows2 = new Test("windows 2");
+        windows2.addImageToWindow(cf1);
         
     }
 }
