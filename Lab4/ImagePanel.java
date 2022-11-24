@@ -7,14 +7,14 @@ import javax.imageio.ImageIO;
 
 public class ImagePanel extends JPanel {
     private BufferedImage image;
-    // private Frame frame;
+    private Frame frame;
     
     public ImagePanel(String path, Boolean colored){
         try{
             // System.out.println("Working Directory = " + System.getProperty("user.dir"));
             this.image = ImageIO.read(new File(path));
-            // if (!colored) {this.frame = this.toBWFrame();}
-            // else {this.frame = this.toBWFrame();}
+            if (!colored) {this.frame = this.toBWFrame();}
+            else {this.frame = this.toColorFrame();}
         } catch (IOException e) {System.out.println("Failed to load image, check file paths\n");}
     }
 
@@ -36,7 +36,7 @@ public class ImagePanel extends JPanel {
     public ColorFrame toColorFrame(){
         int height = image.getHeight(), width = image.getWidth();
         ColorFrame out = new ColorFrame(image.getWidth(), image.getHeight());
-        System.out.println("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds...\n");
+        System.out.print("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds...");
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -44,10 +44,23 @@ public class ImagePanel extends JPanel {
                 out.set(x, y, rgb);
             }
         }
-        System.out.println("Image sucessfully read\n");
-
-        // this.frame = out;
+        System.out.println(" Success! \n");
         return out;
+    }
+
+    private BufferedImage fromFrame(Frame cf){
+        BufferedImage out = new BufferedImage(cf.getNRows(), cf.getNCols(), BufferedImage.TYPE_INT_RGB);
+        for (int y = 0; y < cf.getNCols(); y++) {
+            for (int x = 0; x < cf.getNRows(); x++) {
+                out.setRGB(x, y, (int)cf.get(x, y));
+            }
+        }
+        return out;
+    }
+
+    public void changeBrightness(double delta){
+        this.frame.changeBrightness(delta);
+        this.image = fromFrame(this.frame);
     }
 
     public BWFrame toBWFrame(){
