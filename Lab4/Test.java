@@ -12,6 +12,18 @@ public class Test{
         this.defaultWidth = 800;
         this.defaultHeight = 600;
         imagePanel = null;
+        // JButton b = new JButton("button1");
+        // JButton b1 = new JButton("button2");
+  
+        // // Creating a panel to add buttons
+        // JPanel p = new JPanel();
+  
+        // // Adding buttons and textfield to panel
+        // // using add() method
+        // p.add(b);
+        // p.add(b1);
+        // p.add(b2);
+        // p.add(l);
         this.frame = new JFrame(name);
 		frame.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
         this.display();
@@ -120,14 +132,13 @@ public class Test{
         Test windows = new Test("windows 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
-        windows.addImageToWindow("Lab4/pic3.jpg", false);
+        windows.addImageToWindow("Lab4/pic1.jpg", true);
         // ColorFrame cf1 = windows.getImagePanel().toColorFrame();
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");
         // windows2.addImageToWindow(cf1);
-        windows.changeBrightness(6);
+        windows.changeBrightness(0.8);
         // windows.changeRGB(100, 70, -80);
-
     }
 }
 
