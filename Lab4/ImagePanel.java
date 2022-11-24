@@ -29,11 +29,12 @@ public class ImagePanel extends JPanel {
     // This method is not really redundant, it is here just to test the code
     public ImagePanel(Frame fr){
         this.image = fromFrame(fr);
+        this.frame = fr;
     }
 
     public void paintComponent(Graphics g){
         // Draw the component with a fixed size (800, 600), which is exactly the size of the windows we are creating
-        g.drawImage(image, 0,0, 800, 600, this);
+        g.drawImage(image, 0,0, 800, 600, null);
         g.dispose();
     }
 
