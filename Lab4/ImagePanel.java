@@ -13,15 +13,19 @@ public class ImagePanel extends JPanel {
         try{
             // System.out.println("Working Directory = " + System.getProperty("user.dir"));
             this.image = ImageIO.read(new File(path));
-            if (!colored) {
+            if (!colored){
+                // Set the type of the BufferedImage as TYPE_BYTE_BINARY if the boolean is false
                 BufferedImage temp = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
                 Graphics2D graphic = temp.createGraphics();
                 graphic.drawImage(image, 0, 0, Color.WHITE, null);
                 graphic.dispose();
                 this.image = temp;
+                // Create BWFrame
                 this.frame = this.toBWFrame();
+            } else{
+                // Create ColorFrame
+                this.frame = this.toColorFrame();
             }
-            else {this.frame = this.toColorFrame();}
         } catch (IOException e) {System.out.println("Failed to load image, check file paths\n");}
     }
 
@@ -33,18 +37,22 @@ public class ImagePanel extends JPanel {
     }
 
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         // Draw the component with a fixed size (800, 600), which is exactly the size of the windows we are creating
         g.drawImage(image, 0,0, 800, 600, null);
         g.dispose();
     }
 
+    // Load a ColorFrame by reading each pixel of the BufferedImage
     private ColorFrame toColorFrame(){
         int height = image.getHeight(), width = image.getWidth();
         ColorFrame out = new ColorFrame(image.getWidth(), image.getHeight());
         System.out.print("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds... ");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
+                // Get the rgb value of the pixel at location (x, y)
                 int rgb = image.getRGB(x, y);
+                // Save the RGB value inside the output matrix (ColorFrame)
                 out.set(x, y, rgb);
             }
         }
@@ -52,13 +60,16 @@ public class ImagePanel extends JPanel {
         return out;
     }
 
+    // Load a BWFrame by reading each pixel of the BufferedImage
     private BWFrame toBWFrame(){
         BWFrame out = new BWFrame(image.getWidth(), image.getHeight());
         int height = image.getHeight(), width = image.getWidth();
         System.out.print("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds... ");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
+                // Get the rgb value of the pixel at location (x, y)
                 int rgb = image.getRGB(x, y);
+                // Save the RGB value inside the output matrix (ColorFrame)
                 out.set(x, y, rgb);
             }
         }
@@ -66,9 +77,12 @@ public class ImagePanel extends JPanel {
         return out;
     }
 
+    // Create a BufferedImage from a given Frame (matrix)
     private BufferedImage fromFrame(Frame fr){
+        // Instantiate a BufferedImage of type TYPE_INT_RGB if the given frame is not an instance of BWFrame
         BufferedImage out = new BufferedImage(fr.getNRows(), fr.getNCols(), BufferedImage.TYPE_INT_RGB);
         if (fr instanceof BWFrame) {out = new BufferedImage(fr.getNRows(), fr.getNCols(), BufferedImage.TYPE_BYTE_BINARY);}
+        // Fill every pixel of the image with the values of the given Frame
         for (int y = 0; y < fr.getNCols(); y++) {
             for (int x = 0; x < fr.getNRows(); x++) {
                 out.setRGB(x, y, (int)fr.get(x, y));
@@ -80,6 +94,7 @@ public class ImagePanel extends JPanel {
     public void changeBrightness(double delta){
         this.frame.changeBrightness(delta);
         this.image = fromFrame(this.frame);
+
     }
 
     public Boolean changeRGB(int r, int g, int b){
