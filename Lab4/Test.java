@@ -1,39 +1,76 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Test{
+public class Test extends JFrame implements ActionListener{
     private int defaultWidth;
     private int defaultHeight;
-    private JFrame frame;
     private ImagePanel imagePanel;
+    JButton increaseB;
+    JButton decreaseB;
 
     public Test(String name){
         // Construct empty window with a given name
-        this.defaultWidth = 800;
-        this.defaultHeight = 600;
+        this.setTitle(name);
+        this.defaultWidth = 900;
+        this.defaultHeight = 750;
         imagePanel = null;
-        // JButton b = new JButton("button1");
-        // JButton b1 = new JButton("button2");
-  
-        // // Creating a panel to add buttons
-        // JPanel p = new JPanel();
-  
-        // // Adding buttons and textfield to panel
-        // // using add() method
-        // p.add(b);
-        // p.add(b1);
-        // p.add(b2);
-        // p.add(l);
-        this.frame = new JFrame(name);
-		frame.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBounds(0, 0, 800, 40);
+        increaseB = new JButton("Click to Increase Brightness by 5%");
+        decreaseB = new JButton("Click to Decrease Brightness by 5%");
+
+        increaseB.addActionListener(this);
+        decreaseB.addActionListener(this);
+
+        buttonPanel.add(increaseB);
+        buttonPanel.add(decreaseB);
+
+        increaseB.setBounds(0, 0, 60, 20);
+        decreaseB.setBounds(100, 0, 60, 20);
+        // this.frame = new JFrame(name);
+        this.add(buttonPanel);
+		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
+        this.setLocation(400, 200);
         this.display();
     }
     
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if (e.getSource()==increaseB){
+            this.changeBrightness(1.05);
+            JDialog d = new JDialog(this, "message from the program");
+            // create a label
+            JLabel l = new JLabel("You have succesfully incremented the brightness of the image!");
+            l.setHorizontalAlignment(JLabel.CENTER);
+            d.add(l);
+            // setsize of dialog
+            d.setSize(450, 120);
+            d.setLocation(500, 100);
+            // set visibility of dialog
+            d.setVisible(true);
+
+        } else if (e.getSource()==decreaseB){
+            this.changeBrightness(0.95);
+            JDialog d = new JDialog(this, "message from the program");
+            // create a label
+            JLabel l = new JLabel("You have successfully decreased the brightness of the image!");
+            l.setHorizontalAlignment(JLabel.CENTER);
+            d.add(l);
+            // setsize of dialog
+            d.setSize(450, 120);
+            d.setLocation(500, 100);
+            // set visibility of dialog
+            d.setVisible(true);
+        }
+    }
+
     public void display(){
         // Display the frame
-        frame.pack();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+        this.pack();
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setVisible(true);
     }
 
     public void addImageToWindow(String path, Boolean colored){
@@ -43,7 +80,7 @@ public class Test{
         // Add ImagePanel to the attribute
         this.imagePanel = new ImagePanel(path, colored);
         // Add the panel to the frame
-        this.frame.getContentPane().add(imagePanel);
+        this.getContentPane().add(imagePanel);
         // Display the changes
         this.display();
     }
@@ -52,7 +89,7 @@ public class Test{
     public void addImageToWindow(Frame fr){
         deleteImage();
         this.imagePanel = new ImagePanel(fr);
-        this.frame.getContentPane().add(imagePanel);
+        this.getContentPane().add(imagePanel);
         this.display();
     }
 
@@ -61,7 +98,7 @@ public class Test{
         if (imagePanel!=null) {
             System.out.print("Deleting previous image... ");
             // Do this only if the imagePanel is not null
-            this.frame.remove(this.imagePanel);
+            this.remove(this.imagePanel);
             this.imagePanel = null;
             System.out.println("Success!\n");
         }
@@ -129,7 +166,7 @@ public class Test{
         // Vector v2 = new Vector(2);
         // v2.multiplyMat(m);
 
-        Test windows = new Test("windows 1");
+        Test windows = new Test("Test 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
         windows.addImageToWindow("Lab4/pic1.jpg", true);
@@ -137,7 +174,7 @@ public class Test{
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");
         // windows2.addImageToWindow(cf1);
-        windows.changeBrightness(0.8);
+        windows.changeBrightness(1.1);
         // windows.changeRGB(100, 70, -80);
     }
 }
