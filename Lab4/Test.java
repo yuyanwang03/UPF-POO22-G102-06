@@ -85,8 +85,8 @@ public class Test extends JFrame implements ActionListener{
         this.getContentPane().add(imagePanel);
         // Display the changes
         this.display();
-        printDialogBox("The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate. " +
-                        "If you click on the buttoms for many times, you will see the image displayed. " + "If you don't see any button, rerun the whole program", 600, 500);
+        printDialogBox("User manual:<br />" + "First of all, please resize this windows once.<br />" + "The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate.<br />" +
+                        "If you click on the buttoms for many times, you will see the image displayed.<br />" + "If you don't see any button, rerun the whole program", 600, 500);
     }
 
     // Overloading the previous method to be able to create an ImagePanel from a given Frame (matrix)
