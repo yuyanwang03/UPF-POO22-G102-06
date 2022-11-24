@@ -38,9 +38,9 @@ public class Test{
 
     public void deleteImage(){
         if (imagePanel!=null) {
-            System.out.print("Deleting previous image...");
+            System.out.print("Deleting previous image... ");
             this.frame.remove(this.imagePanel);
-            System.out.println(" Success! \n");
+            System.out.println("Success!\n");
         }
         frame.pack();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -48,16 +48,26 @@ public class Test{
     }
 
     public void changeBrightness(double delta){
-        System.out.print("Program is changing the brightness of the image...");
+        System.out.print("Program is changing the brightness of the image... ");
         this.imagePanel.changeBrightness(delta);
         this.display();
-        System.out.println(" Success! \n");
+        System.out.println("Success!\n");
+    }
+
+    public void changeRGB(int r, int g, int b){
+        System.out.print("The program is changing the rgb of the picture... ");
+        Boolean success = this.imagePanel.changeRGB(r, g, b);
+        if (success == true){
+            this.display();
+            System.out.println("Success!\n");
+        } else {System.out.println("You cannot change rgb of a BW picture\n");}
+       
     }
 
     public ImagePanel getImagePanel(){ return this.imagePanel;}
 
     public static void main(String[] args) {
-        System.out.println("Starting to execute the program...");
+        System.out.println("Starting to execute the program... ");
         // Vector v = new Vector(3);
         // v.set(0,1);
         // v.set(1,2);
@@ -99,12 +109,14 @@ public class Test{
         Test windows = new Test("windows 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
-        windows.addImageToWindow("Lab4/pic1.jpg", false);
+        windows.addImageToWindow("Lab4/pic1.jpg", true);
         // ColorFrame cf1 = windows.getImagePanel().toColorFrame();
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");
         // windows2.addImageToWindow(cf1);
-        windows.changeBrightness(2);
+        windows.changeBrightness(1.7);
+        windows.changeRGB(100, 70, -80);
+
     }
 }
 

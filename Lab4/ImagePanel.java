@@ -26,7 +26,7 @@ public class ImagePanel extends JPanel {
     }
 
     // Overloading the method to be able to instantiate an ImagePanel from a given Frame (matrix)
-    // This method is not really redundant, it is here just to test the code
+    // This method is not really necessary, it is here just to test the code
     public ImagePanel(Frame fr){
         this.image = fromFrame(fr);
         this.frame = fr;
@@ -41,28 +41,28 @@ public class ImagePanel extends JPanel {
     private ColorFrame toColorFrame(){
         int height = image.getHeight(), width = image.getWidth();
         ColorFrame out = new ColorFrame(image.getWidth(), image.getHeight());
-        System.out.print("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds...");
+        System.out.print("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds... ");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int rgb = image.getRGB(x, y);
                 out.set(x, y, rgb);
             }
         }
-        System.out.println(" Success! \n");
+        System.out.println("Success! \n");
         return out;
     }
 
     private BWFrame toBWFrame(){
         BWFrame out = new BWFrame(image.getWidth(), image.getHeight());
         int height = image.getHeight(), width = image.getWidth();
-        System.out.print("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds...");
+        System.out.print("The program is loading each image pixel into a matrix, please be patient, the process may take few seconds... ");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int rgb = image.getRGB(x, y);
                 out.set(x, y, rgb);
             }
         }
-        System.out.println(" Success! \n");
+        System.out.println("Success! \n");
         return out;
     }
 
@@ -82,4 +82,10 @@ public class ImagePanel extends JPanel {
         this.image = fromFrame(this.frame);
     }
 
+    public Boolean changeRGB(int r, int g, int b){
+        if (this.frame instanceof BWFrame) {return false;}
+        ((ColorFrame)this.frame).changeRGB(r, g, b);
+        this.image = fromFrame(this.frame);
+        return true;
+    }
 }
