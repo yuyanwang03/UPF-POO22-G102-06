@@ -90,16 +90,21 @@ public class ImagePanel extends JPanel {
         }
         return out;
     }
-
+    
+    // Call diferent implementations of change brightness depending on the type of the frame (if it is ColorFrame or BWFrame)
     public void changeBrightness(double delta){
+        // Create a frame (matrix) with the modified values for each pixel
         this.frame.changeBrightness(delta);
+        // Redo the image from the modified Frame
         this.image = fromFrame(this.frame);
-
     }
 
     public Boolean changeRGB(int r, int g, int b){
+        // Exit the program if the Frame is a BWFrame
         if (this.frame instanceof BWFrame) {return false;}
+        // Downcast this.frame because up to this line we can ensure that it is of ColorFrame type and changeRGB()
         ((ColorFrame)this.frame).changeRGB(r, g, b);
+        // Redo the image from the modified Frame
         this.image = fromFrame(this.frame);
         return true;
     }
