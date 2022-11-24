@@ -38,6 +38,10 @@ public class Test extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e){
+        if (this.imagePanel==null){
+            System.out.println("You actually do not have any image! The program can not do any action");
+            return;
+        }
         if (e.getSource()==increaseB){
             this.changeBrightness(1.05);
             JDialog d = new JDialog(this, "message from the program");

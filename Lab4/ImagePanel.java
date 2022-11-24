@@ -26,6 +26,7 @@ public class ImagePanel extends JPanel {
                 // Create ColorFrame
                 this.frame = this.toColorFrame();
             }
+            paintComponent(image.getGraphics());
             this.setBounds(50, 5, 800, 600);
         } catch (IOException e) {System.out.println("Failed to load image, check file paths\n");}
     }
