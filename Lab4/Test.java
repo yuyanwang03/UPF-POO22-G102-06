@@ -22,9 +22,9 @@ public class Test{
 		frame.setVisible(true);
     }
 
-    public void addImageToWindow(String path){
+    public void addImageToWindow(String path, Boolean colored){
         deleteImage();
-        this.imagePanel = new ImagePanel(path, true);
+        this.imagePanel = new ImagePanel(path, colored);
         this.frame.getContentPane().add(imagePanel);
         this.display();
     }
@@ -57,7 +57,7 @@ public class Test{
     public ImagePanel getImagePanel(){ return this.imagePanel;}
 
     public static void main(String[] args) {
-        
+        System.out.println("Starting to execute the program...");
         // Vector v = new Vector(3);
         // v.set(0,1);
         // v.set(1,2);
@@ -99,12 +99,12 @@ public class Test{
         Test windows = new Test("windows 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
-        windows.addImageToWindow("Lab4/pic1.jpg");
+        windows.addImageToWindow("Lab4/pic1.jpg", false);
         // ColorFrame cf1 = windows.getImagePanel().toColorFrame();
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");
         // windows2.addImageToWindow(cf1);
-        windows.changeBrightness(3);
+        windows.changeBrightness(2);
     }
 }
 
