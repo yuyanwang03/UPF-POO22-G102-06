@@ -48,7 +48,7 @@ public class Test{
     }
 
     public void changeBrightness(double delta){
-        System.out.print("Program is changing the brigthness of the image...");
+        System.out.print("Program is changing the brightness of the image...");
         this.imagePanel.changeBrightness(delta);
         this.display();
         System.out.println(" Success! \n");
