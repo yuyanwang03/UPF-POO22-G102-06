@@ -112,4 +112,6 @@ public class ImagePanel extends JPanel {
         this.repaint();
         return true;
     }
+
+    public Boolean isBWImage() {return (this.frame instanceof BWFrame);}
 }

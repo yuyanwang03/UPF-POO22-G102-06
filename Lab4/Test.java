@@ -9,6 +9,7 @@ public class Test extends JFrame implements ActionListener{
     private ImagePanel imagePanel;
     JButton increaseB;
     JButton decreaseB;
+    JButton changeRGB;
 
     public Test(String name){
         // Construct empty window with a given name
@@ -20,15 +21,19 @@ public class Test extends JFrame implements ActionListener{
         buttonPanel.setBounds(0, 0, 800, 40);
         increaseB = new JButton("Click to Increase Brightness by 5%");
         decreaseB = new JButton("Click to Decrease Brightness by 5%");
+        changeRGB = new JButton("Click to Modify RGB values");
 
         increaseB.addActionListener(this);
         decreaseB.addActionListener(this);
+        changeRGB.addActionListener(this);
 
         buttonPanel.add(increaseB);
         buttonPanel.add(decreaseB);
+        buttonPanel.add(changeRGB);
 
         increaseB.setBounds(0, 0, 60, 20);
         decreaseB.setBounds(100, 0, 60, 20);
+        decreaseB.setBounds(200, 0, 60, 20);
         // this.frame = new JFrame(name);
         this.add(buttonPanel);
 		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
@@ -49,13 +54,19 @@ public class Test extends JFrame implements ActionListener{
         } else if (e.getSource()==decreaseB){
             this.changeBrightness(0.95);
             printDialogBox("You have succesfully decreased the brightness of the image!", 500, 120);
+        } else if (e.getSource()==changeRGB){
+            if (imagePanel.isBWImage()) {
+                printDialogBox("Program cannot access to this functionality because it is a BlackWhite image", 500, 120);
+                return;
+            }
+            
         }
     }
 
     private void printDialogBox(String message, int width, int height){
         JDialog d = new JDialog(this, "message from the program");
         // Create a label
-        String temp = "<html>" + message + "</html>";
+        String temp = "<html>" + message + "<br /> <br />" + "This is a logger message, you may close this dialog box :)" + "<br />" +"</html>";
         JLabel l = new JLabel(temp);
         l.setHorizontalAlignment(JLabel.CENTER);
         d.add(l);
@@ -85,8 +96,8 @@ public class Test extends JFrame implements ActionListener{
         this.getContentPane().add(imagePanel);
         // Display the changes
         this.display();
-        printDialogBox("User manual:<br />" + "First of all, please resize this windows once.<br />" + "The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate.<br />" +
-                        "If you click on the buttoms for many times, you will see the image displayed.<br />" + "If you don't see any button, rerun the whole program", 600, 500);
+        printDialogBox("User manual:<br /> <br />" + "First of all, please resize this windows once.<br />" + "The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate.<br />" +
+                        "If you click on the buttoms for many times, you will see the image displayed.<br />" + "If you don't see any button, rerun the whole program.", 600, 500);
     }
 
     // Overloading the previous method to be able to create an ImagePanel from a given Frame (matrix)
