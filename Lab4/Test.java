@@ -11,7 +11,7 @@ public class Test extends JFrame{
     public Test(){
         JFrame frame = new JFrame("Lab 4");
 		frame.setPreferredSize(new Dimension(800, 600));
-        frame.getContentPane().add(new ImagePanel("Lab4/torreAgbar.jpg"));
+        frame.getContentPane().add(new ImagePanel("Lab4/test.jpg", true));
         frame.pack();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setVisible(true);
