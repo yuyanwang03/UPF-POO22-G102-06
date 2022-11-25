@@ -7,6 +7,7 @@ public class Test extends JFrame implements ActionListener{
     private int defaultWidth;
     private int defaultHeight;
     private ImagePanel imagePanel;
+    // Attributes for the ui
     private JComboBox<String> selectImage;
     private JRadioButton colorImage;
     private JRadioButton bwImage;
@@ -28,11 +29,10 @@ public class Test extends JFrame implements ActionListener{
         imagePanel = null;
         // Set empty layout
         this.setLayout(null);
-
         // Add panels to the frame
-        this.add(createSelectImagePanel(0, 0));
-        this.add(createBrightnessPanel(0, 60));
-        this.add(createRGBPanel(0, 140));
+        this.add(createSelectImagePanel(5, 0));
+        this.add(createBrightnessPanel(0, 700));
+        this.add(createRGBPanel(0, 760));
         // Display the whole frame
 		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
         this.setLocation(400, 200);
@@ -161,7 +161,7 @@ public class Test extends JFrame implements ActionListener{
         } else if (e.getSource()==decreaseB){
             // Decrease brightness by 5%
             this.changeBrightness(0.95);
-            // Pop out a success dialog box
+            // Pop up a success dialog box
             printDialogBox("You have succesfully decreased the brightness of the image!", 500, 120);
         } else if (e.getSource()==changeRGB){
             // Check if the image is BlackWhite
@@ -175,10 +175,8 @@ public class Test extends JFrame implements ActionListener{
                 int r = Integer.parseInt(editR.getText());
                 int g = Integer.parseInt(editG.getText());
                 int b = Integer.parseInt(editB.getText());
-                // // Pop up a logger message because the program will take a while doing the computation
-                // printDialogBox("Program is changing the RGB, the process may take a while... <br/> A message will pop up when the process is finished.", 500, 160);
                 changeRGB(r, g, b);
-                // Pop out a success dialog box
+                // Pop up a success dialog box
                 printDialogBox("You have succesfully changed the RGB of the image!", 500, 120);
             } catch(NumberFormatException e2){  
                 printDialogBox("The values you have inserted for RGB are in a wrong format; program cannot change the RGB of the image.<br/>" + 
@@ -201,6 +199,7 @@ public class Test extends JFrame implements ActionListener{
         // Situate the label at the center of the dialog box
         l.setHorizontalAlignment(JLabel.CENTER);
         d.add(l);
+        l.setVisible(true);
         // Set size of dialog box
         d.setSize(width, height);
         // Set location of the diagol box on screen
@@ -215,16 +214,19 @@ public class Test extends JFrame implements ActionListener{
         deleteImage();
         // Add ImagePanel to the attribute
         this.imagePanel = new ImagePanel(path, colored);
-        this.imagePanel.setBounds(50, 180, 800, 600);
+        this.imagePanel.setBounds(50, 75, 800, 600);
         this.imagePanel.setLayout(new BorderLayout());
         // Add ImagePanel to the frame
         this.add(this.imagePanel);
         // Display the changes
         this.repaint();
-        printDialogBox("User manual:<br/> <br/>" + "The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate.<br/><br/>" +
-                        "You can do following to see the displayed image: <br/>" + "(1) Resize the main windows (the one that contains the buttons) <br/>" +
+        printDialogBox("User manual:<br/> <br/>" + 
+                        "The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate.<br/><br/>" +
+                        "You can do following to see the displayed image: <br/>" + 
+                        "(1) Resize the main windows (the one that contains the buttons) <br/>" +
                         "(2) Click on either 'increase brightness' or 'decrease brightness' button once and click another time on the main windows<br/><br/>" + 
-                        "If you don't see any change, please rerun the whole program.<br/><br/>" + "Reminder: Resize any windows if you cannot see any message printed on it.", 860, 500);
+                        "If you don't see any change, please rerun the whole program.<br/><br/>" + 
+                        "Reminder: Resize any windows if you cannot see any message printed on it.", 860, 500);
     }
 
     // Overloading the previous method to be able to create an ImagePanel from a given Frame (matrix)
@@ -287,7 +289,7 @@ public class Test extends JFrame implements ActionListener{
         // Vector v2 = new Vector(2);
         // v2.multiplyMat(m);
 
-        Test windows = new Test("Test 1");
+        new Test("Test 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
         // windows.addImageToWindow("Lab4/pic1.jpg", false);
