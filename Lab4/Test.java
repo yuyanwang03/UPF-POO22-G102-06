@@ -35,7 +35,7 @@ public class Test extends JFrame implements ActionListener{
         this.add(createRGBPanel(0, 760));
         // Display the whole frame
 		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
-        this.setLocation(400, 200);
+        this.setLocation(400, 180);
         this.pack();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -246,54 +246,55 @@ public class Test extends JFrame implements ActionListener{
 
     public static void main(String[] args) {
         System.out.println("Starting to execute the program...\n");
-        // Vector v = new Vector(3);
-        // v.set(0,1);
-        // v.set(1,2);
-        // v.set(2,3);
-        // v.print();
-        // v.multiply(3);
-        // v.print();
-        // v.zero();
-        // v.print();
+        System.out.println("-----------------------------------------------------------------------------------------------------");
+        System.out.println("Testing vector and matrix operations...\n");
+        Vector v = new Vector(3);
+        v.set(0,1);
+        v.set(1,2);
+        v.set(2,3);
+        System.out.println("vector:");
+        v.print();
+        System.out.println("vector*3:");
+        v.multiply(3);
+        v.print();
+        System.out.println("vector to 0:");
+        v.zero();
+        v.print();
+        System.out.println("");
 
-        // Matrix m = new Matrix(2,2);
-        // m.set(0,0,1);
-        // m.set(0,1,0);
-        // m.set(1,0,0);
-        // m.set(1,1,1);
-        // m.print();
-        // m.multiply(2);
-        // m.print();
-        // m.zero();
-        // m.print();
+        Matrix m = new Matrix(2,2);
+        m.set(0,0,1);
+        m.set(0,1,0);
+        m.set(1,0,0);
+        m.set(1,1,1);
+        System.out.println("matrix:");
+        m.print();
+        System.out.println("matrix*2:");
+        m.multiply(2);
+        m.print();
+        System.out.println("matrix to 0:");
+        m.zero();
+        m.print();
+        System.out.println("");
 
-        // Vector v = new Vector(3);
-        // v.set3D(1,0,0);
+        Matrix m2 = new Matrix(3,3);
+        m2.create3DRotationMat(Math.PI / 2);
+        System.out.print("rotation matrix:\n");
+        m2.print();
 
-        // Matrix m = new Matrix(3,3);
-        // m.create3DRotationMat(Math.PI / 2);
-        // System.out.print("rotated matrix:\n");
-        // m.print();
+        Vector v2 = new Vector(3);
+        v2.set3D(1,0,0);
+        System.out.print("vector:\n");
+        v2.print();
+        v2.multiplyMat(m2);
+        System.out.print("vector * rotation matrix:\n");
+        v2.print();
+        System.out.println("");
 
-        // System.out.print("vector:\n");
-        // v.print();
-        // v.multiplyMat(m);
-        // System.out.print("multiplication:\n");
-        // v.print();
-
-        // Vector v2 = new Vector(2);
-        // v2.multiplyMat(m);
-
-        new Test("Test 1");
-        // windows.addImageToWindow("Lab4/pic2.jpg");
+        System.out.println("-----------------------------------------------------------------------------------------------------");
+        System.out.println("Testing the Frames...\n");
+        new Test("Test Frames");
         
-        // windows.addImageToWindow("Lab4/pic1.jpg", false);
-        // ColorFrame cf1 = windows.getImagePanel().toColorFrame();
-        // windows.deleteImage();
-        // Test windows2 = new Test("windows 2");
-        // windows2.addImageToWindow(cf1);
-        // // windows.changeBrightness(1.1);
-        // windows.changeRGB(100, 70, -80);
     }
 }
 
