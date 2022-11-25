@@ -234,7 +234,7 @@ public class Test extends JFrame implements ActionListener{
         Test windows = new Test("Test 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
-        windows.addImageToWindow("Lab4/pic3.jpg", true);
+        windows.addImageToWindow("Lab4/pic3.jpg", false);
         // ColorFrame cf1 = windows.getImagePanel().toColorFrame();
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");
