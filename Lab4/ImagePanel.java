@@ -15,7 +15,7 @@ public class ImagePanel extends JPanel {
             this.image = ImageIO.read(new File(path));
             if (!colored){
                 // Set the type of the BufferedImage as TYPE_BYTE_BINARY if the boolean is false
-                BufferedImage temp = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
+                BufferedImage temp = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
                 Graphics2D graphic = temp.createGraphics();
                 graphic.drawImage(image, 0, 0, Color.WHITE, null);
                 graphic.dispose();
@@ -82,7 +82,7 @@ public class ImagePanel extends JPanel {
     private BufferedImage fromFrame(Frame fr){
         // Instantiate a BufferedImage of type TYPE_INT_RGB if the given frame is not an instance of BWFrame
         BufferedImage out = new BufferedImage(fr.getNRows(), fr.getNCols(), BufferedImage.TYPE_INT_RGB);
-        if (fr instanceof BWFrame) {out = new BufferedImage(fr.getNRows(), fr.getNCols(), BufferedImage.TYPE_BYTE_BINARY);}
+        if (fr instanceof BWFrame) {out = new BufferedImage(fr.getNRows(), fr.getNCols(), BufferedImage.TYPE_BYTE_GRAY);}
         // Fill every pixel of the image with the values of the given Frame
         for (int y = 0; y < fr.getNCols(); y++) {
             for (int x = 0; x < fr.getNRows(); x++) {

@@ -77,7 +77,6 @@ public class Test extends JFrame implements ActionListener{
             this.repaint();
             System.out.println("Success!\n");
         } else {System.out.println("You cannot change rgb of a BW picture\n");}
-       
     }
 
     public ImagePanel getImagePanel(){ return this.imagePanel;}
@@ -193,7 +192,7 @@ public class Test extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        System.out.println("Starting to execute the program... ");
+        System.out.println("Starting to execute the program...\n");
         // Vector v = new Vector(3);
         // v.set(0,1);
         // v.set(1,2);
@@ -235,7 +234,7 @@ public class Test extends JFrame implements ActionListener{
         Test windows = new Test("Test 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
-        windows.addImageToWindow("Lab4/pic1.jpg", true);
+        windows.addImageToWindow("Lab4/pic3.jpg", true);
         // ColorFrame cf1 = windows.getImagePanel().toColorFrame();
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");

@@ -34,10 +34,9 @@ public class ColorFrame extends Frame{
             for (int j = 0; j < this.getNCols(); j++) {
                 // Get RGB of each value in the matrix
                 int[] rgb = valToRGB(get(i, j));
-                // Check that the multiplication does not surpass the value of 255
                 for (int k = 0; k<rgb.length; k++){
-                    // If the value of the mult surpasses 255, do the modulo
-                    rgb[k] = ((int)(delta*rgb[k]))%256;
+                    // Take the minimun value of the mult and 255
+                    rgb[k] = Math.min((int)(delta*rgb[k]), 255);
                 }
                 // Set the modified RGB
                 this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));
@@ -52,9 +51,9 @@ public class ColorFrame extends Frame{
                 // Get RGB of each value in the matrix
                 int[] rgb = valToRGB(get(i, j));
                 // Make sure that the result does not surpass the value of 255 and that they are positive
-                rgb[0] = Math.abs((rgb[0]+dR)%256);
-                rgb[1] = Math.abs((rgb[1]+dG)%256);
-                rgb[2] = Math.abs((rgb[2]+dB)%256);
+                rgb[0] = Math.abs(Math.min((rgb[0]+dR), 255));
+                rgb[1] = Math.abs(Math.min((rgb[1]+dG), 255));
+                rgb[2] = Math.abs(Math.min((rgb[2]+dB), 255));
                 // Set the modified RGB
                 this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));
             }
