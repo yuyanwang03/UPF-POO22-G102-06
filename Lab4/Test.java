@@ -7,15 +7,17 @@ public class Test extends JFrame implements ActionListener{
     private int defaultWidth;
     private int defaultHeight;
     private ImagePanel imagePanel;
-    JComboBox<String> selectImage;
-    JComboBox<String> selectColor;
-    JButton loadImage;
-    JButton increaseB;
-    JButton decreaseB;
-    JButton changeRGB;
-    JTextArea editR;
-    JTextArea editG;
-    JTextArea editB;
+    private JComboBox<String> selectImage;
+    private JRadioButton colorImage;
+    private JRadioButton bwImage;
+    private ButtonGroup imageColor;
+    private JButton loadImage;
+    private JButton increaseB;
+    private JButton decreaseB;
+    private JButton changeRGB;
+    private JTextArea editR;
+    private JTextArea editG;
+    private JTextArea editB;
 
     public Test(String name){
         // Construct empty window with a given name
@@ -28,29 +30,36 @@ public class Test extends JFrame implements ActionListener{
 
         // Create the selectImagePanel
         JPanel selectImagePanel = new JPanel();
-        selectImagePanel.setBounds(0, 0, 900, 50);
+        selectImagePanel.setBounds(0, 0, 900, 60);
         selectImagePanel.setLayout(null);
-        // Create options, combo boxes and button
+        // Create options, combo box, button and botton group
         String[] imageOptions = {"Select image to work with...", "pic1.jpg", "pic2.jpg", "pic3.jpg", "pic4.jpg"};
-        String[] colorOptions = {"Select the color range...", "Colored", "Black and White"};
         selectImage = new JComboBox<String>(imageOptions);
-        selectImage.setBounds(80, 10, 230, 30);
-        selectColor = new JComboBox<String>(colorOptions);
-        selectColor.setBounds(350, 10, 200, 30);
+        selectImage.setBounds(100, 15, 230, 30);
+        colorImage = new JRadioButton("Colored");
+        colorImage.setBounds(380, 10, 150, 20);
+        bwImage = new JRadioButton("Black and White");
+        bwImage.setBounds(380, 30, 150, 20);
+        // Button group allows only one option to be selected
+        imageColor = new ButtonGroup();
+        imageColor.add(colorImage);
+        imageColor.add(bwImage);
         loadImage = new JButton("Load selected image");
-        loadImage.setBounds(600, 10, 200, 30);
+        loadImage.setBounds(580, 15, 200, 30);
         // Create action listeners
         selectImage.addActionListener(this);
-        selectColor.addActionListener(this);
+        colorImage.addActionListener(this);
+        bwImage.addActionListener(this);
         loadImage.addActionListener(this);
-        // Add combo boxes and button to the panel
+        // Add combo combo box, button and botton group to the panel
         selectImagePanel.add(selectImage);
-        selectImagePanel.add(selectColor);
+        selectImagePanel.add(colorImage);
+        selectImagePanel.add(bwImage);
         selectImagePanel.add(loadImage);
 
         // Create the buttonPanel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(0, 50, 900, 40);
+        buttonPanel.setBounds(0, 60, 900, 40);
         buttonPanel.setLayout(null);
         // Create the buttons
         increaseB = new JButton("Click to Increase Brightness by 5%");
@@ -66,7 +75,7 @@ public class Test extends JFrame implements ActionListener{
 
         // Create the changeRGB Panel
         JPanel rgbPanel = new JPanel();
-        rgbPanel.setBounds(0, 130, 900, 40);
+        rgbPanel.setBounds(0, 140, 900, 40);
         rgbPanel.setLayout(null);
         // Create the button and text fields
         changeRGB = new JButton("Click to Modify RGB values");
@@ -120,12 +129,11 @@ public class Test extends JFrame implements ActionListener{
         // Check which button has the user clicked on
         if(e.getSource() == loadImage){
             String selectedImageName = selectImage.getSelectedItem().toString();
-            String selectedColor = selectColor.getSelectedItem().toString();
-            if (selectedImageName.equals("Select image to work with...") || selectedColor.equals("Select the color range...")) {
+            if (selectedImageName.equals("Select image to work with...") || imageColor.getSelection()==null) {
                 printDialogBox("You have to select both image and the color range!<br/>" + " The program cannot do any action if not.", 500, 150);
                 return;
             }
-            if (selectedColor.equals("Black and White")){
+            if (bwImage.isSelected()){
                 this.addImageToWindow("Lab4/"+selectedImageName, false);
             } else{
                 this.addImageToWindow("Lab4/"+selectedImageName, true);
@@ -200,7 +208,7 @@ public class Test extends JFrame implements ActionListener{
         deleteImage();
         // Add ImagePanel to the attribute
         this.imagePanel = new ImagePanel(path, colored);
-        this.imagePanel.setBounds(50, 170, 800, 600);
+        this.imagePanel.setBounds(50, 180, 800, 600);
         this.imagePanel.setLayout(new BorderLayout());
         // Add ImagePanel to the frame
         this.add(this.imagePanel);
