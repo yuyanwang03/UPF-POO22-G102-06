@@ -22,15 +22,49 @@ public class Test extends JFrame implements ActionListener{
     public Test(String name){
         // Construct empty window with a given name
         this.setTitle(name);
+        // Set attribute values
         this.defaultWidth = 900;
         this.defaultHeight = 850;
         imagePanel = null;
-
+        // Set empty layout
         this.setLayout(null);
 
+        // Add panels to the frame
+        this.add(createSelectImagePanel(0, 0));
+        this.add(createBrightnessPanel(0, 60));
+        this.add(createRGBPanel(0, 140));
+        // Display the whole frame
+		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
+        this.setLocation(400, 200);
+        this.pack();
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setVisible(true);
+    }
+
+    private void changeBrightness(double delta){
+        // Change brigthness of the only displayed image
+        System.out.print("Program is changing the brightness of the image... ");
+        this.imagePanel.changeBrightness(delta);
+        this.repaint();
+        System.out.println("Success!\n");
+    }
+
+    private void changeRGB(int r, int g, int b){
+        // Change RGB only if the ImagePanel has a ColorFrame (= the image is considered a colored image)
+        System.out.print("The program is changing the rgb of the picture... ");
+        Boolean success = this.imagePanel.changeRGB(r, g, b);
+        if (success == true){
+            this.repaint();
+            System.out.println("Success!\n");
+        } else {System.out.println("You cannot change rgb of a BW picture\n");}
+    }
+
+    public ImagePanel getImagePanel(){ return this.imagePanel;}
+    
+    private JPanel createSelectImagePanel(int x, int y){
         // Create the selectImagePanel
         JPanel selectImagePanel = new JPanel();
-        selectImagePanel.setBounds(0, 0, 900, 60);
+        selectImagePanel.setBounds(x, y, this.defaultWidth, 60);
         selectImagePanel.setLayout(null);
         // Create options, combo box, button and botton group
         String[] imageOptions = {"Select image to work with...", "pic1.jpg", "pic2.jpg", "pic3.jpg", "pic4.jpg"};
@@ -56,11 +90,14 @@ public class Test extends JFrame implements ActionListener{
         selectImagePanel.add(colorImage);
         selectImagePanel.add(bwImage);
         selectImagePanel.add(loadImage);
+        return selectImagePanel;
+    }
 
+    private JPanel createBrightnessPanel(int x, int y){
         // Create the buttonPanel
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(0, 60, 900, 40);
-        buttonPanel.setLayout(null);
+        JPanel brightnessPanel = new JPanel();
+        brightnessPanel.setBounds(x, y, this.defaultWidth, 40);
+        brightnessPanel.setLayout(null);
         // Create the buttons
         increaseB = new JButton("Click to Increase Brightness by 5%");
         increaseB.setBounds(100, 5, 300, 30);
@@ -70,12 +107,15 @@ public class Test extends JFrame implements ActionListener{
         increaseB.addActionListener(this);
         decreaseB.addActionListener(this);
         // Add buttons to the panel
-        buttonPanel.add(increaseB);
-        buttonPanel.add(decreaseB);
+        brightnessPanel.add(increaseB);
+        brightnessPanel.add(decreaseB);
+        return brightnessPanel;
+    }
 
-        // Create the changeRGB Panel
+    private JPanel createRGBPanel(int x, int y){
+        // Create the RGBPanel
         JPanel rgbPanel = new JPanel();
-        rgbPanel.setBounds(0, 140, 900, 40);
+        rgbPanel.setBounds(x, y, this.defaultWidth, 40);
         rgbPanel.setLayout(null);
         // Create the button and text fields
         changeRGB = new JButton("Click to Modify RGB values");
@@ -93,46 +133,21 @@ public class Test extends JFrame implements ActionListener{
         rgbPanel.add(editR);
         rgbPanel.add(editB);
         rgbPanel.add(editG);
-
-        // Add panels to the frame
-        this.add(selectImagePanel);
-        this.add(buttonPanel);
-        this.add(rgbPanel);
-        // Display the whole frame
-		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
-        this.setLocation(400, 200);
-        this.display();
+        return rgbPanel;
     }
 
-    public void changeBrightness(double delta){
-        // Change brigthness of the only displayed image
-        System.out.print("Program is changing the brightness of the image... ");
-        this.imagePanel.changeBrightness(delta);
-        this.repaint();
-        System.out.println("Success!\n");
-    }
-
-    public void changeRGB(int r, int g, int b){
-        // Change RGB only if the ImagePanel has a ColorFrame (= the image is considered a colored image)
-        System.out.print("The program is changing the rgb of the picture... ");
-        Boolean success = this.imagePanel.changeRGB(r, g, b);
-        if (success == true){
-            this.repaint();
-            System.out.println("Success!\n");
-        } else {System.out.println("You cannot change rgb of a BW picture\n");}
-    }
-
-    public ImagePanel getImagePanel(){ return this.imagePanel;}
-    
     @Override
     public void actionPerformed(ActionEvent e){
         // Check which button has the user clicked on
         if(e.getSource() == loadImage){
             String selectedImageName = selectImage.getSelectedItem().toString();
+            // Program works only if the user has selected an image and the range of color of the image
             if (selectedImageName.equals("Select image to work with...") || imageColor.getSelection()==null) {
                 printDialogBox("You have to select both image and the color range!<br/>" + " The program cannot do any action if not.", 500, 150);
                 return;
             }
+            printDialogBox("The program is loading the image, the process may take few seconds...", 500, 120);
+            // See if the user has selected a color range or a black and white range
             if (bwImage.isSelected()){
                 this.addImageToWindow("Lab4/"+selectedImageName, false);
             } else{
@@ -194,15 +209,7 @@ public class Test extends JFrame implements ActionListener{
         d.setVisible(true);
     }
 
-    public void display(){
-        // Display the frame
-        this.pack();
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.setVisible(true);
-    }
-
-    public void addImageToWindow(String path, Boolean colored){
-        printDialogBox("The program is loading the image, the process may take few seconds...", 500, 120);
+    private void addImageToWindow(String path, Boolean colored){
         // Each Window is only capable of showing one image
         // Delete (if there exists) the previous image
         deleteImage();
@@ -221,7 +228,7 @@ public class Test extends JFrame implements ActionListener{
     }
 
     // Overloading the previous method to be able to create an ImagePanel from a given Frame (matrix)
-    public void addImageToWindow(Frame fr){
+    private void addImageToWindow(Frame fr){
         deleteImage();
         this.imagePanel = new ImagePanel(fr);
         this.getContentPane().add(imagePanel);
@@ -229,7 +236,7 @@ public class Test extends JFrame implements ActionListener{
     }
 
     // Delete stored ImagePanel attribute
-    public void deleteImage(){
+    private void deleteImage(){
         if (imagePanel!=null) {
             System.out.print("Deleting previous image... ");
             // Do this only if the imagePanel is not null
