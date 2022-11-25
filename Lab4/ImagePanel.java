@@ -27,8 +27,6 @@ public class ImagePanel extends JPanel {
                 this.frame = this.toColorFrame();
             }
             paintComponent(image.getGraphics());
-            // this.setBounds(50, 100, 800, 600);
-            // this.setBackground(Color.PINK);
         } catch (IOException e) {System.out.println("Failed to load image, check file paths\n");}
     }
 
@@ -41,7 +39,7 @@ public class ImagePanel extends JPanel {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        // Draw the component with a fixed size (800, 600), which is exactly the size of the windows we are creating
+        // Draw the component with a fixed size (800, 600), which is exactly the size of the imagePanel we are creating
         g.drawImage(image, 0,0, 800, 600, this);
         g.dispose();
     }
@@ -100,7 +98,6 @@ public class ImagePanel extends JPanel {
         this.frame.changeBrightness(delta);
         // Redo the image from the modified Frame
         this.image = fromFrame(this.frame);
-        this.repaint();
     }
 
     public Boolean changeRGB(int r, int g, int b){
@@ -110,7 +107,6 @@ public class ImagePanel extends JPanel {
         ((ColorFrame)this.frame).changeRGB(r, g, b);
         // Redo the image from the modified Frame
         this.image = fromFrame(this.frame);
-        this.repaint();
         return true;
     }
 

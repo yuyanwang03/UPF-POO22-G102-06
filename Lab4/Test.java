@@ -24,11 +24,9 @@ public class Test extends JFrame implements ActionListener{
         JPanel buttonPanel = new JPanel();
         JPanel rgbPanel = new JPanel();
         buttonPanel.setBounds(0, 0, 900, 40);
-        buttonPanel.setBackground(Color.RED);
         buttonPanel.setLayout(null);
 
         rgbPanel.setBounds(0, 40, 900, 40);
-        rgbPanel.setBackground(Color.BLUE);
         rgbPanel.setLayout(null);
         increaseB = new JButton("Click to Increase Brightness by 5%");
         decreaseB = new JButton("Click to Decrease Brightness by 5%");
@@ -62,51 +60,87 @@ public class Test extends JFrame implements ActionListener{
         this.setLocation(400, 200);
         this.display();
     }
+
+    public void changeBrightness(double delta){
+        // Change brigthness of the only displayed image
+        System.out.print("Program is changing the brightness of the image... ");
+        this.imagePanel.changeBrightness(delta);
+        this.repaint();
+        System.out.println("Success!\n");
+    }
+
+    public void changeRGB(int r, int g, int b){
+        // Change RGB only if the ImagePanel has a ColorFrame (= the image is considered a colored image)
+        System.out.print("The program is changing the rgb of the picture... ");
+        Boolean success = this.imagePanel.changeRGB(r, g, b);
+        if (success == true){
+            this.repaint();
+            System.out.println("Success!\n");
+        } else {System.out.println("You cannot change rgb of a BW picture\n");}
+       
+    }
+
+    public ImagePanel getImagePanel(){ return this.imagePanel;}
     
     @Override
     public void actionPerformed(ActionEvent e){
+        // Click on the buttons will not have any effect if there is no image loaded
         if (this.imagePanel==null){
             printDialogBox("You currently do not have any image! The program can not do any action.", 500, 120);
             return;
         }
+        // Check with button has the user clicked on
         if (e.getSource() == increaseB){
+            // Increase brightness by 5%
             this.changeBrightness(1.05);
+            // Pop up a success dialog box
             printDialogBox("You have succesfully incremented the brightness of the image!",500, 120);
-
         } else if (e.getSource()==decreaseB){
+            // Decrease brightness by 5%
             this.changeBrightness(0.95);
+            // Pop out a success dialog box
             printDialogBox("You have succesfully decreased the brightness of the image!", 500, 120);
         } else if (e.getSource()==changeRGB){
+            // Check if the image is BlackWhite
             if (imagePanel.isBWImage()) {
-                printDialogBox("Program cannot access to this functionality because it is a BlackWhite image", 500, 120);
+                printDialogBox("Program cannot access to this functionality because it is a BlackWhite image.", 500, 120);
+                // Exit the method without making any change
                 return;
             }
-            try {  
+            try {
+                // Check that the inserted values at the JTextArea are integers (positive or negative)
                 int r = Integer.parseInt(editR.getText());
                 int g = Integer.parseInt(editG.getText());
                 int b = Integer.parseInt(editB.getText());
-                printDialogBox("Program is changing the RGB, the process may take a while...", 500, 120);
+                // // Pop up a logger message because the program will take a while doing the computation
+                // printDialogBox("Program is changing the RGB, the process may take a while... <br/> A message will pop up when the process is finished.", 500, 160);
                 changeRGB(r, g, b);
+                // Pop out a success dialog box
                 printDialogBox("You have succesfully changed the RGB of the image!", 500, 120);
             } catch(NumberFormatException e2){  
-                printDialogBox("The values you have inserted for RGB are in a wrong format. Program cannot changeRGB of the image.", 550, 130);
+                printDialogBox("The values you have inserted for RGB are in a wrong format; program cannot change the RGB of the image.<br/>" + 
+                                "You need to fill the 3 textboxes with (+/-) integer values in order to be a valid input.<br/>" + "<br/>Try another time.", 750, 200);
             }
+            // Reset the messages at each JTextArea
             editR.setText("R");
             editG.setText("G");
             editB.setText("B");
         }
     }
 
+    // Pop up a dialog box with a given message to show on it
     private void printDialogBox(String message, int width, int height){
         JDialog d = new JDialog(this, "message from the program");
+        // Convert given string to html format in order to be able to print new lines. And add a logger message
+        String temp = "<html>" + message + "<br/> <br/>" + "This is a logger message, you may close this dialog box :)" + "<br/>" +"</html>";
         // Create a label
-        String temp = "<html>" + message + "<br /> <br />" + "This is a logger message, you may close this dialog box :)" + "<br />" +"</html>";
         JLabel l = new JLabel(temp);
+        // Situate the label at the center of the dialog box
         l.setHorizontalAlignment(JLabel.CENTER);
         d.add(l);
         // Set size of dialog box
         d.setSize(width, height);
-        // Set location
+        // Set location of the diagol box on screen
         d.setLocation(500, 100);
         // Set visibility of dialog
         d.setVisible(true);
@@ -127,15 +161,15 @@ public class Test extends JFrame implements ActionListener{
         // Add ImagePanel to the attribute
         this.imagePanel = new ImagePanel(path, colored);
         this.imagePanel.setBounds(50, 100, 800, 600);
-        this.imagePanel.setBackground(Color.PINK);
         this.imagePanel.setLayout(new BorderLayout());
+        // Add ImagePanel to the frame
         this.add(this.imagePanel);
-        // Add the panel to the frame
-        this.getContentPane().add(imagePanel);
         // Display the changes
-        this.display();
-        printDialogBox("User manual:<br /> <br />" + "First of all, please resize this windows once.<br />" + "The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate.<br />" +
-                        "If you click on the buttoms for many times, you will see the image displayed.<br />" + "If you don't see any button, rerun the whole program.", 600, 500);
+        this.repaint();
+        printDialogBox("User manual:<br/> <br/>" + "The image has been successfully loaded. It you don't see the image on the windows, please do not hesitate.<br/><br/>" +
+                        "You can do following to see the displayed image: <br/>" + "(1) Resize the main windows (the one that contains the buttons) <br/>" +
+                        "(2) Click on either 'increase brightness' or 'decrease brightness' button once and click another time on the main windows<br/><br/>" + 
+                        "If you don't see any change, please rerun the whole program.<br/><br/>" + "Reminder: Resize any windows if you cannot see any message printed on it.", 860, 500);
     }
 
     // Overloading the previous method to be able to create an ImagePanel from a given Frame (matrix)
@@ -143,7 +177,7 @@ public class Test extends JFrame implements ActionListener{
         deleteImage();
         this.imagePanel = new ImagePanel(fr);
         this.getContentPane().add(imagePanel);
-        this.display();
+        this.repaint();
     }
 
     // Delete stored ImagePanel attribute
@@ -155,29 +189,8 @@ public class Test extends JFrame implements ActionListener{
             this.imagePanel = null;
             System.out.println("Success!\n");
         }
-        this.display();
+        this.repaint();
     }
-
-    public void changeBrightness(double delta){
-        // Change brigthness of the only displayed image
-        System.out.print("Program is changing the brightness of the image... ");
-        this.imagePanel.changeBrightness(delta);
-        this.display();
-        System.out.println("Success!\n");
-    }
-
-    public void changeRGB(int r, int g, int b){
-        // Change RGB only if the ImagePanel has a ColorFrame (= the image is considered a colored image)
-        System.out.print("The program is changing the rgb of the picture... ");
-        Boolean success = this.imagePanel.changeRGB(r, g, b);
-        if (success == true){
-            this.display();
-            System.out.println("Success!\n");
-        } else {System.out.println("You cannot change rgb of a BW picture\n");}
-       
-    }
-
-    public ImagePanel getImagePanel(){ return this.imagePanel;}
 
     public static void main(String[] args) {
         System.out.println("Starting to execute the program... ");
