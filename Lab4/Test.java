@@ -7,6 +7,9 @@ public class Test extends JFrame implements ActionListener{
     private int defaultWidth;
     private int defaultHeight;
     private ImagePanel imagePanel;
+    JComboBox<String> selectImage;
+    JComboBox<String> selectColor;
+    JButton loadImage;
     JButton increaseB;
     JButton decreaseB;
     JButton changeRGB;
@@ -18,14 +21,36 @@ public class Test extends JFrame implements ActionListener{
         // Construct empty window with a given name
         this.setTitle(name);
         this.defaultWidth = 900;
-        this.defaultHeight = 750;
+        this.defaultHeight = 850;
         imagePanel = null;
 
         this.setLayout(null);
 
+        // Create the selectImagePanel
+        JPanel selectImagePanel = new JPanel();
+        selectImagePanel.setBounds(0, 0, 900, 50);
+        selectImagePanel.setLayout(null);
+        // Create options, combo boxes and button
+        String[] imageOptions = {"Select image to work with...", "pic1.jpg", "pic2.jpg", "pic3.jpg", "pic4.jpg"};
+        String[] colorOptions = {"Select the color range...", "Colored", "Black and White"};
+        selectImage = new JComboBox<String>(imageOptions);
+        selectImage.setBounds(80, 10, 230, 30);
+        selectColor = new JComboBox<String>(colorOptions);
+        selectColor.setBounds(350, 10, 200, 30);
+        loadImage = new JButton("Load selected image");
+        loadImage.setBounds(600, 10, 200, 30);
+        // Create action listeners
+        selectImage.addActionListener(this);
+        selectColor.addActionListener(this);
+        loadImage.addActionListener(this);
+        // Add combo boxes and button to the panel
+        selectImagePanel.add(selectImage);
+        selectImagePanel.add(selectColor);
+        selectImagePanel.add(loadImage);
+
         // Create the buttonPanel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(0, 0, 900, 40);
+        buttonPanel.setBounds(0, 50, 900, 40);
         buttonPanel.setLayout(null);
         // Create the buttons
         increaseB = new JButton("Click to Increase Brightness by 5%");
@@ -41,7 +66,7 @@ public class Test extends JFrame implements ActionListener{
 
         // Create the changeRGB Panel
         JPanel rgbPanel = new JPanel();
-        rgbPanel.setBounds(0, 40, 900, 40);
+        rgbPanel.setBounds(0, 130, 900, 40);
         rgbPanel.setLayout(null);
         // Create the button and text fields
         changeRGB = new JButton("Click to Modify RGB values");
@@ -61,6 +86,7 @@ public class Test extends JFrame implements ActionListener{
         rgbPanel.add(editG);
 
         // Add panels to the frame
+        this.add(selectImagePanel);
         this.add(buttonPanel);
         this.add(rgbPanel);
         // Display the whole frame
@@ -91,13 +117,20 @@ public class Test extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e){
-        // Click on the buttons will not have any effect if there is no image loaded
-        if (this.imagePanel==null){
-            printDialogBox("You currently do not have any image! The program can not do any action.", 500, 120);
-            return;
-        }
-        // Check with button has the user clicked on
-        if (e.getSource() == increaseB){
+        // Check which button has the user clicked on
+        if(e.getSource() == loadImage){
+            String selectedImageName = selectImage.getSelectedItem().toString();
+            String selectedColor = selectColor.getSelectedItem().toString();
+            if (selectedImageName.equals("Select image to work with...") || selectedColor.equals("Select the color range...")) {
+                printDialogBox("You have to select both image and the color range!<br/>" + " The program cannot do any action if not.", 500, 150);
+                return;
+            }
+            if (selectedColor.equals("Black and White")){
+                this.addImageToWindow("Lab4/"+selectedImageName, false);
+            } else{
+                this.addImageToWindow("Lab4/"+selectedImageName, true);
+            }
+        } else if (e.getSource() == increaseB){
             // Increase brightness by 5%
             this.changeBrightness(1.05);
             // Pop up a success dialog box
@@ -167,7 +200,7 @@ public class Test extends JFrame implements ActionListener{
         deleteImage();
         // Add ImagePanel to the attribute
         this.imagePanel = new ImagePanel(path, colored);
-        this.imagePanel.setBounds(50, 100, 800, 600);
+        this.imagePanel.setBounds(50, 170, 800, 600);
         this.imagePanel.setLayout(new BorderLayout());
         // Add ImagePanel to the frame
         this.add(this.imagePanel);
@@ -242,7 +275,7 @@ public class Test extends JFrame implements ActionListener{
         Test windows = new Test("Test 1");
         // windows.addImageToWindow("Lab4/pic2.jpg");
         
-        windows.addImageToWindow("Lab4/pic3.jpg", false);
+        // windows.addImageToWindow("Lab4/pic1.jpg", false);
         // ColorFrame cf1 = windows.getImagePanel().toColorFrame();
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");
