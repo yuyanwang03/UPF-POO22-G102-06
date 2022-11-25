@@ -27,7 +27,8 @@ public class ImagePanel extends JPanel {
                 this.frame = this.toColorFrame();
             }
             paintComponent(image.getGraphics());
-            this.setBounds(50, 5, 800, 600);
+            // this.setBounds(50, 100, 800, 600);
+            // this.setBackground(Color.PINK);
         } catch (IOException e) {System.out.println("Failed to load image, check file paths\n");}
     }
 
@@ -41,7 +42,7 @@ public class ImagePanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         // Draw the component with a fixed size (800, 600), which is exactly the size of the windows we are creating
-        g.drawImage(image, 50,50, 800, 600, this);
+        g.drawImage(image, 0,0, 800, 600, this);
         g.dispose();
     }
 

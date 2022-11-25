@@ -10,6 +10,9 @@ public class Test extends JFrame implements ActionListener{
     JButton increaseB;
     JButton decreaseB;
     JButton changeRGB;
+    JTextArea editR;
+    JTextArea editG;
+    JTextArea editB;
 
     public Test(String name){
         // Construct empty window with a given name
@@ -17,8 +20,16 @@ public class Test extends JFrame implements ActionListener{
         this.defaultWidth = 900;
         this.defaultHeight = 750;
         imagePanel = null;
+        this.setLayout(null);
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(0, 0, 800, 40);
+        JPanel rgbPanel = new JPanel();
+        buttonPanel.setBounds(0, 0, 900, 40);
+        buttonPanel.setBackground(Color.RED);
+        buttonPanel.setLayout(null);
+
+        rgbPanel.setBounds(0, 40, 900, 40);
+        rgbPanel.setBackground(Color.BLUE);
+        rgbPanel.setLayout(null);
         increaseB = new JButton("Click to Increase Brightness by 5%");
         decreaseB = new JButton("Click to Decrease Brightness by 5%");
         changeRGB = new JButton("Click to Modify RGB values");
@@ -27,15 +38,26 @@ public class Test extends JFrame implements ActionListener{
         decreaseB.addActionListener(this);
         changeRGB.addActionListener(this);
 
+        editR = new JTextArea("R");
+        editR.setBounds(110, 5, 50, 30);
+        editG = new JTextArea("G");
+        editG.setBounds(220, 5, 50, 30);
+        editB = new JTextArea("B");
+        editB.setBounds(340, 5, 50, 30);
+
         buttonPanel.add(increaseB);
         buttonPanel.add(decreaseB);
-        buttonPanel.add(changeRGB);
+        rgbPanel.add(changeRGB);
+        rgbPanel.add(editR);
+        rgbPanel.add(editB);
+        rgbPanel.add(editG);
 
-        increaseB.setBounds(0, 0, 60, 20);
-        decreaseB.setBounds(100, 0, 60, 20);
-        decreaseB.setBounds(200, 0, 60, 20);
-        // this.frame = new JFrame(name);
+        increaseB.setBounds(100, 5, 300, 30);
+        decreaseB.setBounds(450, 5, 300, 30);
+        changeRGB.setBounds(450, 5, 300, 30);
+        
         this.add(buttonPanel);
+        this.add(rgbPanel);
 		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
         this.setLocation(400, 200);
         this.display();
@@ -92,6 +114,10 @@ public class Test extends JFrame implements ActionListener{
         deleteImage();
         // Add ImagePanel to the attribute
         this.imagePanel = new ImagePanel(path, colored);
+        this.imagePanel.setBounds(50, 100, 800, 600);
+        this.imagePanel.setBackground(Color.PINK);
+        this.imagePanel.setLayout(new BorderLayout());
+        this.add(this.imagePanel);
         // Add the panel to the frame
         this.getContentPane().add(imagePanel);
         // Display the changes
@@ -189,7 +215,7 @@ public class Test extends JFrame implements ActionListener{
         // windows.deleteImage();
         // Test windows2 = new Test("windows 2");
         // windows2.addImageToWindow(cf1);
-        windows.changeBrightness(1.1);
+        // // windows.changeBrightness(1.1);
         // windows.changeRGB(100, 70, -80);
     }
 }
