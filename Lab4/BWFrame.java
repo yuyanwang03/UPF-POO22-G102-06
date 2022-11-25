@@ -3,6 +3,7 @@ public class BWFrame extends Frame{
         super(r, c);
     }
 
+    // Set the rgb with one given int value
     public void set(int i, int j, int v){
         double value = oneRGBtoVal(v);
         super.set(i, j, value);
