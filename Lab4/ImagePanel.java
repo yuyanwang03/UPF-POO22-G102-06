@@ -14,7 +14,7 @@ public class ImagePanel extends JPanel {
             // System.out.println("Working Directory = " + System.getProperty("user.dir"));
             this.image = ImageIO.read(new File(path));
             if (!colored){
-                // Set the type of the BufferedImage as TYPE_BYTE_BINARY if the boolean is false
+                // Set the type of the BufferedImage as TYPE_BYTE_GRAY if the boolean is false
                 BufferedImage temp = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
                 Graphics2D graphic = temp.createGraphics();
                 graphic.drawImage(image, 0, 0, Color.WHITE, null);

@@ -20,42 +20,50 @@ public class Test extends JFrame implements ActionListener{
         this.defaultWidth = 900;
         this.defaultHeight = 750;
         imagePanel = null;
+
         this.setLayout(null);
+
+        // Create the buttonPanel
         JPanel buttonPanel = new JPanel();
-        JPanel rgbPanel = new JPanel();
         buttonPanel.setBounds(0, 0, 900, 40);
         buttonPanel.setLayout(null);
-
-        rgbPanel.setBounds(0, 40, 900, 40);
-        rgbPanel.setLayout(null);
+        // Create the buttons
         increaseB = new JButton("Click to Increase Brightness by 5%");
+        increaseB.setBounds(100, 5, 300, 30);
         decreaseB = new JButton("Click to Decrease Brightness by 5%");
-        changeRGB = new JButton("Click to Modify RGB values");
-
+        decreaseB.setBounds(450, 5, 300, 30);
+        // Create action listeners
         increaseB.addActionListener(this);
         decreaseB.addActionListener(this);
-        changeRGB.addActionListener(this);
+        // Add buttons to the panel
+        buttonPanel.add(increaseB);
+        buttonPanel.add(decreaseB);
 
+        // Create the changeRGB Panel
+        JPanel rgbPanel = new JPanel();
+        rgbPanel.setBounds(0, 40, 900, 40);
+        rgbPanel.setLayout(null);
+        // Create the button and text fields
+        changeRGB = new JButton("Click to Modify RGB values");
+        changeRGB.setBounds(450, 5, 300, 30);
         editR = new JTextArea("R");
         editR.setBounds(110, 5, 50, 30);
         editG = new JTextArea("G");
         editG.setBounds(220, 5, 50, 30);
         editB = new JTextArea("B");
         editB.setBounds(340, 5, 50, 30);
-
-        buttonPanel.add(increaseB);
-        buttonPanel.add(decreaseB);
+        // Create action listeners
+        changeRGB.addActionListener(this);
+        // Add components to the panel
         rgbPanel.add(changeRGB);
         rgbPanel.add(editR);
         rgbPanel.add(editB);
         rgbPanel.add(editG);
 
-        increaseB.setBounds(100, 5, 300, 30);
-        decreaseB.setBounds(450, 5, 300, 30);
-        changeRGB.setBounds(450, 5, 300, 30);
-
+        // Add panels to the frame
         this.add(buttonPanel);
         this.add(rgbPanel);
+        // Display the whole frame
 		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
         this.setLocation(400, 200);
         this.display();
