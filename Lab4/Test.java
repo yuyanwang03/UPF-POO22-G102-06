@@ -55,7 +55,7 @@ public class Test extends JFrame implements ActionListener{
         increaseB.setBounds(100, 5, 300, 30);
         decreaseB.setBounds(450, 5, 300, 30);
         changeRGB.setBounds(450, 5, 300, 30);
-        
+
         this.add(buttonPanel);
         this.add(rgbPanel);
 		this.setPreferredSize(new Dimension(this.defaultWidth, this.defaultHeight));
@@ -81,7 +81,19 @@ public class Test extends JFrame implements ActionListener{
                 printDialogBox("Program cannot access to this functionality because it is a BlackWhite image", 500, 120);
                 return;
             }
-            
+            try {  
+                int r = Integer.parseInt(editR.getText());
+                int g = Integer.parseInt(editG.getText());
+                int b = Integer.parseInt(editB.getText());
+                printDialogBox("Program is changing the RGB, the process may take a while...", 500, 120);
+                changeRGB(r, g, b);
+                printDialogBox("You have succesfully changed the RGB of the image!", 500, 120);
+            } catch(NumberFormatException e2){  
+                printDialogBox("The values you have inserted for RGB are in a wrong format. Program cannot changeRGB of the image.", 550, 130);
+            }
+            editR.setText("R");
+            editG.setText("G");
+            editB.setText("B");
         }
     }
 
