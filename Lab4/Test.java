@@ -102,7 +102,7 @@ public class Test extends JFrame implements ActionListener{
         increaseB = new JButton("Click to Increase Brightness by 5%");
         increaseB.setBounds(100, 5, 300, 30);
         decreaseB = new JButton("Click to Decrease Brightness by 5%");
-        decreaseB.setBounds(450, 5, 300, 30);
+        decreaseB.setBounds(500, 5, 300, 30);
         // Create action listeners
         increaseB.addActionListener(this);
         decreaseB.addActionListener(this);
@@ -119,13 +119,16 @@ public class Test extends JFrame implements ActionListener{
         rgbPanel.setLayout(null);
         // Create the button and text fields
         changeRGB = new JButton("Click to Modify RGB values");
-        changeRGB.setBounds(450, 5, 300, 30);
+        changeRGB.setBounds(500, 5, 300, 30);
         editR = new JTextArea("R");
         editR.setBounds(110, 5, 50, 30);
+        editR.setForeground(Color.red);
         editG = new JTextArea("G");
         editG.setBounds(220, 5, 50, 30);
+        editG.setForeground(Color.green);
         editB = new JTextArea("B");
         editB.setBounds(340, 5, 50, 30);
+        editB.setForeground(Color.cyan);
         // Create action listeners
         changeRGB.addActionListener(this);
         // Add components to the panel
@@ -227,14 +230,6 @@ public class Test extends JFrame implements ActionListener{
                         "(2) Click on either 'increase brightness' or 'decrease brightness' button once and click another time on the main windows<br/><br/>" + 
                         "If you don't see any change, please rerun the whole program.<br/><br/>" + 
                         "Reminder: Resize any windows if you cannot see any message printed on it.", 860, 500);
-    }
-
-    // Overloading the previous method to be able to create an ImagePanel from a given Frame (matrix)
-    private void addImageToWindow(Frame fr){
-        deleteImage();
-        this.imagePanel = new ImagePanel(fr);
-        this.getContentPane().add(imagePanel);
-        this.repaint();
     }
 
     // Delete stored ImagePanel attribute
