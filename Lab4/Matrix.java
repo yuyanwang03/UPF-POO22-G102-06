@@ -41,15 +41,6 @@ public class Matrix {
         }
     }
 
-    // private void roundSmallValues(){
-    //     for (int i = 0; i<this.nRows; i++){
-    //         for (int j = 0; j<this.nCols; j++){
-    //             if (Math.abs(this.get(i, j)) > 0.000001){continue;}
-    //             this.set(i, j, 0);
-    //         }
-    //     }
-    // }
-
     public void create3DRotationMat(double alpha){
         this.values = new Vector[3];
         this.nRows = 3;
