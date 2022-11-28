@@ -1,5 +1,5 @@
 #ifndef _ENTITY_
-#define _ENTITY
+#define _ENTITY_
 
 // i was having error for the include parts tho
 
