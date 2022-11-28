@@ -12,12 +12,12 @@ using namespace std;
 
 class Entity: public Nameable, Comparable<Entity>{
     private:
-        Vec2D pos;
+        Vec2D* pos;
         string name;
         int energy;
 
     public:
-        Entity(Vec2D p, string n, int e): pos(&p), name(n), energy(e) {}
+        Entity(Vec2D* p, string n, int e): pos(p), name(n), energy(e) {}
 
         string getName() {return name;}
 
@@ -33,7 +33,7 @@ class Entity: public Nameable, Comparable<Entity>{
 
         virtual void update() = 0;
 
-        Vec2D getPosition(){ return pos;}
+        Vec2D getPosition(){ return *pos;}
 
 };
 

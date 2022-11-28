@@ -12,13 +12,13 @@ class Agent: public Entity {
     private:
         double radius;
         Vec2D* dir;
-        Vec2D target;
+        Vec2D* target;
         double speed;
     
     public:
-        Agent(Vec2D p, string n, int e, double r): Entity(p, n, e), radius(r) {};
+        Agent(Vec2D* p, string n, int e, double r): Entity(p, n, e), radius(r) {};
 
-        void setTarget(Vec2D v) {
+        void setTarget(Vec2D *v) {
             target = v;
         }
 
