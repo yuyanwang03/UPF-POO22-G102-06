@@ -55,18 +55,18 @@ Both classes have setter and getter methods. While a pixel of a black and white 
 
 ```java
 // Get one of the RGB values from one given rgb value
-    private int valToOneRGB(double rgb){
-        // For gray colored colors, the 3 rgb values are the same and thus we only need to take one value to know all rgb
-        int ret = ((int)rgb >> 16) & 255;
-        return ret;
-    }
- 
-    // Get the rgb value from a given value
-    private double oneRGBtoVal(int v){
-        // For gray colored colors, the 3 rgb values are the same and thus we can create a gray colo from one given value
-        double ret = (v << 16) | (v << 8) | v ;
-        return ret;
-    }
+private int valToOneRGB(double rgb){
+    // For gray colored colors, the 3 rgb values are the same and thus we only need to take one value to know all rgb
+    int ret = ((int)rgb >> 16) & 255;
+    return ret;
+}
+
+// Get the rgb value from a given value
+private double oneRGBtoVal(int v){
+    // For gray colored colors, the 3 rgb values are the same and thus we can create a gray colo from one given value
+    double ret = (v << 16) | (v << 8) | v ;
+    return ret;
+}
 ```
 
 The abstract changeBrightness method will be implemented in these two classes. 
@@ -75,40 +75,40 @@ The abstract changeBrightness method will be implemented in these two classes.
 
 ```java
 public void changeBrightness(double delta){
-        // delta has to be a positive number because RGB values range from 0-255
-        if (delta<0) {return;}
-        for (int i = 0; i < this.getNRows(); i++) {
-            for (int j = 0; j < this.getNCols(); j++) {
-                // Get RGB of each value in the matrix
-                int[] rgb = valToRGB(get(i, j));
-                for (int k = 0; k<rgb.length; k++){
-                    // Take the minimun value of the mult and 255
-                    rgb[k] = Math.min((int)(delta*rgb[k]), 255);
-                }
-                // Set the modified RGB
-                this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));
+    // delta has to be a positive number because RGB values range from 0-255
+    if (delta<0) {return;}
+    for (int i = 0; i < this.getNRows(); i++) {
+        for (int j = 0; j < this.getNCols(); j++) {
+            // Get RGB of each value in the matrix
+            int[] rgb = valToRGB(get(i, j));
+            for (int k = 0; k<rgb.length; k++){
+                // Take the minimun value of the mult and 255
+                rgb[k] = Math.min((int)(delta*rgb[k]), 255);
             }
+            // Set the modified RGB
+            this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));
         }
     }
+}
 ```
 
 ***BWFrame:***
 
 ```java
 public void changeBrightness(double delta){
-        // delta has to be a positive number because RGB values range from 0-255
-        if (delta<0) {return;}
-        for (int i = 0; i < this.getNRows(); i++) {
-            for (int j = 0; j < this.getNCols(); j++) {
-                // Get RGB of each value in the matrix
-                int rgb = valToOneRGB(get(i, j));
-                // Take the minimun value of the mult and 255
-                int newRGB = Math.min((int)(rgb*delta), 255);
-                // Set the modified RGB
-                this.set(i, j, newRGB);
-            }
+    // delta has to be a positive number because RGB values range from 0-255
+    if (delta<0) {return;}
+    for (int i = 0; i < this.getNRows(); i++) {
+        for (int j = 0; j < this.getNCols(); j++) {
+            // Get RGB of each value in the matrix
+            int rgb = valToOneRGB(get(i, j));
+            // Take the minimun value of the mult and 255
+            int newRGB = Math.min((int)(rgb*delta), 255);
+            // Set the modified RGB
+            this.set(i, j, newRGB);
         }
     }
+}
 ```
 
 
@@ -116,20 +116,20 @@ Finally we need to include one more method in the ColorFrame class which is chan
  
  ```java
 public void changeRGB(int dR, int dG, int dB){
-        // Iterate through all values and change their RGB
-        for (int i = 0; i < this.getNRows(); i++) {
-            for (int j = 0; j < this.getNCols(); j++) {
-                // Get RGB of each value in the matrix
-                int[] rgb = valToRGB(get(i, j));
-                // Make sure that the result does not surpass the value of 255 and that they are positive
-                rgb[0] = Math.abs(Math.min((rgb[0]+dR), 255));
-                rgb[1] = Math.abs(Math.min((rgb[1]+dG), 255));
-                rgb[2] = Math.abs(Math.min((rgb[2]+dB), 255));
-                // Set the modified RGB
-                this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));
-            }
+    // Iterate through all values and change their RGB
+    for (int i = 0; i < this.getNRows(); i++) {
+        for (int j = 0; j < this.getNCols(); j++) {
+            // Get RGB of each value in the matrix
+            int[] rgb = valToRGB(get(i, j));
+            // Make sure that the result does not surpass the value of 255 and that they are positive
+            rgb[0] = Math.abs(Math.min((rgb[0]+dR), 255));
+            rgb[1] = Math.abs(Math.min((rgb[1]+dG), 255));
+            rgb[2] = Math.abs(Math.min((rgb[2]+dB), 255));
+            // Set the modified RGB
+            this.set(i, j, RGBToVal(rgb[0], rgb[1], rgb[2]));
         }
     }
+}
 ```
 
 ### ***Test class***
