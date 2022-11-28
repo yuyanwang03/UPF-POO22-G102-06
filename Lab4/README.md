@@ -2,7 +2,9 @@
 
 ## 1. Introduction
 
-The aim of this report is to describe how we have done lab 4, including all the problems we encountered and our solutions. First of all, our goal for this lab is to implement the design of seminar 4 emphasising the use of inheritance and code reuse. Unlike the other labs, we were not given any existing classes. We created 6 classes which are Vector, Matrix, AudioBuffer, Frame, BWFrame, ColorFrame, then the ImagePanel for the optional part and finally a Test class including the main method
+The aim of this report is to describe how we have done lab 4, including all the problems we encountered and our solutions. First of all, our goal for this lab is to implement the design of seminar 4 emphasising the use of inheritance and code reuse. Unlike the other labs, we were not given any existing classes. We created 6 classes which are Vector, Matrix, AudioBuffer, Frame, BWFrame, ColorFrame, then the ImagePanel for the optional part and finally a Test class including the main method.
+
+For the optional part, we have incorporated 4 images which the user can choose and play with. All images can be considered as black and white or colored. If the original image is in color and it is initialized as BW, the program will display it in a gray color; if the original image is in BW and it is initialized as colored, the program will be able to modify its RGB and have a chance to apply a colored filter to the image.
 
 ## 2. Implementation
 
@@ -497,3 +499,8 @@ public Boolean changeRGB(int r, int g, int b){
 ```
 
 ## 3. Conclusion
+
+After the execution, there are no compilation errors. The UI works properly without errors and it can clearly be seen that the brightness and the RGB are modified correctly as what the user demands.
+
+We have tried to incorporate a java slider to change the brightness, but taking into consideration that the amount of computation (since we are working with each pixel) is huge, and that the program saves only the current instance of the image, we arrived to the conclusion that working with buttons would be a simpler option.
+
