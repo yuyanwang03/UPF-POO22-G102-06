@@ -1,4 +1,3 @@
-
 #ifndef _COMPARABLE_
 #define _COMPARABLE_
 
@@ -8,4 +7,3 @@ class Comparable {
 };
 
 #endif
-

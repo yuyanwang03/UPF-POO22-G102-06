@@ -15,6 +15,9 @@ public:
 	
 	Vec2D(Vec2D * v) : x(v->getX()), y(v->getY()) {}
 
+	// 为什么
+	Vec2D() = default;
+
 	// getters
 	double getX() { return x; }
 	double getY() { return y; }
