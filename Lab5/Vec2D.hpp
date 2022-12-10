@@ -4,6 +4,8 @@
 
 #include <cmath>
 
+using namespace std;
+
 class Vec2D {
 private:
 	double x;
@@ -15,8 +17,7 @@ public:
 	
 	Vec2D(Vec2D * v) : x(v->getX()), y(v->getY()) {}
 
-	// 为什么
-	Vec2D() = default;
+	// Vec2D() = default;
 
 	// getters
 	double getX() { return x; }
@@ -37,6 +38,9 @@ public:
 		x = x / len;
 		y = y / len;
 	}
+
+	void print() {cout << "(" << x << ", " << y << ")" << endl;}
+
 };
 
 #endif
