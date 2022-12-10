@@ -24,8 +24,9 @@ class Entity: public Nameable, Comparable<Entity>{
         void setName(string n) {name = n;}
 
         int compareTo(Entity* e){
-            if (energy == e->getEnergy()){ return 0;}
-            else if (energy > e->getEnergy()) {return 1;}
+            if (energy == e->getEnergy()){ cout << "Both have equal energy" << endl; return 0;}
+            else if (energy > e->getEnergy()) {cout << getName() << " have more energy" << endl; return 1;}
+            cout << e->getName() << " have more energy" << endl;
             return -1;
         }
 
@@ -33,7 +34,7 @@ class Entity: public Nameable, Comparable<Entity>{
 
         virtual void update() = 0;
 
-        Vec2D getPosition(){ return *pos;}
+        Vec2D* getPosition(){ return pos;}
 
 };
 

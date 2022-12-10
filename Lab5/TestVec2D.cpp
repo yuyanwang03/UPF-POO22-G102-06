@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include "Vec2D.hpp"
+#include "Agent.cpp"
 using namespace std;
 
 int main() {
@@ -28,11 +29,36 @@ int main() {
 	v4->subtract(v3);
 	cout << "vec4 subtract vec3: "; v4->print();
 	cout << "vec4 length: " << v4->length() << endl;
-	
+
+	cout << "\n------------------------- Agent Test -------------------------" << endl;
+	// Create an instance of an agent
+	Agent a1(v4, "Agent 1", 40, 3);
+	// Set target
+	a1.setTarget(new Vec2D(10, 10));
+	// Set speed
+	a1.setSpeed(3);
+	// Print its info
+	a1.print();
+	// Update position
+	a1.update();
+	a1.update();
+	a1.print();
+	a1.update();
+	a1.update();
+	Agent a2(v3, "Agent 2", 50, 4);
+	a2.setTarget(new Vec2D(10, 10));
+	a2.setSpeed(6);
+	a2.print();
+	a1.compareTo(&a2);
+	cout << boolalpha << "Colliding? " << a2.isColliding(a1) << endl;
+	a2.update();
+	a2.update();
+	a2.update();
+	cout << "Colliding? " << a2.isColliding(a1) << endl;
+
 	// instances created using "new" have to be deleted
 	delete v3;
 	delete v4;
-
 
 }
 
