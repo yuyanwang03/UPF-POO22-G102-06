@@ -1,7 +1,3 @@
 # Lab 5 report
 
-## 1. Introduction
-
-
-
-## 2. Implementation
+The code is tested with complier Clang++ and works perfectly.
